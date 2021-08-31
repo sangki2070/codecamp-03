@@ -30,8 +30,7 @@ export const TitleWrapper = styled.div`
 export const Logo = styled.div`
     width: 100px;
     height: 100px;
-    background-color: red;
-    /* background-image: url("/images/Road.png") */
+    background-image: url("/images/Road.svg")
     /* padding-bottom: 27px; */
 
 `
@@ -44,14 +43,13 @@ export const Title = styled.div`
 
 `
 
-
 // 로그인 래퍼 부분
 
 export const LoginWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 300px;
+    height: 200px;
 
 
 `
@@ -113,21 +111,53 @@ export const FooterWrapper = styled.div`
 `
 
 
-export const LoginBtn = styled.div`
+export const LoginBtn = styled.button`
     width: 540px;
     height: 76px;
-    background-color: darkseagreen;
-    
+    background-color: #ff1b6d;
+    border-radius: 38px;
+    border: none;
+    opacity: 0.6;
+    color: #ffffff;
+    font-size: 26px;
 `
 
 export const Search = styled.div`
-    width: 600px;
+    width: 400px;
     height: 20px;
-    background-color: rebeccapurple
+    display: flex;
+    justify-content: space-around;
+    color: #ffffff;
+    font-size: 20px;
 `
 export const Kakao = styled.div`
     width: 540px;
     height: 76px;
-    background-color: darkorange;
+    border: solid 2px #fae100;
+    border-radius: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fae100;
+    font-size: 26px;
 `
 
+export const KakaoImage = styled.div`
+    width: 32px;
+    height: 30px;
+    background-image: url('/images/kakao.svg')
+    
+
+`
+
+export const KakaoLogin = styled.div`
+    width: 228px;
+    height: 26px;
+    margin-left: 30px;
+`
+
+export const ErrorWord = styled.div`
+    color: #ff1b6d;
+    font-size: 18px;    
+
+`
