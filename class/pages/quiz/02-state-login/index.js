@@ -22,27 +22,31 @@ import {Wrapper,
 
 export default function ItsRoadPage(){
 
-    const[email,setEmail] = useState("")
-    const[password,setPassword] = useState("")
-    const[emailError,setEmailerror] = useState("")
-    const[passwordError,setPassworderror] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassWord] = useState("")
+    const [emailError, setEmailError] = useState("")
+    const [passwordError, setPasswordError] = useState("")
 
-    function onChangeEmail(event){
+    function onChangeemail(event){
         setEmail(event.target.value)
+
     }
 
     function onChangePassword(event){
-        setEmail(event.target.value)
+        setPassWord(event.target.value)
+
     }
 
-    function onCLickLogin(){
-        if(!email.includes("@")){
-            setEmailerror("이메일 주소를 다시 확인해주세요")
+    function onClickLogin(){
+
+        if(!email.includes("@") || email === ""){
+            setEmailError("@가 없습니다.")
         }
-    
-        if(password < 8) {
-            setPassworderror("8~16자의 영문, 숫자, 특수 문자만 사용 가능합니다.")
+
+        if(password === "" || password < 8 && password > 16){
+            setPasswordError("비밀번호는 8자리 ~ 16자리 사이로 입력해 주세요")
         }
+
     }
 
 
@@ -56,7 +60,7 @@ export default function ItsRoadPage(){
             </TitleWrapper>
             <LoginWrapper>
                 <FormWrapper>
-                    <WriteForm type="text" placeholder="이메일을 입력해주세요" onChange={onChangeEmail}></WriteForm>
+                    <WriteForm type="text" placeholder="이메일을 입력해주세요" onChange={onChangeemail}></WriteForm>
                     <Delete></Delete>
                 </FormWrapper>
                 <Underline></Underline>
@@ -70,7 +74,7 @@ export default function ItsRoadPage(){
             </LoginWrapper>
 
             <FooterWrapper>
-                <LoginBtn onClick={onCLickLogin}>로그인</LoginBtn>
+                <LoginBtn onClick={onClickLogin}>로그인</LoginBtn>
                 <Search>
                     <div>이메일 찾기</div>
                     |

@@ -53,9 +53,7 @@ export const BodyHeaderLeft = styled.div`
 export const WriteForm1 = styled.input`
     width: 486px;
     height: 52px;
-    :hover {
-	filter: blur(1px);
-}
+    
 `
 
 
@@ -86,9 +84,7 @@ export const WriteForm2 = styled.input`
     width: 996px;
     height: 52px;
     margin-top: 10px;
-    :hover {
-	filter: blur(1px);
-}
+
 `  
 
 // 내용부분
@@ -103,12 +99,12 @@ export const BodyContent =styled.div`
     padding-top: 40px;
 `
 
-export const WriteForm3 = styled.input`
+export const WriteForm3 = styled.textarea`
     width: 996px;
     height: 480px;
-    :hover {
-	filter: blur(1px);
-}
+    padding-left: 16px;
+    padding: 14px;
+
     
 `
 
@@ -140,9 +136,8 @@ export const AddressButton = styled.button`
     color: white;
     font-size: 16px;
     cursor: pointer;
-    :hover {
-	filter: blur(1px);
-}
+    
+
 `
 
 export const SearchWrapper = styled.div`
@@ -233,9 +228,7 @@ export const FooterBtn1 = styled.button`
     font-size: 16px;
     border: none;
     cursor: pointer;
-    :hover {
-	filter: blur(1px);
-}
+    
     
 `
 
@@ -247,10 +240,6 @@ export const FooterBtn2 = styled.button`
     font-size: 16px;
     border: none;
     cursor: pointer;
-    :hover {
-	filter: blur(1px);
-}
-
 
 `
 

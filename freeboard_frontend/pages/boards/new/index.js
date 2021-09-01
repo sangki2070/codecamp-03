@@ -44,32 +44,45 @@ export default function BoardsNewPage(){
 
     function onChangeName(event){
         setName(event.target.value)
+        if(event.target.value !== ""){
+            setnameError("")
+        }
     }
 
-    // function onChangePassword(event){
-    //     setPassword(event.target.value)
-    // }
+    function onChangePassword(event){
+        setPassword(event.target.value)
+        if(event.target.value !== ""){
+            setpasswordError("")
+        }
+    }
 
-    // function onChangeTitle(event){
-    //     setTitle(event.target.value)
-    // }
+    function onChangeTitle(event){
+        setTitle(event.target.value)
+        if(event.target.value !== ""){
+            settitleError("")
+        }
+    }
 
-    // function onChangeContents(event){
-    //     setContents(event.target.value)
-    // }
+    function onChangeContents(event){
+        setContents(event.target.value)
+    }
 
     function onClickRegister(){
         if(name === ""){
-            setName("이름을 작성해 주세요")
+            setnameError("이름을 작성해 주세요")
         }
         if(password === ""){
-            setPassword("비밀번호를 작성해 주세요")
+            setpasswordError("비밀번호를 작성해 주세요")
         }
         if(title === ""){
-            setTitle("제목을 작성해 주세요")
+            settitleError("제목을 작성해 주세요")
         }
         if(contents === ""){
-            setContents("내용을 작성해 주세요")
+            setcontentsError("내용을 작성해 주세요")
+        }
+
+        if(name !== "" && password !=="" && title !== "" && contents !== ""){
+            alert("게시물을 등록합니다.")
         }
 
     }
@@ -83,26 +96,26 @@ export default function BoardsNewPage(){
             <BodyHeader>
                 <BodyHeaderLeft>
                     <Label>작성자</Label>
-                    <WriteForm1 type="text" placeholder="이름을 적어주세요"></WriteForm1>
-                    <ErrorMassage>{name}</ErrorMassage>
+                    <WriteForm1 type="text" placeholder="이름을 적어주세요" onChange={onChangeName}></WriteForm1>
+                    <ErrorMassage>{nameError}</ErrorMassage>
                 </BodyHeaderLeft>
                 <BodyHeaderRight>
                     <Label>비밀번호</Label>
-                    <PasswordForm type="password" placeholder="비밀번호를 적어주세요"></PasswordForm>
-                    <ErrorMassage>{password}</ErrorMassage>
+                    <PasswordForm type="password" placeholder="비밀번호를 적어주세요" onChange={onChangePassword}></PasswordForm>
+                    <ErrorMassage>{passwordError}</ErrorMassage>
                 </BodyHeaderRight>
             </BodyHeader>
 
             <BodyTitle>
                 <Label>제목</Label>
-                <WriteForm2 type="text" placeholder="제목을 적어주세요."></WriteForm2>
-                <ErrorMassage>{title}</ErrorMassage>
+                <WriteForm2 type="text" placeholder="제목을 적어주세요." onChange = {onChangeTitle}></WriteForm2>
+                <ErrorMassage>{titleError}</ErrorMassage>
             </BodyTitle>
 
             <BodyContent>
                 <Label>내용</Label>
-                <WriteForm3 type="textarea" placeholder="내용을 입력해주세요."></WriteForm3>
-                <ErrorMassage>{contents}</ErrorMassage>
+                <WriteForm3 type="text area" placeholder="내용을 입력해주세요." onChange={onChangeContents}></WriteForm3>
+                <ErrorMassage>{contentsError}</ErrorMassage>
             </BodyContent>            
 
             <AddressForm>
