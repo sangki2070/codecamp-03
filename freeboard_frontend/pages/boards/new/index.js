@@ -117,14 +117,6 @@ export default function BoardsNewPage(){
     }
 
 
-
-
-
-
-
-
-
-
     function onChangeContents(event){
         setContents(event.target.value)
     }
@@ -155,12 +147,12 @@ export default function BoardsNewPage(){
                     password:password,
                     title:title,
                     contents:contents,
-                    // youtubeurl:youtubeSubmit,
-                    // boardAddress:{
-                    // zipcode:zipCode,
-                    // address:adressSubmit,
-                    // adressDetail:adressDetail
-                    // }
+                    youtubeUrl:youtubeSubmit,
+                    boardAddress:{
+                        zipcode:zipCode,
+                        address:adressSubmit,
+                        addressDetail:adressDetail
+                        }
                 }
                 
             }
