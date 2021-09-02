@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useMutation, gql } from '@apollo/client'
+
 
 import{ WrapperForm, 
         FormTitle, 
@@ -30,6 +32,30 @@ import{ WrapperForm,
         ErrorMassage} from'../../../styles/Enrollment.js'
 
 
+
+const CREATE_BOARD = gql `
+
+
+mutation createBoard($createBoardInput:CreateBoardInput!){
+    createBoard(
+    createBoardInput:$createBoardInput
+    ){
+        _id
+    }
+}
+
+    # mutation createBoard($createBoardInput:CreateBoardInput!){
+    #     createBoard(
+    #         createBoardInput:$createBoardInput
+    #         ){
+    #         _id
+    #         }
+    #     }
+`
+
+
+
+
 export default function BoardsNewPage(){
 
 
@@ -37,10 +63,21 @@ export default function BoardsNewPage(){
     const [password, setPassword]=useState("")
     const [title, setTitle]=useState("")
     const [contents, setContents]=useState("")
+
+    const [zipCode, setZipCode]=useState("")
+    const [adressSubmit, setAdressSubmit]=useState("")
+    const [adressDetail, setAdressDetail]=useState("")
+    const [youtubeSubmit, setYoutubeSubmit]=useState("")
+
+
     const [nameError, setnameError]=useState("")
     const [passwordError, setpasswordError]=useState("")
     const [contentsError, setcontentsError]=useState("")
     const [titleError, settitleError]=useState("")
+
+    
+
+    const [createBoard] = useMutation(CREATE_BOARD)
 
     function onChangeName(event){
         setName(event.target.value)
@@ -63,11 +100,36 @@ export default function BoardsNewPage(){
         }
     }
 
+    function onChangeZipcode(event){
+        setZipCode(event.target.value)
+    }
+
+    function onChangeAdressSubmit(event){
+        setAdressSubmit(event.target.value)
+    }
+    
+    function onChangeAdressDetail(event){
+        setAdressDetail(event.target.value)
+    }
+
+    function onChangeYoutubeSubmit(event){
+        setYoutubeSubmit(event.target.value)
+    }
+
+
+
+
+
+
+
+
+
+
     function onChangeContents(event){
         setContents(event.target.value)
     }
 
-    function onClickRegister(){
+    async function onClickRegister(){
         if(name === ""){
             setnameError("이름을 작성해 주세요")
         }
@@ -85,6 +147,26 @@ export default function BoardsNewPage(){
             alert("게시물을 등록합니다.")
         }
 
+        const result = await createBoard({
+            variables: 
+            {   
+                createBoardInput : {
+                    writer:name,
+                    password:password,
+                    title:title,
+                    contents:contents,
+                    // youtubeurl:youtubeSubmit,
+                    // boardAddress:{
+                    // zipcode:zipCode,
+                    // address:adressSubmit,
+                    // adressDetail:adressDetail
+                    // }
+                }
+                
+            }
+
+        })
+        console.log(result.data.createBoard._id)
     }
 
     return (
@@ -121,16 +203,16 @@ export default function BoardsNewPage(){
             <AddressForm>
                 <Label>주소</Label>
                 <SearchWrapper>
-                    <WriteFrom4 type="text" placeholder="017250"></WriteFrom4>
+                    <WriteFrom4 type="text" placeholder="017250" onChange={onChangeZipcode}></WriteFrom4>
                     <AddressButton>우편번호 검색</AddressButton>
                 </SearchWrapper>
-                <WriteForm2 type="text"></WriteForm2>
-                <WriteForm2 type="text"></WriteForm2>         
+                <WriteForm2 type="text" onChange={onChangeAdressSubmit}></WriteForm2>
+                <WriteForm2 type="text" onChange={onChangeAdressDetail}></WriteForm2>         
             </AddressForm>
 
             <YoutubeForm>
                 <Label>유튜브부분</Label>
-                <WriteForm2 type="text" placeholder="링크를 복사해주세요."></WriteForm2>
+                <WriteForm2 type="text" placeholder="링크를 복사해주세요." onChange={onChangeYoutubeSubmit}></WriteForm2>
             </YoutubeForm>
 
             <AttachmentForm>
