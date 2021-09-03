@@ -14,33 +14,6 @@ mutation createBoard($writer: String, $title: String, $contents: String){
 ` 
 
 
-// mutation createBoard($writer: String, $title: String, $contents: String){
-//     createBoard
-//         writer:$writer
-//         title:$title
-//         contents:$contents{
-//             message
-//             number
-//             _id
-//         }
-//     )
-// }
-
-// `
-
-// `
-// mutation createBoard($writer: String, $title: String, $contents: String){
-//     createBoard(
-//         writer:$writer
-//         title:$title
-//         contents:$contents){
-//         message
-//         number
-//     }
-//   }
-// ` 
-
-
 export default function GraphqlBoardPage2(){
 
     const [createBoard] = useMutation(CREATE_BOARD)

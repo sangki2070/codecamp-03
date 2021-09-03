@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useMutation, gql } from '@apollo/client'
+import { useRouter } from 'next/router'
 
 
 import{ WrapperForm, 
@@ -58,6 +59,9 @@ mutation createBoard($createBoardInput:CreateBoardInput!){
 
 export default function BoardsNewPage(){
 
+
+
+    const router = useRouter()
 
     const [name, setName]=useState("")
     const [password, setPassword]=useState("")
@@ -139,6 +143,32 @@ export default function BoardsNewPage(){
             alert("게시물을 등록합니다.")
         }
 
+        try{
+            const result = await createBoard({
+                variables: 
+                {   
+                    createBoardInput : {
+                        writer:name,
+                        password:password,
+                        title:title,
+                        contents:contents,
+                        youtubeUrl:youtubeSubmit,
+                        boardAddress:{
+                            zipcode:zipCode,
+                            address:adressSubmit,
+                            addressDetail:adressDetail
+                            }
+                    }
+                    
+                }
+    
+            })
+            console.log(result.data.createBoard._id)
+            router.push(`/BoardsDetail/${result.data.createBoard._id}`)
+        } catch(error){
+            console.log(error)
+        }
+
         const result = await createBoard({
             variables: 
             {   
@@ -159,6 +189,7 @@ export default function BoardsNewPage(){
 
         })
         console.log(result.data.createBoard._id)
+        router.push(`/BoardsDetail/${result.data.createBoard._id}`)
     }
 
     return (
