@@ -15,10 +15,6 @@ export default function BoardsContainer(){
     const [title, setTitle]=useState("")
     const [contents, setContents]=useState("")
 
-    const [zipCode, setZipCode]=useState("")
-    const [adressSubmit, setAdressSubmit]=useState("")
-    const [adressDetail, setAdressDetail]=useState("")
-    const [youtubeSubmit, setYoutubeSubmit]=useState("")
 
 
     const [nameError, setnameError]=useState("")
@@ -32,7 +28,7 @@ export default function BoardsContainer(){
 
     function onChangeName(event){
         setName(event.target.value)
-        if(name !== "" && password !== "" && title !==""  && contents !== ""){
+        if(event.target.value !== "" && password !== "" && title !==""  && contents !== ""){
             setCheck(true)
             setnameError("")
         }else {
@@ -61,6 +57,7 @@ export default function BoardsContainer(){
     }
 
     function onChangeContents(event){
+        setContents(event.target.value)
         if(name!== "" && password !== "" && title !==""  && event.target.value !== ""){
             setCheck(true)
             setcontentsError("")
@@ -114,44 +111,17 @@ export default function BoardsContainer(){
                         password:password,
                         title:title,
                         contents:contents,
-                        youtubeUrl:youtubeSubmit,
-                        boardAddress:{
-                            zipcode:zipCode,
-                            address:adressSubmit,
-                            addressDetail:adressDetail
-                            }
                     }
                     
                 }
     
             })
-            console.log(result.data.createBoard._id)
+            // console.log(result.data.createBoard._id)
             router.push(`/BoardsDetail/${result.data.createBoard._id}`)
         } catch(error){
             console.log(error)
         }
 
-        const result = await createBoard({
-            variables: 
-            {   
-                createBoardInput : {
-                    writer:name,
-                    password:password,
-                    title:title,
-                    contents:contents,
-                    youtubeUrl:youtubeSubmit,
-                    boardAddress:{
-                        zipcode:zipCode,
-                        address:adressSubmit,
-                        addressDetail:adressDetail
-                        }
-                }
-                
-            }
-
-        })
-        console.log(result.data.createBoard._id)
-        router.push(`/BoardsDetail/${result.data.createBoard._id}`)
     }
 
     return(
@@ -159,10 +129,6 @@ export default function BoardsContainer(){
         onChangeName={onChangeName}
         onChangePassword={onChangePassword}
         onChangeTitle={onChangeTitle}
-        onChangeZipcode={onChangeZipcode}
-        onChangeAdressSubmit={onChangeAdressSubmit}
-        onChangeAdressDetail={onChangeAdressDetail}
-        onChangeYoutubeSubmit={onChangeYoutubeSubmit}
         onChangeContents={onChangeContents}
         onClickRegister={onClickRegister}
         nameError={nameError}

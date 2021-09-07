@@ -63,16 +63,16 @@ export default function BoardWriteUI(props){
             <AddressForm>
                 <Label>주소</Label>
                 <SearchWrapper>
-                    <WriteFrom4 type="text" placeholder="017250" onChange={props.onChangeZipcode}></WriteFrom4>
+                    <WriteFrom4 type="text" placeholder="017250" ></WriteFrom4>
                     <AddressButton>우편번호 검색</AddressButton>
                 </SearchWrapper>
-                <WriteForm2 type="text" onChange={props.onChangeAdressSubmit}></WriteForm2>
-                <WriteForm2 type="text" onChange={props.onChangeAdressDetail}></WriteForm2>         
+                <WriteForm2 type="text" ></WriteForm2>
+                <WriteForm2 type="text" ></WriteForm2>         
             </AddressForm>
 
             <YoutubeForm>
                 <Label>유튜브부분</Label>
-                <WriteForm2 type="text" placeholder="링크를 복사해주세요." onChange={props.onChangeYoutubeSubmit}></WriteForm2>
+                <WriteForm2 type="text" placeholder="링크를 복사해주세요." ></WriteForm2>
             </YoutubeForm>
 
             <AttachmentForm>

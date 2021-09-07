@@ -3,8 +3,8 @@ import {Wrapper, BoardsWrapper,
         LeftTitle,TitleImage,TitleWrapper,TitleDate,TitleName,
         RightTitle,Clip,Location,WordWrapper,LinkWrapper,Triangle,UnderLine,
         BodyWrapper,BodyTitle,BodyImage,BodyContents,BodyVideo,CenterContents,
-        BodyFooterLike,BodyLike,BodyDisLike,LikeImage,DislikeImage,LikeWrapper,DisLikeWrapper
-        } from "./BoardsDetailRead.styles"
+        BodyFooterLike,BodyLike,BodyDisLike,LikeImage,DislikeImage,LikeWrapper,DisLikeWrapper,
+        BtnWrapper, ListBtn, CancelBtn} from "./BoardsDetailRead.styles"
 
 export default function BoardsDetailUI(props){
 
@@ -51,6 +51,11 @@ export default function BoardsDetailUI(props){
             </BodyFooterLike>
                 
             </BoardsWrapper>
+
+            <BtnWrapper>
+                <ListBtn src="/images/ListBtn.png"></ListBtn>
+                <CancelBtn src="/images/CancelBtn.png" id={props.data?.fetchBoard._id} onClick={props.onClickDelete} ></CancelBtn>
+            </BtnWrapper>
         </Wrapper>
     )
 }

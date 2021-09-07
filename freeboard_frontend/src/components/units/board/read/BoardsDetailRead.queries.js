@@ -12,3 +12,9 @@ export const FETCH_BOARD = gql`
     }
 
 `
+
+export const DELETE_BOARD = gql `
+    mutation deleteBoard($deleteBoard:ID!){
+        deleteBoard(deleteBoard:$deleteBoard)}
+
+`

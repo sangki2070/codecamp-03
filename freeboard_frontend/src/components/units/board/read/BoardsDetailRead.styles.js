@@ -254,3 +254,24 @@ export const DisLikeWrapper = styled.div`
     justify-content: center;
 
 `
+
+/* 버튼 래퍼부분 */
+
+export const BtnWrapper = styled.div`
+    padding-top: 40px;
+    width: 1200px;
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+
+`
+
+export const ListBtn = styled.img`
+    margin-right: 40px;
+
+`
+
+export const CancelBtn = styled.img`
+    margin-left: 40px;
+
+`

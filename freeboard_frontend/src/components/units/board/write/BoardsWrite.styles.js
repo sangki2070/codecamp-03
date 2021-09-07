@@ -228,7 +228,7 @@ export const FooterBtn1 = styled.button`
     font-size: 16px;
     border: none;
     cursor: pointer;
-    background-color: ${(props) => (props.check === true ? '#ffd600': 'gray')};
+    background-color: ${(props) => props.check === true ? '#ffd600': 'gray'};
     
 `
 
