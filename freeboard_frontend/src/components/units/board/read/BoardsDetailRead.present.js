@@ -4,7 +4,7 @@ import {Wrapper, BoardsWrapper,
         RightTitle,Clip,Location,WordWrapper,LinkWrapper,Triangle,UnderLine,
         BodyWrapper,BodyTitle,BodyImage,BodyContents,BodyVideo,CenterContents,
         BodyFooterLike,BodyLike,BodyDisLike,LikeImage,DislikeImage,LikeWrapper,DisLikeWrapper,
-        BtnWrapper, ListBtn, CancelBtn} from "./BoardsDetailRead.styles"
+        BtnWrapper, ListBtn, ModyfiyBtn, DeleteBtn} from "./BoardsDetailRead.styles"
 
 export default function BoardsDetailUI(props){
 
@@ -54,7 +54,8 @@ export default function BoardsDetailUI(props){
 
             <BtnWrapper>
                 <ListBtn src="/images/ListBtn.png"></ListBtn>
-                <CancelBtn src="/images/CancelBtn.png" id={props.data?.fetchBoard._id} onClick={props.onClickDelete} ></CancelBtn>
+                <ModyfiyBtn src="/images/ModyfiyBtn.png"  onClick={props.onClickModify} ></ModyfiyBtn>
+                <DeleteBtn src="/images/DeleteBtn.png" id={props.data?.fetchBoard._id} onClick={props.onClickDelete} ></DeleteBtn>
             </BtnWrapper>
         </Wrapper>
     )

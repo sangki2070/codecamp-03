@@ -3,10 +3,10 @@ import BoardWriteUI from './BoardsWrite.present'
 import { useState } from 'react'
 import { useMutation} from '@apollo/client'
 import { useRouter } from 'next/router'
-import { CREATE_BOARD} from'./BoardsWrite.queries'
+import { CREATE_BOARD, UPDATE_BOARD} from'./BoardsWrite.queries'
 
 
-export default function BoardsContainer(){
+export default function BoardsContainer(props){
 
     const router = useRouter()
 
@@ -25,6 +25,7 @@ export default function BoardsContainer(){
     const [check, setCheck]=useState(false)
 
     const [createBoard] = useMutation(CREATE_BOARD)
+    const [updateBoard] = useMutation(UPDATE_BOARD)
 
     function onChangeName(event){
         setName(event.target.value)
@@ -67,22 +68,25 @@ export default function BoardsContainer(){
             
     }
 
-
-    function onChangeZipcode(event){
-        setZipCode(event.target.value)
-    }
-
-    function onChangeAdressSubmit(event){
-        setAdressSubmit(event.target.value)
-    }
     
-    function onChangeAdressDetail(event){
-        setAdressDetail(event.target.value)
-    }
 
-    function onChangeYoutubeSubmit(event){
-        setYoutubeSubmit(event.target.value)
-    }
+    async function onClickModifyBtn(){
+
+        await updateBoard({
+            variables: {
+              updateBoardInput: {
+                title: name,
+                contents: contents,
+              },
+              password: password,
+              boardId: router.query.BoardsDetailPage,
+            },
+          });
+        router.push(`/boards/${router.query.BoardsDetailPage}/`)
+    } 
+
+
+ 
 
     async function onClickRegister(){
         if(name === ""){
@@ -117,10 +121,11 @@ export default function BoardsContainer(){
     
             })
             // console.log(result.data.createBoard._id)
-            router.push(`/BoardsDetail/${result.data.createBoard._id}`)
+            router.push(`/boards/${result.data.createBoard._id}`)
         } catch(error){
             console.log(error)
         }
+
 
     }
 
@@ -136,7 +141,8 @@ export default function BoardsContainer(){
         titleError={titleError}
         contentsError={contentsError}
         check={check}
-
+        isEdit={props.isEdit}
+        onClickModifyBtn={onClickModifyBtn}
         />
     )
 

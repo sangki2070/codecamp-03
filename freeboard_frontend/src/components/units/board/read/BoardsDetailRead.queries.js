@@ -4,6 +4,7 @@ export const FETCH_BOARD = gql`
 
     query fetchBoard($boardId : ID!){
         fetchBoard(boardId:$boardId){
+            _id
             writer
             title
             contents
@@ -14,7 +15,8 @@ export const FETCH_BOARD = gql`
 `
 
 export const DELETE_BOARD = gql `
-    mutation deleteBoard($deleteBoard:ID!){
-        deleteBoard(deleteBoard:$deleteBoard)}
+    mutation deleteBoard($boardId:ID!){
+        deleteBoard(boardId:$boardId)}
 
 `
+

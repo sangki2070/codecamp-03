@@ -8,6 +8,7 @@ import {DELETE_BOARD} from "./BoardsDetailRead.queries"
 export default function BoardsDetialContainerPage(){
 
     const [deleteBoard] = useMutation(DELETE_BOARD)
+    
 
     const router = useRouter()
     const {data} = useQuery(FETCH_BOARD,{
@@ -15,6 +16,10 @@ export default function BoardsDetialContainerPage(){
             boardId:(router.query.BoardsDetailPage)
         }
     })
+
+    // const { data } = useQuery(FETCH_BOARD, {
+    //     variables: { boardId: router.query.boardId },
+    //   });
 
     async function onClickDelete(event){
         
@@ -24,11 +29,19 @@ export default function BoardsDetialContainerPage(){
         })
     }
 
+    async function onClickModify(){
+
+        router.push(`/boards/${router.query.BoardsDetailPage}/edit`)
+        
+    }
+
     return(
         <BoardsDetailUI 
             data ={data}
-            router = {router}
             onClickDelete={onClickDelete}
+            onClickModify={onClickModify}
+    
+            
         />
     )
 

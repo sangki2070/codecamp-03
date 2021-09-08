@@ -31,9 +31,7 @@ import {WrapperForm,
 export default function BoardWriteUI(props){
     return(
     <WrapperForm>
-            <FormTitle>
-                게시물등록
-            </FormTitle>
+            <FormTitle>{props.isEdit ? "게시물 등록" : "게시물 수정"}</FormTitle>
 
             <BodyHeader>
                 <BodyHeaderLeft>
@@ -100,7 +98,8 @@ export default function BoardWriteUI(props){
             </RadioForm>
 
             <FooterWrapper>
-                <FooterBtn1 onClick={props.onClickRegister} check ={props.check}>등록하기</FooterBtn1>
+                {!props.isEdit &&<FooterBtn1 onClick={props.onClickModifyBtn} check ={props.check}>수정하기</FooterBtn1>}
+                {props.isEdit &&<FooterBtn1 onClick={props.onClickRegister} check ={props.check}>등록하기</FooterBtn1>}
                 <FooterBtn2>취소하기</FooterBtn2>
             </FooterWrapper>
 

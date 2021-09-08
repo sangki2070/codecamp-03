@@ -271,7 +271,12 @@ export const ListBtn = styled.img`
 
 `
 
-export const CancelBtn = styled.img`
+export const ModyfiyBtn = styled.img`
+    margin-left: 40px;
+
+`
+
+export const DeleteBtn = styled.img`
     margin-left: 40px;
 
 `
