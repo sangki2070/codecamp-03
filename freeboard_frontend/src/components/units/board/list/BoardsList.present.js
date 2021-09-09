@@ -103,11 +103,11 @@ export default function BoardsListUI(props){
                     <TableDate>날찌</TableDate>
                 </TableHeader>
                 {props.data?.fetchBoards.map((el, index) => (
-                <Row key ={el._id}>            
-                        <Column>{index}</Column>
-                        <Column>{el.title}</Column>                          
-                        <Column>{el.writer}</Column>
-                        <Column>{el.createdAt}</Column>
+                <Row key ={el._id}  id={el._id} onClick={props.onClickMovetoBoard}>            
+                        <Column id={el._id} onClick={props.onClickMovetoBoard}>{index}</Column>
+                        <Column id={el._id} onClick={props.onClickMovetoBoard}>{el.title}</Column>                          
+                        <Column id={el._id} onClick={props.onClickMovetoBoard}>{el.writer}</Column>
+                        <Column id={el._id} onClick={props.onClickMovetoBoard}>{el.createdAt}</Column>
                 </Row>
                 ))}
             </TableWrapper>
@@ -120,7 +120,7 @@ export default function BoardsListUI(props){
                     <Pnumber src="/images/num2.png"></Pnumber>
                     <RightMove src="/images/RightMove.png"></RightMove>
                 </PageNumber>
-                <BoardSubmit src="/images/BoardSub.png"></BoardSubmit>
+                <BoardSubmit src="/images/BoardSub.png" onClick={props.onClickMovetoList}></BoardSubmit>
             </FooterPage>
 
 

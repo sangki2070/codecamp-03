@@ -1,14 +1,16 @@
 
 import BoardWriteUI from './BoardsWrite.present'
 import { useState } from 'react'
-import { useMutation} from '@apollo/client'
+import { useMutation, useQuery} from '@apollo/client'
 import { useRouter } from 'next/router'
-import { CREATE_BOARD, UPDATE_BOARD} from'./BoardsWrite.queries'
+import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD} from'./BoardsWrite.queries'
+
 
 
 export default function BoardsContainer(props){
 
     const router = useRouter()
+
 
     const [name, setName]=useState("")
     const [password, setPassword]=useState("")
@@ -26,6 +28,11 @@ export default function BoardsContainer(props){
 
     const [createBoard] = useMutation(CREATE_BOARD)
     const [updateBoard] = useMutation(UPDATE_BOARD)
+
+
+    const { data } =useQuery(FETCH_BOARD,{
+        variables: {boardId:(router.query.BoardsDetailPage)}
+     })
 
     function onChangeName(event){
         setName(event.target.value)
@@ -72,19 +79,46 @@ export default function BoardsContainer(props){
 
     async function onClickModifyBtn(){
 
-        await updateBoard({
-            variables: {
-              updateBoardInput: {
-                title: name,
-                contents: contents,
+
+        const myVariables = {
+            updateBoardInput: {
+                title: data.fetchBoard.title,
+                contents: data.fetchBoard.contents,
               },
-              password: password,
-              boardId: router.query.BoardsDetailPage,
-            },
-          });
+            //
+           
+            password: password,
+            boardId: router.query.BoardsDetailPage
+            
+        }
+
+        if(title) myVariables.title = title
+        if(contents) myVariables.contents = contents
+        if(name) myVariables.writer = name
+
+        await updateBoard({variables:myVariables})
+
         router.push(`/boards/${router.query.BoardsDetailPage}/`)
     } 
 
+
+
+
+
+        // await updateBoard({
+        //     variables: {
+        //       updateBoardInput: {
+        //         title: name,
+        //         contents: contents,
+        //       },
+        //       password: password,
+        //       boardId: router.query.BoardsDetailPage,
+        //     },
+        //   });
+
+        // default 이전 코드
+
+       
 
  
 
@@ -143,6 +177,7 @@ export default function BoardsContainer(props){
         check={check}
         isEdit={props.isEdit}
         onClickModifyBtn={onClickModifyBtn}
+        data = {data}
         />
     )
 

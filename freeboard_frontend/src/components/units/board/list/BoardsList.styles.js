@@ -266,7 +266,10 @@ export const Row = styled.div`
     justify-content: space-between;
     padding-top: 40px;
     padding-left: 50px; 
-    
+    cursor: pointer;
+    :hover {
+        background-color: skyblue;
+    }
 
 `
 export const Column = styled.div`

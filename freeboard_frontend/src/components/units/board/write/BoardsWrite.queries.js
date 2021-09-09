@@ -10,22 +10,6 @@ mutation createBoard($createBoardInput:CreateBoardInput!){
 }
 `
 
-// export const UPDATE_BOARD = gql `
-//     mutation updateBoard($updateBoardInput:UpdateBoardInput!, $password: String, $boardId:ID!){
-//         updateBoard(updateBoardInput:$updateBoardInput
-//                     password:$password
-//                     boardId: $boardId){
-//                         _id
-//                         writer
-//                         title
-//                         password
-//                         contents
-//                     }
-
-//     }
-
-// `
-
 export const UPDATE_BOARD = gql`
   mutation updateBoard(
     $updateBoardInput: UpdateBoardInput!
@@ -44,3 +28,17 @@ export const UPDATE_BOARD = gql`
     }
   }
 `;
+
+export const FETCH_BOARD = gql`
+
+    query fetchBoard($boardId : ID!){
+        fetchBoard(boardId:$boardId){
+            _id
+            writer
+            title
+            contents
+        }
+
+    }
+
+`

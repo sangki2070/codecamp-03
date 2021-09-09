@@ -36,7 +36,7 @@ export default function BoardWriteUI(props){
             <BodyHeader>
                 <BodyHeaderLeft>
                     <Label>작성자</Label>
-                    <WriteForm1 type="text" placeholder="이름을 적어주세요" onChange={props.onChangeName}></WriteForm1>
+                    <WriteForm1 type="text" placeholder="이름을 적어주세요" onChange={props.onChangeName} defaultValue={props.data?.fetchBoard.writer} ></WriteForm1>
                     <ErrorMassage>{props.nameError}</ErrorMassage>
                 </BodyHeaderLeft>
                 <BodyHeaderRight>
@@ -48,13 +48,13 @@ export default function BoardWriteUI(props){
 
             <BodyTitle>
                 <Label>제목</Label>
-                <WriteForm2 type="text" placeholder="제목을 적어주세요." onChange = {props.onChangeTitle}></WriteForm2>
+                <WriteForm2 type="text" placeholder="제목을 적어주세요." onChange = {props.onChangeTitle} defaultValue={props.data?.fetchBoard.title} ></WriteForm2>
                 <ErrorMassage>{props.titleError}</ErrorMassage>
             </BodyTitle>
 
             <BodyContent>
                 <Label>내용</Label>
-                <WriteForm3 type="text area" placeholder="내용을 입력해주세요." onChange={props.onChangeContents}></WriteForm3>
+                <WriteForm3 type="text area" placeholder="내용을 입력해주세요." onChange={props.onChangeContents} defaultValue={props.data?.fetchBoard.contents}></WriteForm3>
                 <ErrorMassage>{props.contentsError}</ErrorMassage>
             </BodyContent>            
 

@@ -20,3 +20,19 @@ export const DELETE_BOARD = gql `
 
 `
 
+export const FETCH_COMMENTS =gql`
+
+    query fetchBoardComments($boardId:ID!){
+    fetchBoardComments(boardId:$boardId){
+        writer
+        contents
+        createdAt
+        updatedAt
+        _id
+        rating
+        }
+    }
+
+
+`
+
