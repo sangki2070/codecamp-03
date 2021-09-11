@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 export const CommentWrapper = styled.div`
   width: 1200px;
   margin: 100px;
-  background-color: beige;
 `;
 
 export const CommentTitleWrapper = styled.div`
@@ -82,19 +81,72 @@ export const CommentSumbmit = styled.button`
   color: #ffffff;
   text-align: center;
   size: 16px;
+  cursor: pointer;
 `;
 
 /* 댓글 노출영역 */
 
 export const CommentArea = styled.div`
   width: 1200px;
-  background-color: red;
+  padding-top: 40px;
+  display: flex;
+  padding-bottom: 20px;
+  display: ${(props) => (props.modify === true ? "none" : "")};
 `;
 
-export const Row = styled.div`
-  width: 1200px;
+export const CommentPhoto = styled.img`
+  width: 40px;
+  height: 40px;
 `;
 
-export const Column = styled.div`
-  width: 1200px;
+export const CommentWriter = styled.div``;
+
+export const CommentHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 1130px;
 `;
+
+export const CommentButtonWrapper = styled.div`
+  display: flex;
+`;
+
+export const CommentModifyBtn = styled.img`
+  width: 18px;
+  height: 18px;
+  margin-right: 16px;
+`;
+
+export const CommentDeleteBtn = styled.img`
+  width: 14px;
+  height: 14px;
+`;
+
+export const CommentHeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 16px;
+`;
+
+export const CommentContents = styled.div`
+  padding-top: 4px;
+`;
+
+export const CommentDate = styled.div`
+  padding-top: 20px;
+`;
+
+export const CommentNameWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const UnderLine = styled.div`
+  width: 1200px;
+  height: 1px;
+  border: 1px solid #bdbdbd;
+  background-color: #bdbdbd;
+`;
+
+export const CommentBoxWrapper = styled.div``;

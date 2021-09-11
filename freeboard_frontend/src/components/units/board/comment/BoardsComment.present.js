@@ -11,10 +11,22 @@ import {
   TextCount,
   CommentSumbmit,
   CommentArea,
-  Row,
-  Column,
   CommentInput,
+  CommentPhoto,
+  CommentWriter,
+  CommentHeader,
+  CommentButtonWrapper,
+  CommentModifyBtn,
+  CommentDeleteBtn,
+  CommentHeaderWrapper,
+  CommentContents,
+  CommentDate,
+  CommentNameWrapper,
+  UnderLine,
+  CommentBoxWrapper,
 } from "./BoardsComment.styles";
+
+import BoardsCommentBox from "../modify/BoardsCommentModify.container";
 
 export default function BoardCommentBox(props) {
   return (
@@ -54,13 +66,39 @@ export default function BoardCommentBox(props) {
         </InputArea>
       </CommentBox>
 
-      <CommentArea>
-        <Row>
-          <Column></Column>
-          <Column></Column>
-          <Column></Column>
-        </Row>
-      </CommentArea>
+      {props.data?.fetchBoardComments.map((el) => (
+        <CommentBoxWrapper key={el._id}>
+          <CommentArea modify={props.modify}>
+            <CommentPhoto src="/images/commentphoto.png"></CommentPhoto>
+            <CommentHeaderWrapper>
+              <CommentHeader>
+                <CommentNameWrapper>
+                  <CommentWriter>{el.writer}</CommentWriter>
+                  <CommentStar src="/images/Star.png"></CommentStar>
+                  <CommentStar src="/images/Star.png"></CommentStar>
+                  <CommentStar src="/images/Star.png"></CommentStar>
+                  <CommentStar src="/images/Star.png"></CommentStar>
+                  <CommentStar src="/images/Star.png"></CommentStar>
+                </CommentNameWrapper>
+                <CommentButtonWrapper>
+                  <CommentModifyBtn
+                    src="/images/commentbtn.png"
+                    onClick={props.onClickModifyBtn}
+                  ></CommentModifyBtn>
+                  <CommentDeleteBtn src="/images/commentbtn2.png"></CommentDeleteBtn>
+                </CommentButtonWrapper>
+              </CommentHeader>
+              <CommentContents>{el.contents}</CommentContents>
+              <CommentDate>{el.createdAt}</CommentDate>
+            </CommentHeaderWrapper>
+          </CommentArea>
+          <UnderLine></UnderLine>
+          <BoardsCommentBox
+            modify={props.modify}
+            id={el._id}
+          ></BoardsCommentBox>
+        </CommentBoxWrapper>
+      ))}
     </CommentWrapper>
   );
 }
