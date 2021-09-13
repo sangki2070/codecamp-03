@@ -11,6 +11,7 @@ export default function BoardsContainer(props) {
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
+  const [youtubeUrl, setYoutubeUrl] = useState("");
 
   const [nameError, setnameError] = useState("");
   const [passwordError, setpasswordError] = useState("");
@@ -86,6 +87,10 @@ export default function BoardsContainer(props) {
     }
   }
 
+  function onChangeYoutuUrl(event) {
+    setYoutubeUrl(event.target.value);
+  }
+
   async function onClickModifyBtn() {
     const myVariables = {
       updateBoardInput: {
@@ -148,6 +153,7 @@ export default function BoardsContainer(props) {
             password: password,
             title: title,
             contents: contents,
+            youtubeUrl: youtubeUrl,
           },
         },
       });
@@ -173,6 +179,7 @@ export default function BoardsContainer(props) {
       isEdit={props.isEdit}
       onClickModifyBtn={onClickModifyBtn}
       data={data}
+      onChangeYoutuUrl={onChangeYoutuUrl}
     />
   );
 }

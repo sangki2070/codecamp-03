@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 export const CommentModifyBox = styled.div`
   width: 1200px;
   background-color: beige;
-  display: ${(props) => (props.modify === true ? "inline" : "none")};
 `;
 
 export const StarWrapper = styled.div`

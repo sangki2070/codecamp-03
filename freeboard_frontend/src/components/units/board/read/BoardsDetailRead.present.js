@@ -31,6 +31,7 @@ import {
   ListBtn,
   ModyfiyBtn,
   DeleteBtn,
+  YoutubeWrapper,
 } from "./BoardsDetailRead.styles";
 
 import BoardCommentPage from "../comment/BoardsComment.container";
@@ -69,17 +70,29 @@ export default function BoardsDetailUI(props) {
             <BodyContents>
               {props.data && props.data.fetchBoard.contents}
             </BodyContents>
-            <BodyVideo></BodyVideo>
+            <YoutubeWrapper>
+              <BodyVideo
+                url={props.data?.fetchBoard.youtubeUrl}
+                width={486}
+                height={240}
+              ></BodyVideo>
+            </YoutubeWrapper>
           </CenterContents>
         </BodyWrapper>
         <BodyFooterLike>
           <LikeWrapper>
-            <LikeImage></LikeImage>
-            <BodyLike>1920</BodyLike>
+            <LikeImage
+              onClick={props.onClickLike}
+              id={props.data?.fetchBoard._id}
+            ></LikeImage>
+            <BodyLike>{props.data?.fetchBoard.likeCount}</BodyLike>
           </LikeWrapper>
           <DisLikeWrapper>
-            <DislikeImage></DislikeImage>
-            <BodyDisLike>1920</BodyDisLike>
+            <DislikeImage
+              onClick={props.onClickDisLike}
+              id={props.data?.fetchBoard._id}
+            ></DislikeImage>
+            <BodyDisLike>{props.data?.fetchBoard.dislikeCount}</BodyDisLike>
           </DisLikeWrapper>
         </BodyFooterLike>
       </BoardsWrapper>

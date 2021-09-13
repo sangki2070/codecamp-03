@@ -91,7 +91,6 @@ export const CommentArea = styled.div`
   padding-top: 40px;
   display: flex;
   padding-bottom: 20px;
-  display: ${(props) => (props.modify === true ? "none" : "")};
 `;
 
 export const CommentPhoto = styled.img`

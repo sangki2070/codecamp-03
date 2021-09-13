@@ -12,10 +12,14 @@ import {
 
 export default function BoardsCommentModifyUI(props) {
   return (
-    <CommentModifyBox modify={props.modify}>
+    <CommentModifyBox>
       <StarWrapper>
         <CommentInput type="text" placeholder="작성자"></CommentInput>
-        <CommentInput type="password" placeholder="비밀번호"></CommentInput>
+        <CommentInput
+          type="password"
+          placeholder="비밀번호"
+          onChange={props.onChangePassword}
+        ></CommentInput>
         <CommentStar src="/images/Star.png"></CommentStar>
         <CommentStar src="/images/Star.png"></CommentStar>
         <CommentStar src="/images/Star.png"></CommentStar>
@@ -24,10 +28,12 @@ export default function BoardsCommentModifyUI(props) {
       </StarWrapper>
 
       <CommentBox>
-        <WriteArea></WriteArea>
+        <WriteArea onChange={props.onChangeContents}></WriteArea>
         <InputArea>
           <TextCount>0/100</TextCount>
-          <CommentSumbmit>수정하기</CommentSumbmit>
+          <CommentSumbmit onClick={props.onClickCommentUpdate} id={props._id}>
+            수정하기
+          </CommentSumbmit>
         </InputArea>
       </CommentBox>
     </CommentModifyBox>

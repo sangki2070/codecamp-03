@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import ReactPlayer from "react-player";
 
 export const Wrapper = styled.div``;
 
@@ -147,12 +148,13 @@ export const BodyContents = styled.div`
   padding-bottom: 120px;
 `;
 
-export const BodyVideo = styled.div`
+export const YoutubeWrapper = styled.div`
   width: 480px;
   height: 240px;
-  background-image: url("/images/video.png");
   padding-bottom: 120px;
 `;
+
+export const BodyVideo = styled(ReactPlayer)``;
 
 export const CenterContents = styled.div`
   display: flex;

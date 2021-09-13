@@ -20,7 +20,7 @@ export default function BoardCommentPage() {
   const [writer, setMywriter] = useState("");
   const [password, setMypassword] = useState("");
   const [contents, setMycontents] = useState("");
-  const [modify, setModify] = useState(false);
+  const [modify, setModify] = useState("");
 
   function onChangeWriter(event) {
     setMywriter(event.target.value);
@@ -34,8 +34,9 @@ export default function BoardCommentPage() {
     setMycontents(event.target.value);
   }
 
-  function onClickModifyBtn() {
-    setModify(true);
+  function onClickModifyBtn(event) {
+    setModify(event.target.id);
+    console.log(event.target.id);
   }
 
   async function onClickComment() {
