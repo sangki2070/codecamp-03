@@ -34,7 +34,7 @@ export default function BoardCommentPage() {
     setMycontents(event.target.value);
   }
 
-  function onClickModifyBtn(event) {
+  function onClickModifyBtn() {
     setModify(true);
   }
 
