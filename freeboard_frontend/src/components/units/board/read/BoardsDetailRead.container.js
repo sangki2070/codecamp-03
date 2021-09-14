@@ -10,7 +10,7 @@ import {
 import { useMutation } from "@apollo/client";
 import { DELETE_BOARD } from "./BoardsDetailRead.queries";
 
-export default function BoardsDetialContainerPage() {
+export default function BoardsDetialContainerPage(props) {
   const [deleteBoard] = useMutation(DELETE_BOARD);
   const [likeBoard] = useMutation(LIKE_BOARD);
   const [dislikeBoard] = useMutation(DISLIKE_BOARD);

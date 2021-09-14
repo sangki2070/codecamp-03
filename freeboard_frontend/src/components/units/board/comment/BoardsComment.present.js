@@ -24,13 +24,14 @@ import {
   CommentNameWrapper,
   UnderLine,
   CommentBoxWrapper,
+  Star,
 } from "./BoardsComment.styles";
 
 import BoardsCommentBox from "../modify/BoardsCommentModify.container";
 
 export default function BoardCommentBox(props) {
   return (
-    <CommentWrapper id={props._id}>
+    <CommentWrapper>
       <CommentTitleWrapper>
         <CommentImage src="/images/comment.png"></CommentImage>
         <CommentTitle>댓글</CommentTitle>
@@ -46,12 +47,14 @@ export default function BoardCommentBox(props) {
           placeholder="비밀번호"
           onChange={props.onChangePassword}
         ></CommentInput>
+
         <CommentStar src="/images/Star.png"></CommentStar>
         <CommentStar src="/images/Star.png"></CommentStar>
         <CommentStar src="/images/Star.png"></CommentStar>
         <CommentStar src="/images/Star.png"></CommentStar>
         <CommentStar src="/images/Star.png"></CommentStar>
       </StarWrapper>
+      <Star onChange={props.onChangeStar} />
 
       <CommentBox>
         <WriteArea
@@ -90,7 +93,11 @@ export default function BoardCommentBox(props) {
                         onClick={props.onClickModifyBtn}
                         id={el._id}
                       ></CommentModifyBtn>
-                      <CommentDeleteBtn src="/images/commentbtn2.png"></CommentDeleteBtn>
+                      <CommentDeleteBtn
+                        src="/images/commentbtn2.png"
+                        onClick={props.onClickCommentDelete}
+                        id={el._id}
+                      ></CommentDeleteBtn>
                     </CommentButtonWrapper>
                   </CommentHeader>
                   <CommentContents>{el.contents}</CommentContents>
@@ -101,7 +108,10 @@ export default function BoardCommentBox(props) {
             {el._id === props.modify && (
               <>
                 <UnderLine></UnderLine>
-                <BoardsCommentBox id={el._id}></BoardsCommentBox>
+                <BoardsCommentBox
+                  id={el._id}
+                  setModify={props.setModify}
+                ></BoardsCommentBox>
               </>
             )}
           </CommentBoxWrapper>

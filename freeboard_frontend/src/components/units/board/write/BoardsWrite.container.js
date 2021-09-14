@@ -12,6 +12,9 @@ export default function BoardsContainer(props) {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
 
   const [nameError, setnameError] = useState("");
   const [passwordError, setpasswordError] = useState("");
@@ -26,6 +29,24 @@ export default function BoardsContainer(props) {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.BoardsDetailPage },
   });
+
+  // 모달 부분
+
+  const [myZipcode, setMyZipcode] = useState("");
+  const [myAddress, setMyAddress] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleComplete = (data) => {
+    setMyZipcode(data.address);
+    setMyAddress(data.zonecode);
+
+    console.log(data.zonecode);
+    console.log(data.address);
+    setIsOpen((prev) => !prev);
+  };
+  function onToggleZipcode() {
+    setIsOpen((prev) => !prev);
+  }
 
   function onChangeName(event) {
     setName(event.target.value);
@@ -91,6 +112,17 @@ export default function BoardsContainer(props) {
     setYoutubeUrl(event.target.value);
   }
 
+  function onChangeZipcode(event) {
+    setZipcode(event.target.value);
+  }
+
+  function onChangeAddress(event) {
+    setAddress(event.target.value);
+  }
+
+  function onChangeAddressDetail(event) {
+    setAddressDetail(event.target.value);
+  }
   async function onClickModifyBtn() {
     const myVariables = {
       updateBoardInput: {
@@ -154,6 +186,11 @@ export default function BoardsContainer(props) {
             title: title,
             contents: contents,
             youtubeUrl: youtubeUrl,
+            boardAddress: {
+              zipcode: zipcode,
+              address: address,
+              addressDetail: addressDetail,
+            },
           },
         },
       });
@@ -180,6 +217,14 @@ export default function BoardsContainer(props) {
       onClickModifyBtn={onClickModifyBtn}
       data={data}
       onChangeYoutuUrl={onChangeYoutuUrl}
+      myZipcode={myZipcode}
+      myAddress={myAddress}
+      isOpen={isOpen}
+      handleComplete={handleComplete}
+      onToggleZipcode={onToggleZipcode}
+      onChangeZipcode={onChangeZipcode}
+      onChangeAddress={onChangeAddress}
+      onChangeAddressDetail={onChangeAddressDetail}
     />
   );
 }

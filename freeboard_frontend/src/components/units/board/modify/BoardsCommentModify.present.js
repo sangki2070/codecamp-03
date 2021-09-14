@@ -31,7 +31,7 @@ export default function BoardsCommentModifyUI(props) {
         <WriteArea onChange={props.onChangeContents}></WriteArea>
         <InputArea>
           <TextCount>0/100</TextCount>
-          <CommentSumbmit onClick={props.onClickCommentUpdate} id={props._id}>
+          <CommentSumbmit onClick={props.onClickCommentUpdate}>
             수정하기
           </CommentSumbmit>
         </InputArea>

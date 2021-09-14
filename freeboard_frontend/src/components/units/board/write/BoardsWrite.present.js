@@ -27,6 +27,9 @@ import {
   FooterBtn1,
   FooterBtn2,
   ErrorMassage,
+  MyDaumPostcode,
+  MyModal,
+  AdressWriteForm,
 } from "./BoardsWrite.styles";
 
 export default function BoardWriteUI(props) {
@@ -81,11 +84,28 @@ export default function BoardWriteUI(props) {
       <AddressForm>
         <Label>주소</Label>
         <SearchWrapper>
-          <WriteFrom4 type="text" placeholder="017250"></WriteFrom4>
-          <AddressButton>우편번호 검색</AddressButton>
+          <WriteFrom4 onChange={props.onChangeZipcode}>
+            {props.myAddress}
+          </WriteFrom4>
+
+          <AddressButton onClick={props.onToggleZipcode}>
+            우편번호 검색
+          </AddressButton>
+          {props.isOpen && (
+            <MyModal visible={true} onCancel={props.onToggleZipcode}>
+              <MyDaumPostcode
+                onComplete={props.handleComplete}
+              ></MyDaumPostcode>
+            </MyModal>
+          )}
         </SearchWrapper>
-        <WriteForm2 type="text"></WriteForm2>
-        <WriteForm2 type="text"></WriteForm2>
+        <AdressWriteForm onChange={props.onChangeAddress}>
+          {props.myZipcode}
+        </AdressWriteForm>
+        <WriteForm2
+          type="text"
+          onChange={props.onChangeAddressDetail}
+        ></WriteForm2>
       </AddressForm>
 
       <YoutubeForm>

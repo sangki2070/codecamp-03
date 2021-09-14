@@ -3,11 +3,16 @@ import { UPDATE_BOARD_COMMENT } from "./BoardsCommentModify.queries";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { FETCH_BOARD_COMMENTS } from "../comment/BoardsComment.queries";
+import { FETCH_BOARD_COMMENTS } from "./BoardsCommentModify.queries";
 
 export default function BoardsCommentBox(props) {
   const router = useRouter();
   const [updateBoardComment] = useMutation(UPDATE_BOARD_COMMENT);
+
+  // const { data } = useQuery(FETCH_BOARD_COMMENTS, {
+  //   variables: { boardId: router.query.BoardsDetailPage },
+  // });
+
   const { data } = useQuery(FETCH_BOARD_COMMENTS, {
     variables: { boardId: router.query.BoardsDetailPage },
   });
@@ -23,10 +28,10 @@ export default function BoardsCommentBox(props) {
     setMycontents(event.target.value);
   }
 
-  async function onClickCommentUpdate(event) {
+  async function onClickCommentUpdate() {
     await updateBoardComment({
       variables: {
-        boardCommentId: event.target.id,
+        boardCommentId: props.id,
         password: password,
         updateBoardCommentInput: {
           contents: contents,
@@ -40,6 +45,8 @@ export default function BoardsCommentBox(props) {
         },
       ],
     });
+
+    props.setModify("");
   }
 
   return (
@@ -48,8 +55,6 @@ export default function BoardsCommentBox(props) {
       onChangePassword={onChangePassword}
       onChangeContents={onChangeContents}
       data={data}
-      el={props.el}
-      id={props._id}
     />
   );
 }

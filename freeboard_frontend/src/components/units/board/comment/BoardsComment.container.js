@@ -3,6 +3,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import {
   CREATE_BOARD_COMMENT,
   FETCH_BOARD_COMMENTS,
+  DELETE_BOARD_COMMENT,
 } from "./BoardsComment.queries";
 // import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -15,12 +16,21 @@ export default function BoardCommentPage() {
     variables: { boardId: router.query.BoardsDetailPage },
   });
 
+  const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
+
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
 
   const [writer, setMywriter] = useState("");
   const [password, setMypassword] = useState("");
   const [contents, setMycontents] = useState("");
   const [modify, setModify] = useState("");
+
+  const [myStar, setMyStar] = useState(0);
+  // const [value, setValue] = useState(0);
+
+  // const handleChange = (value) => {
+  //   setValue(value);
+  // };
 
   function onChangeWriter(event) {
     setMywriter(event.target.value);
@@ -47,12 +57,12 @@ export default function BoardCommentPage() {
     // }
     await createBoardComment({
       variables: {
-        boardId: router.query.BoardsDetailPage,
+        boardId: String(router.query.BoardsDetailPage),
         createBoardCommentInput: {
           writer: writer,
           contents: contents,
           password: password,
-          rating: 2,
+          rating: myStar,
         },
       },
       refetchQueries: [
@@ -64,6 +74,30 @@ export default function BoardCommentPage() {
     });
   }
 
+  async function onClickCommentDelete(event) {
+    const password = prompt("비밀번호를 입력해 주세요.");
+    try {
+      await deleteBoardComment({
+        variables: {
+          password: password,
+          boardCommentId: event.target.id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: { boardId: router.query.BoardsDetailPage },
+          },
+        ],
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  function onChangeStar(value) {
+    setMyStar(value);
+  }
+
   return (
     <BoardCommentBox
       onClickComment={onClickComment}
@@ -73,6 +107,11 @@ export default function BoardCommentPage() {
       onClickModifyBtn={onClickModifyBtn}
       data={data}
       modify={modify}
+      setModify={setModify}
+      onClickCommentDelete={onClickCommentDelete}
+      onChangeStar={onChangeStar}
+      // value={value}
+      // handleChange={handleChange}
     />
   );
 }
