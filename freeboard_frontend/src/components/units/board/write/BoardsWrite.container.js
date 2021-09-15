@@ -1,6 +1,6 @@
 import BoardWriteUI from "./BoardsWrite.present";
 import { useState } from "react";
-import { useMutation, useQuery } from "@apollo/client";
+import { HttpLink, useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from "./BoardsWrite.queries";
 
@@ -12,8 +12,6 @@ export default function BoardsContainer(props) {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
 
   const [nameError, setnameError] = useState("");
@@ -187,8 +185,8 @@ export default function BoardsContainer(props) {
             contents: contents,
             youtubeUrl: youtubeUrl,
             boardAddress: {
-              zipcode: zipcode,
-              address: address,
+              zipcode: myZipcode,
+              address: myAddress,
               addressDetail: addressDetail,
             },
           },

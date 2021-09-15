@@ -84,9 +84,7 @@ export default function BoardWriteUI(props) {
       <AddressForm>
         <Label>주소</Label>
         <SearchWrapper>
-          <WriteFrom4 onChange={props.onChangeZipcode}>
-            {props.myAddress}
-          </WriteFrom4>
+          <WriteFrom4>{props.myAddress}</WriteFrom4>
 
           <AddressButton onClick={props.onToggleZipcode}>
             우편번호 검색
@@ -99,9 +97,7 @@ export default function BoardWriteUI(props) {
             </MyModal>
           )}
         </SearchWrapper>
-        <AdressWriteForm onChange={props.onChangeAddress}>
-          {props.myZipcode}
-        </AdressWriteForm>
+        <AdressWriteForm>{props.myZipcode}</AdressWriteForm>
         <WriteForm2
           type="text"
           onChange={props.onChangeAddressDetail}
