@@ -92,16 +92,16 @@ export const LinkWrapper = styled.div`
   justify-content: flex-end;
   align-items: center;
 `;
-export const Triangle = styled.div`
-  width: 0px;
-  height: 0px;
-  border-bottom: 15px solid transparent;
-  border-right: 15px solid #898989;
-  /* width: 12px;
-    height: 8px;
-    transform: rotate(-180deg); */
-  /* background-color: #C4C4C4; */
-`;
+// export const Triangle = styled.div`
+//   width: 0px;
+//   height: 0px;
+//   border-bottom: 15px solid transparent;
+//   border-right: 15px solid #898989;
+//   /* width: 12px;
+//     height: 8px;
+//     transform: rotate(-180deg); */
+//   /* background-color: #C4C4C4; */
+// `;
 
 export const WordWrapper = styled.div`
   width: 376px;

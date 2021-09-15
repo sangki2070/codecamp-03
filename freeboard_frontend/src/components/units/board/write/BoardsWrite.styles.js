@@ -23,12 +23,12 @@ export const WrapperForm = styled.div`
   align-items: center;
 `;
 
-export const AdressWriteForm = styled.div`
-  width: 996px;
-  height: 52px;
-  margin-top: 10px;
-  border: 1px solid black;
-`;
+// export const AdressWriteForm = styled.input`
+//   width: 996px;
+//   height: 52px;
+//   margin-top: 10px;
+//   border: 1px solid black;
+// `;
 
 export const FormTitle = styled.div`
   width: 174px;
@@ -121,12 +121,11 @@ export const AddressForm = styled.div`
   justify-content: space-between;
   padding-top: 40px;
 `;
-export const WriteFrom4 = styled.div`
+export const WriteFrom4 = styled.input`
   width: 77px;
   height: 52px;
   font-size: 16px;
   text-align: center;
-  border: 1px solid black;
 `;
 
 export const AddressButton = styled.button`

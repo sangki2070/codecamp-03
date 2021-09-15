@@ -101,7 +101,9 @@ export const CommentPhoto = styled.img`
   height: 40px;
 `;
 
-export const CommentWriter = styled.div``;
+export const CommentWriter = styled.div`
+  margin-right: 20px;
+`;
 
 export const CommentHeader = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import BoardWriteUI from "./BoardsWrite.present";
 import { useState } from "react";
-import { HttpLink, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from "./BoardsWrite.queries";
 
@@ -35,8 +35,8 @@ export default function BoardsContainer(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleComplete = (data) => {
-    setMyZipcode(data.address);
-    setMyAddress(data.zonecode);
+    setMyZipcode(data.zonecode);
+    setMyAddress(data.address);
 
     console.log(data.zonecode);
     console.log(data.address);
@@ -126,6 +126,12 @@ export default function BoardsContainer(props) {
       updateBoardInput: {
         title: data.fetchBoard.title,
         contents: data.fetchBoard.contents,
+        youtubeUrl: data.fetchBoard.youtubeUrl,
+        boardAddress: {
+          zipcode: myZipcode,
+          address: myAddress,
+          addressDetail: addressDetail,
+        },
       },
       //
 
@@ -135,6 +141,8 @@ export default function BoardsContainer(props) {
 
     if (title) myVariables.updateBoardInput.title = title;
     if (contents) myVariables.updateBoardInput.contents = contents;
+    if (youtubeUrl) myVariables.updateBoardInput.youtubeUrl = youtubeUrl;
+
     // if(name) myVariables.updateBoardInput.writer = name
 
     console.log(myVariables);

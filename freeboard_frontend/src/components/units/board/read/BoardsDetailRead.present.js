@@ -12,7 +12,6 @@ import {
   Location,
   WordWrapper,
   LinkWrapper,
-  Triangle,
   UnderLine,
   BodyWrapper,
   BodyTitle,
@@ -35,6 +34,7 @@ import {
 } from "./BoardsDetailRead.styles";
 
 import BoardCommentPage from "../comment/BoardsComment.container";
+import { Tooltip } from "antd";
 
 export default function BoardsDetailUI(props) {
   return (
@@ -51,14 +51,14 @@ export default function BoardsDetailUI(props) {
             </TitleWrapper>
           </LeftTitle>
           <RightTitle>
-            <WordWrapper>
-              서울특별시 영등포구 양산로 200 (영등포동5가, 영등포시장역) 영등포
-              타임스퀘어 2층
-            </WordWrapper>
-            <Triangle></Triangle>
             <LinkWrapper>
               <Clip></Clip>
-              <Location></Location>
+              <Tooltip
+                placement="topRight"
+                title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.addressDetail}`}
+              >
+                <Location></Location>
+              </Tooltip>
             </LinkWrapper>
           </RightTitle>
         </BoardsHeader>

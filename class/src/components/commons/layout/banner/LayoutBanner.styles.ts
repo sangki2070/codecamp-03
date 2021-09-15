@@ -14,13 +14,13 @@ export const SlideTitle = styled.div`
 `;
 
 export const CardImg = styled.img`
-  width: 70%;
+  width: 96%;
   height: 100px;
 `;
 
 export const MySlider = styled(Slider)`
   .slick-list {
-    width: 1600px;
+    width: 2000px;
     margin: 0 auto;
   }
 

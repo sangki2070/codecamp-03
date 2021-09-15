@@ -29,7 +29,6 @@ import {
   ErrorMassage,
   MyDaumPostcode,
   MyModal,
-  AdressWriteForm,
 } from "./BoardsWrite.styles";
 
 export default function BoardWriteUI(props) {
@@ -84,7 +83,14 @@ export default function BoardWriteUI(props) {
       <AddressForm>
         <Label>주소</Label>
         <SearchWrapper>
-          <WriteFrom4>{props.myAddress}</WriteFrom4>
+          <WriteFrom4
+            name="zipcode"
+            placeholder="07250"
+            readOnly
+            value={
+              props.myZipcode || props.data?.fetchBoard.boardAddress?.myZipcode
+            }
+          ></WriteFrom4>
 
           <AddressButton onClick={props.onToggleZipcode}>
             우편번호 검색
@@ -97,10 +103,17 @@ export default function BoardWriteUI(props) {
             </MyModal>
           )}
         </SearchWrapper>
-        <AdressWriteForm>{props.myZipcode}</AdressWriteForm>
+        <WriteForm2
+          readOnly
+          value={
+            props.myAddress || props.data?.fetchBoard.boardAddress?.myAddress
+          }
+          defaultValue={props.data?.fetchBoard.boardAddress?.address}
+        ></WriteForm2>
         <WriteForm2
           type="text"
           onChange={props.onChangeAddressDetail}
+          defaultValue={props.data?.fetchBoard.boardAddress?.addressDetail}
         ></WriteForm2>
       </AddressForm>
 
@@ -112,6 +125,7 @@ export default function BoardWriteUI(props) {
           onChange={props.onChangeYoutuUrl}
           width={800}
           height={600}
+          defaultValue={props.data?.fetchBoard.youtubeUrl}
         ></WriteForm2>
       </YoutubeForm>
 

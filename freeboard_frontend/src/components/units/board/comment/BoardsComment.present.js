@@ -48,13 +48,8 @@ export default function BoardCommentBox(props) {
           onChange={props.onChangePassword}
         ></CommentInput>
 
-        <CommentStar src="/images/Star.png"></CommentStar>
-        <CommentStar src="/images/Star.png"></CommentStar>
-        <CommentStar src="/images/Star.png"></CommentStar>
-        <CommentStar src="/images/Star.png"></CommentStar>
-        <CommentStar src="/images/Star.png"></CommentStar>
+        <Star onChange={props.onChangeStar} />
       </StarWrapper>
-      <Star onChange={props.onChangeStar} />
 
       <CommentBox>
         <WriteArea
@@ -81,11 +76,7 @@ export default function BoardCommentBox(props) {
                   <CommentHeader>
                     <CommentNameWrapper>
                       <CommentWriter>{el.writer}</CommentWriter>
-                      <CommentStar src="/images/Star.png"></CommentStar>
-                      <CommentStar src="/images/Star.png"></CommentStar>
-                      <CommentStar src="/images/Star.png"></CommentStar>
-                      <CommentStar src="/images/Star.png"></CommentStar>
-                      <CommentStar src="/images/Star.png"></CommentStar>
+                      <Star value={el.rating} disabled />
                     </CommentNameWrapper>
                     <CommentButtonWrapper>
                       <CommentModifyBtn
