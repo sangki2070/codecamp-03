@@ -88,7 +88,7 @@ export default function BoardWriteUI(props) {
             placeholder="07250"
             readOnly
             value={
-              props.myZipcode || props.data?.fetchBoard.boardAddress?.myZipcode
+              props.myZipcode || props.data?.fetchBoard.boardAddress?.zipcode
             }
           ></WriteFrom4>
 

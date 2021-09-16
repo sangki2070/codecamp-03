@@ -151,6 +151,7 @@ export default function BoardsContainer(props) {
 
     router.push(`/boards/${router.query.BoardsDetailPage}/`);
   }
+  console.log(data);
 
   // await updateBoard({
   //     variables: {
