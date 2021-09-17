@@ -6,20 +6,18 @@ import LayoutFooter from "./layout/footer/LayoutFooter.container";
 
 const Wrapper = styled.div``;
 
-const Body = styled.div``;
-
-const NavWrapper = styled.div`
+const Body = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default function Layout(props) {
   return (
     <Wrapper>
       <LayoutHeader></LayoutHeader>
-      <NavWrapper>
-        <LayoutNav></LayoutNav>
-        <Body>{props.children}</Body>
-      </NavWrapper>
+      <LayoutNav></LayoutNav>
+      <Body>{props.children}</Body>
       <LayoutFooter></LayoutFooter>
     </Wrapper>
   );
