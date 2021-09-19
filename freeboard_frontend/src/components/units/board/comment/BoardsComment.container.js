@@ -7,14 +7,38 @@ import {
 } from "./BoardsComment.queries";
 // import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function BoardCommentPage() {
   const router = useRouter();
+  const loader = useRef(null);
 
-  const { data } = useQuery(FETCH_BOARD_COMMENTS, {
+  const { data, fetchMore } = useQuery(FETCH_BOARD_COMMENTS, {
     variables: { boardId: router.query.BoardsDetailPage },
   });
+
+  // const { fetchMore } = useQuery(FETCH_BOARD_COMMENTS, {
+  //   variables: { boardId: router.query.BoardsDetailPage },
+  // });
+
+  // const { data } = useQuery(FETCH_BOARD_COMMENTS, {
+  //   variables: { boardId: router.query.BoardsDetailPage },
+  // });
+
+  function onLoadMore() {
+    if (!data) return;
+    fetchMore({
+      variables: { page: Math.ceil(data?.fetchBoardComments.length / 10) + 1 },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        return {
+          fetchBoardComments: [
+            ...prev.fetchBoardComments,
+            ...fetchMoreResult.fetchBoardComments,
+          ],
+        };
+      },
+    });
+  }
 
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
 
@@ -110,6 +134,9 @@ export default function BoardCommentPage() {
       setModify={setModify}
       onClickCommentDelete={onClickCommentDelete}
       onChangeStar={onChangeStar}
+      onLoadMore={onLoadMore}
+      loader={loader}
+
       // value={value}
       // handleChange={handleChange}
     />

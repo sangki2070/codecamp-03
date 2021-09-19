@@ -1,7 +1,18 @@
 import styled from "@emotion/styled";
 import { Rate } from "antd";
+import InfiniteScroll from "react-infinite-scroller";
 
 export const Star = styled(Rate)``;
+
+export const ScrollWrapper = styled(InfiniteScroll)`
+  width: 1240px;
+`;
+
+export const Loader = styled.div`
+  width: 1240px;
+  height: 1200px;
+  overflow: auto;
+`;
 
 export const CommentWrapper = styled.div`
   width: 1200px;

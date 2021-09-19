@@ -25,6 +25,8 @@ import {
   UnderLine,
   CommentBoxWrapper,
   Star,
+  ScrollWrapper,
+  Loader,
 } from "./BoardsComment.styles";
 
 import BoardsCommentBox from "../modify/BoardsCommentModify.container";
@@ -63,51 +65,79 @@ export default function BoardCommentBox(props) {
           </CommentSumbmit>
         </InputArea>
       </CommentBox>
+      <Loader ref={props.loader}>
+        <ScrollWrapper
+          pageStart={0}
+          loadMore={props.onLoadMore}
+          hasMore={false || true}
+          useWindow={false}
+        >
+          {props.data?.fetchBoardComments.map((el) => {
+            console.log(el, props.modify);
+            return (
+              <CommentBoxWrapper key={el._id}>
+                {el._id !== props.modify && (
+                  <CommentArea>
+                    <CommentPhoto src="/images/commentphoto.png"></CommentPhoto>
+                    <CommentHeaderWrapper>
+                      <CommentHeader>
+                        <CommentNameWrapper>
+                          <CommentWriter>{el.writer}</CommentWriter>
+                          <Star value={el.rating} disabled />
+                        </CommentNameWrapper>
+                        <CommentButtonWrapper>
+                          <CommentModifyBtn
+                            src="/images/commentbtn.png"
+                            onClick={props.onClickModifyBtn}
+                            id={el._id}
+                          ></CommentModifyBtn>
+                          <CommentDeleteBtn
+                            src="/images/commentbtn2.png"
+                            onClick={props.onClickCommentDelete}
+                            id={el._id}
+                          ></CommentDeleteBtn>
+                        </CommentButtonWrapper>
+                      </CommentHeader>
+                      <CommentContents>{el.contents}</CommentContents>
+                      <CommentDate>{el.createdAt}</CommentDate>
+                    </CommentHeaderWrapper>
+                  </CommentArea>
+                )}
 
-      {props.data?.fetchBoardComments.map((el) => {
-        console.log(el, props.modify);
+                {el._id === props.modify && (
+                  <>
+                    <UnderLine></UnderLine>
+                    <BoardsCommentBox
+                      id={el._id}
+                      setModify={props.setModify}
+                    ></BoardsCommentBox>
+                  </>
+                )}
+              </CommentBoxWrapper>
+            );
+          })}
+        </ScrollWrapper>
+      </Loader>
 
-        return (
-          <CommentBoxWrapper key={el._id}>
-            {el._id !== props.modify && (
-              <CommentArea>
-                <CommentPhoto src="/images/commentphoto.png"></CommentPhoto>
-                <CommentHeaderWrapper>
-                  <CommentHeader>
-                    <CommentNameWrapper>
-                      <CommentWriter>{el.writer}</CommentWriter>
-                      <Star value={el.rating} disabled />
-                    </CommentNameWrapper>
-                    <CommentButtonWrapper>
-                      <CommentModifyBtn
-                        src="/images/commentbtn.png"
-                        onClick={props.onClickModifyBtn}
-                        id={el._id}
-                      ></CommentModifyBtn>
-                      <CommentDeleteBtn
-                        src="/images/commentbtn2.png"
-                        onClick={props.onClickCommentDelete}
-                        id={el._id}
-                      ></CommentDeleteBtn>
-                    </CommentButtonWrapper>
-                  </CommentHeader>
-                  <CommentContents>{el.contents}</CommentContents>
-                  <CommentDate>{el.createdAt}</CommentDate>
-                </CommentHeaderWrapper>
-              </CommentArea>
-            )}
-            {el._id === props.modify && (
-              <>
-                <UnderLine></UnderLine>
-                <BoardsCommentBox
-                  id={el._id}
-                  setModify={props.setModify}
-                ></BoardsCommentBox>
-              </>
-            )}
-          </CommentBoxWrapper>
-        );
-      })}
+      {/* <Loader>
+        <div>
+          <ScrollWrapper
+            pageStart={0}
+            loadMore={props.onLoadMore}
+            hasMore={true || false}
+            useWindow={false}
+          >
+            {props.data?.fetchBoardComments.map((el) => (
+              <div key={el._id}>
+                <span>{el.Writer}</span>
+                <span>{el.title}</span>
+                <span>{el.contents}</span>
+                <span>{el.createdAt}</span>
+              </div>
+            ))}
+          </ScrollWrapper>
+        </div>
+      </Loader> */}
     </CommentWrapper>
   );
 }
