@@ -55,6 +55,8 @@ export default function BoardsCommentBox(props) {
       onChangePassword={onChangePassword}
       onChangeContents={onChangeContents}
       data={data}
+      writer={props.writer}
+      contents={props.contents}
     />
   );
 }

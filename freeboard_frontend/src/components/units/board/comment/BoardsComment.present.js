@@ -126,6 +126,8 @@ export default function BoardCommentBox(props) {
                       <BoardsCommentBox
                         id={el._id}
                         setModify={props.setModify}
+                        writer={props.writer}
+                        contents={props.contents}
                       ></BoardsCommentBox>
                     </>
                   )}

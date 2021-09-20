@@ -154,6 +154,8 @@ export default function BoardCommentPage() {
       onChangeDeletePassword={onChangeDeletePassword}
       onClickOpenDeleteModal={onClickOpenDeleteModal}
       onToggleDelete={onToggleDelete}
+      writer={writer}
+      contents={contents}
 
       // value={value}
       // handleChange={handleChange}
