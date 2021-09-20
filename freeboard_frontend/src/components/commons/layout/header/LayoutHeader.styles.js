@@ -1,30 +1,21 @@
 import styled from "@emotion/styled";
 export const Wrapper = styled.div`
-  background-color: #fafafc;
-  width: 2000px;
+  background-color: #39c8ce;
+  width: 100%;
   height: 152px;
   padding-left: 700px;
   padding-top: 50px;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled.img`
   font-size: 60px;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-family: "live";
   font-style: italic;
   color: #5729ff;
   cursor: pointer;
-`;
-
-export const HeaderName = styled.div`
-  font-size: 60px;
-  font-weight: bold;
-  font-family: "live";
-  font-style: italic;
-  color: #f26656;
-  cursor: pointer;
-
-  padding-left: 20px;
+  width: 200px;
+  height: 50px;
 `;
 
 export const HeaderWrapper = styled.div`

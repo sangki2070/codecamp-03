@@ -17,13 +17,13 @@ export default function LayoutNavUI() {
     <Wrapper>
       <Slider {...settings}>
         <div>
-          <SliderItem src="/images/visual2.jpeg" />
+          <SliderItem src="/images/home-landing.png" />
         </div>
         <div>
-          <SliderItem src="/images/visual3.jpg" />
+          <SliderItem src="/images/fint1.png" />
         </div>
         <div>
-          <SliderItem src="/images/visual5.jpeg" />
+          <SliderItem src="/images/fint2.png" />
         </div>
       </Slider>
     </Wrapper>

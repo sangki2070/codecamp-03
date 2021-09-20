@@ -1,16 +1,10 @@
-import {
-  Wrapper,
-  HeaderName,
-  Logo,
-  HeaderWrapper,
-} from "./LayoutHeader.styles";
+import { Wrapper, Logo, HeaderWrapper } from "./LayoutHeader.styles";
 
 export default function LayoutHeaderUI() {
   return (
     <Wrapper>
       <HeaderWrapper>
-        <Logo>📈</Logo>
-        <HeaderName>해외투자토론방</HeaderName>
+        <Logo src="/images/logo-black.png"></Logo>
       </HeaderWrapper>
     </Wrapper>
   );
