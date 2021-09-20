@@ -145,6 +145,7 @@ export default function BoardsListUI(props) {
               key={props.startPage + index}
               onClick={props.onClickPage}
               id={String(props.startPage + index)}
+              isActive={props.startPage + index === props.currentPage}
             >
               {props.startPage + index}
             </Pnumber>

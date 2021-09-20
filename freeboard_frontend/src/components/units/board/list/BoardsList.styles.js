@@ -238,9 +238,7 @@ export const LeftMove = styled.span`
 export const Pnumber = styled.span`
   margin-right: 20px;
   cursor: pointer;
-  :hover {
-    color: skyblue;
-  }
+  color: ${(props) => (props.isActive ? "red" : "black")};
 `;
 
 export const RightMove = styled.span`

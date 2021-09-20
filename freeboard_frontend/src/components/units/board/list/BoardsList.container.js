@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function BoardListContainer() {
   const router = useRouter();
   const [startPage, setStartpage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const { data, refetch } = useQuery(FETCH_BOARDS, {
     variables: { page: startPage },
   });
@@ -16,15 +17,18 @@ export default function BoardListContainer() {
 
   function onClickPage(event) {
     refetch({ page: Number(event.target.id) });
+    setCurrentPage(Number(event.target.id));
   }
 
   function onClickPrevpage() {
     if (startPage === 1) return;
+    setCurrentPage(startPage - 10);
     setStartpage((prev) => prev - 10);
   }
 
   function onClickNextPage() {
     if (startPage + 10 > lastPage) return;
+    setCurrentPage(startPage + 10);
     setStartpage((prev) => prev + 10);
   }
 
@@ -46,6 +50,7 @@ export default function BoardListContainer() {
       onClickNextPage={onClickNextPage}
       startPage={startPage}
       lastPage={lastPage}
+      currentPage={currentPage}
     />
   );
 }
