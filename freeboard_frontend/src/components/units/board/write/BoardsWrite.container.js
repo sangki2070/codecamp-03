@@ -122,34 +122,29 @@ export default function BoardsContainer(props) {
     setAddressDetail(event.target.value);
   }
   async function onClickModifyBtn() {
-    const myVariables = {
-      updateBoardInput: {
-        title: data.fetchBoard.title,
-        contents: data.fetchBoard.contents,
-        youtubeUrl: data.fetchBoard.youtubeUrl,
-        boardAddress: {
-          zipcode: myZipcode,
-          address: myAddress,
-          addressDetail: addressDetail,
+    const updateBoardInput = { boardAddress: {} };
+    if (title) updateBoardInput.title = title;
+    if (contents) updateBoardInput.contents = contents;
+    if (youtubeUrl) updateBoardInput.youtubeUrl = youtubeUrl;
+    if (myZipcode) updateBoardInput.boardAddress.zipcode = myZipcode;
+    if (myAddress) updateBoardInput.boardAddress.address = myAddress;
+    if (addressDetail)
+      updateBoardInput.boardAddress.addressDetail = addressDetail;
+
+    // console.log(myVariables);
+    try {
+      await updateBoard({
+        variables: {
+          updateBoardInput,
+          password,
+          boardId: router.query.BoardsDetailPage,
         },
-      },
-      //
+      });
 
-      password: password,
-      boardId: router.query.BoardsDetailPage,
-    };
-
-    if (title) myVariables.updateBoardInput.title = title;
-    if (contents) myVariables.updateBoardInput.contents = contents;
-    if (youtubeUrl) myVariables.updateBoardInput.youtubeUrl = youtubeUrl;
-
-    // if(name) myVariables.updateBoardInput.writer = name
-
-    console.log(myVariables);
-
-    await updateBoard({ variables: myVariables });
-
-    router.push(`/boards/${router.query.BoardsDetailPage}/`);
+      router.push(`/boards/${router.query.BoardsDetailPage}`);
+    } catch (err) {
+      alert(err.message);
+    }
   }
   console.log(data);
 

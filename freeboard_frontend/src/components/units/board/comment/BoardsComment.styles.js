@@ -1,6 +1,14 @@
 import styled from "@emotion/styled";
 import { Rate } from "antd";
 import InfiniteScroll from "react-infinite-scroller";
+import { Modal } from "antd";
+
+export const PasswordInput = styled.input`
+  width: 100%;
+  margin-top: 10px;
+`;
+
+export const MyModal = styled(Modal)``;
 
 export const Star = styled(Rate)``;
 

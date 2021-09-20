@@ -48,8 +48,10 @@ export default function BoardCommentPage() {
   const [password, setMypassword] = useState("");
   const [contents, setMycontents] = useState("");
   const [modify, setModify] = useState("");
+  const [deleteId, setDeleteId] = useState("");
 
   const [myStar, setMyStar] = useState(0);
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   // const [value, setValue] = useState(0);
 
   // const handleChange = (value) => {
@@ -61,7 +63,7 @@ export default function BoardCommentPage() {
   }
 
   function onChangePassword(event) {
-    setMypassword(event.target.value);
+    setMypassword(String(event.target.value));
   }
 
   function onChangeContents(event) {
@@ -99,12 +101,11 @@ export default function BoardCommentPage() {
   }
 
   async function onClickCommentDelete(event) {
-    const password = prompt("비밀번호를 입력해 주세요.");
     try {
       await deleteBoardComment({
         variables: {
           password: password,
-          boardCommentId: event.target.id,
+          boardCommentId: deleteId,
         },
         refetchQueries: [
           {
@@ -113,6 +114,7 @@ export default function BoardCommentPage() {
           },
         ],
       });
+      onToggleDelete();
     } catch (error) {
       alert(error.message);
     }
@@ -122,6 +124,18 @@ export default function BoardCommentPage() {
     setMyStar(value);
   }
 
+  function onClickOpenDeleteModal(event) {
+    setIsOpenDeleteModal((prev) => !prev);
+    setDeleteId(event.target.id);
+  }
+
+  function onChangeDeletePassword(event) {
+    setMypassword(event.target.value);
+  }
+
+  function onToggleDelete() {
+    setIsOpenDeleteModal((prev) => !prev);
+  }
   return (
     <BoardCommentBox
       onClickComment={onClickComment}
@@ -136,6 +150,10 @@ export default function BoardCommentPage() {
       onChangeStar={onChangeStar}
       onLoadMore={onLoadMore}
       loader={loader}
+      isOpenDeleteModal={isOpenDeleteModal}
+      onChangeDeletePassword={onChangeDeletePassword}
+      onClickOpenDeleteModal={onClickOpenDeleteModal}
+      onToggleDelete={onToggleDelete}
 
       // value={value}
       // handleChange={handleChange}

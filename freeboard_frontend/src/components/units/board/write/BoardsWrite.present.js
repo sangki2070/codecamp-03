@@ -104,11 +104,12 @@ export default function BoardWriteUI(props) {
           )}
         </SearchWrapper>
         <WriteForm2
+          name="address"
           readOnly
           value={
-            props.myAddress || props.data?.fetchBoard.boardAddress?.myAddress
+            props.myAddress || props.data?.fetchBoard.boardAddress?.address
           }
-          defaultValue={props.data?.fetchBoard.boardAddress?.address}
+          // defaultValue={props.data?.fetchBoard.boardAddress?.address}
         ></WriteForm2>
         <WriteForm2
           type="text"
