@@ -15,7 +15,7 @@ export default function OpenapiPage() {
   return (
     <div>
       <div>오픈API</div>
-      <div>{dogImage}</div>
+      <img src={dogImage} />
     </div>
   );
 }

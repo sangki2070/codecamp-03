@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   background-color: #39c8ce;
-  width: 100%;
-  height: 152px;
-  padding-left: 700px;
-  padding-top: 20px;
 
+  height: 152px;
+  /* padding-left: 700px; */
+  padding-top: 20px;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Logo = styled.img`
@@ -51,4 +53,13 @@ export const LoginWrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   width: 600px;
+`;
+
+export const InnerWrapper = styled.div`
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
 `;
