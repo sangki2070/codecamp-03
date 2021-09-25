@@ -21,6 +21,7 @@ export default function LayoutMarketPage() {
       const markets = await axios.get(
         "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Ccardano%2Ctether%2Cbinancecoin%2Csolana%2Cpolkadot%2Ctron%2Cdogecoin%2Ccosmos%2Cuniswap%2Cripple&vs_currencies=krw"
       );
+
       setBtc(markets.data.bitcoin.krw);
       setEth(markets.data.ethereum.krw);
       setXrp(markets.data.ripple.krw);

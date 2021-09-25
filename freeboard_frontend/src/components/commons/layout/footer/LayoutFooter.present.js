@@ -71,6 +71,7 @@ export default function LayoutFooterUI() {
       setClouds(cityweather.data.clouds.all + "%");
       setWeatherIcon(cityweather.data.weather[0].icon.substr(0, 2));
       console.log(cityweather);
+      console.log(weatherIcon);
     }
     getWeather();
   }, []);
@@ -92,7 +93,7 @@ export default function LayoutFooterUI() {
           <WeatherHeadWrapper>
             <WeatherImageWrapper>
               <FontAwesomeIcon
-                icon={weatherImage[weatherIcon]}
+                icon={weatherImage[weather]}
                 size="5x"
               ></FontAwesomeIcon>
             </WeatherImageWrapper>
