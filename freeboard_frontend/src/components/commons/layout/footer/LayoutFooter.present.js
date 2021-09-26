@@ -93,7 +93,7 @@ export default function LayoutFooterUI() {
           <WeatherHeadWrapper>
             <WeatherImageWrapper>
               <FontAwesomeIcon
-                icon={weatherImage[weather]}
+                icon={weatherImage[weatherIcon]}
                 size="5x"
               ></FontAwesomeIcon>
             </WeatherImageWrapper>

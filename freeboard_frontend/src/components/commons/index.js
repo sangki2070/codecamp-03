@@ -5,6 +5,7 @@ import LayoutNav from "./layout/nav/LayoutNav.container";
 import LayoutFooter from "./layout/footer/LayoutFooter.container";
 import LayoutMenuPage from "./layout/menu/LayoutMenu.container";
 import LayoutMarketPage from "./layout/market/LayoutMarket.container";
+import { useRouter } from "next/router";
 
 const Wrapper = styled.div``;
 
@@ -14,15 +15,19 @@ const Body = styled.div`
   align-items: center;
 `;
 
+const HIDDEN_MAIN = ["/lending"];
+
 export default function Layout(props) {
+  const router = useRouter;
+  const isHiddenMain = HIDDEN_MAIN.includes(router.pathname);
   return (
     <Wrapper>
-      <LayoutHeader></LayoutHeader>
-      <LayoutNav></LayoutNav>
-      <LayoutMarketPage></LayoutMarketPage>
-      <LayoutMenuPage></LayoutMenuPage>
+      {isHiddenMain && <LayoutHeader></LayoutHeader>}
+      {isHiddenMain && <LayoutNav></LayoutNav>}
+      {isHiddenMain && <LayoutMarketPage></LayoutMarketPage>}
+      {isHiddenMain && <LayoutMenuPage></LayoutMenuPage>}
       <Body>{props.children}</Body>
-      <LayoutFooter></LayoutFooter>
+      {isHiddenMain && <LayoutFooter></LayoutFooter>}
     </Wrapper>
   );
 }
