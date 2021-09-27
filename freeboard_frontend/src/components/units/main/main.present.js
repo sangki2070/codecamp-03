@@ -1,10 +1,24 @@
-import { Wrapper, Background } from "./main.styles";
+import {
+  Wrapper,
+  Logo,
+  BodyWrapper,
+  Title,
+  HomeButton,
+  HeaderWrapper,
+} from "./main.styles";
 
-export default function MainUI() {
+export default function MainUI(props) {
   return (
     <Wrapper>
-      <Background src={"/images/lendingback.jpg"}></Background>
-      <div>테스트 입니다.</div>
+      <HeaderWrapper>
+        <Logo>TradingAI Fount</Logo>
+      </HeaderWrapper>
+      <BodyWrapper>
+        <Title>모든 시장을 추적하세요</Title>
+        <HomeButton onClick={props.onClickMovePage}>
+          TradingAI Fount Start!!
+        </HomeButton>
+      </BodyWrapper>
     </Wrapper>
   );
 }

@@ -1,3 +1,5 @@
-export default function Home() {
-  return <></>;
+import MainContainer from "../src/components/units/main/main.container";
+
+export default function MainPage() {
+  return <MainContainer></MainContainer>;
 }
