@@ -1,18 +1,27 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export default class Board extends BaseEntity {
+export default class Product extends BaseEntity {
+  @PrimaryGeneratedColumn("uuid") //PK
+  _id!: string;
+
   @PrimaryGeneratedColumn("increment") //PK
   number!: number;
 
   @Column({ type: "text" })
-  writer!: string;
+  seller!: string;
 
   @Column({ type: "text" })
-  title!: string;
+  name!: string;
+
+  @Column({ type: "text" })
+  detail!: string;
 
   @Column({ type: "integer" })
-  age!: number;
+  price!: number;
+
+  // @Column({ type: "integer" })
+  // page!: number;
 
   @Column({ type: "timestamp", default: null, nullable: true })
   deletedAt?: Date;
