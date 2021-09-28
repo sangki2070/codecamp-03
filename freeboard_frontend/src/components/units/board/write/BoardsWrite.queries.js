@@ -40,11 +40,21 @@ export const FETCH_BOARD = gql`
       title
       contents
       youtubeUrl
+      images
       boardAddress {
         zipcode
         address
         addressDetail
       }
+    }
+  }
+`;
+
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      _id
+      url
     }
   }
 `;

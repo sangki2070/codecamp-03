@@ -134,10 +134,9 @@ export const BodyTitle = styled.div`
   padding-bottom: 80px;
 `;
 
-export const BodyImage = styled.div`
+export const BodyImage = styled.img`
   width: 996px;
   height: 480px;
-  background-image: url("/images/box.png");
   padding-top: 40px;
 `;
 

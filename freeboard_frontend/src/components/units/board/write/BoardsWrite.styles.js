@@ -167,7 +167,7 @@ export const Upload = styled.div`
   width: 42px;
 `;
 
-export const AttachmentBtn = styled.button`
+export const AttachmentBtn = styled.div`
   width: 78px;
   height: 78px;
   background-color: #bdbdbd;

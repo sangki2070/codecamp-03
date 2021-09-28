@@ -44,7 +44,7 @@ const typeDefs = gql`
     name: String
     detail: String
     price: Int
-    # page: Int
+    page: Int
     # createdAt: Date
   }
 

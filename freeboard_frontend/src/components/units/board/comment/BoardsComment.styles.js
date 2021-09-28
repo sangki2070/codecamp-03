@@ -18,7 +18,7 @@ export const ScrollWrapper = styled(InfiniteScroll)`
 
 export const Loader = styled.div`
   width: 1240px;
-  height: 1200px;
+  /* height: 1200px; */
   overflow: auto;
 `;
 

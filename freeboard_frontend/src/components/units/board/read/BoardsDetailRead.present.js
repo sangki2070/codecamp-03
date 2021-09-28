@@ -65,7 +65,20 @@ export default function BoardsDetailUI(props) {
         <UnderLine></UnderLine>
         <BodyWrapper>
           <BodyTitle>{props.data && props.data.fetchBoard.title}</BodyTitle>
-          <BodyImage></BodyImage>
+          <div>
+            {/* {props.data?.fetchBoard.images.map((el, index) => {
+              <BodyImage
+                src={`https://storage.googleapis.com/${el}`}
+                key={index}
+              ></BodyImage>;
+            })} */}
+            {props.data?.fetchBoard.images.map((el, idx) => (
+              <BodyImage
+                src={`https://storage.googleapis.com/${el}`}
+                key={idx}
+              />
+            ))}
+          </div>
           <CenterContents>
             <BodyContents>
               {props.data && props.data.fetchBoard.contents}
@@ -112,7 +125,6 @@ export default function BoardsDetailUI(props) {
           onClick={props.onClickDelete}
         ></DeleteBtn>
       </BtnWrapper>
-
       <BoardCommentPage></BoardCommentPage>
     </Wrapper>
   );

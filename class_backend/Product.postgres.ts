@@ -20,9 +20,6 @@ export default class Product extends BaseEntity {
   @Column({ type: "integer" })
   price!: number;
 
-  // @Column({ type: "integer" })
-  // page!: number;
-
   @Column({ type: "timestamp", default: null, nullable: true })
   deletedAt?: Date;
 }

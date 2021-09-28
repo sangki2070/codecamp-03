@@ -133,17 +133,26 @@ export default function BoardWriteUI(props) {
       <AttachmentForm>
         <Label>사진 첨부</Label>
         <AttachmentWrapper>
-          <AttachmentBtn>
+          <AttachmentBtn onClick={props.onClickUpload}>
             + <Upload>Upload</Upload>
           </AttachmentBtn>
-          <AttachmentBtn>
+          <AttachmentBtn onClick={props.onClickUpload}>
             + <Upload>Upload</Upload>
           </AttachmentBtn>
-          <AttachmentBtn>
+          <AttachmentBtn onClick={props.onClickUpload}>
             + <Upload>Upload</Upload>
           </AttachmentBtn>
         </AttachmentWrapper>
       </AttachmentForm>
+
+      <input
+        ref={props.fileRef}
+        style={{ display: "none" }}
+        type="file"
+        onChange={props.onChangeFile}
+      />
+
+      {/* <img src={`https://storage.googleapis.com/${props.imageUrl}`}></img> */}
 
       <RadioForm>
         <Label>메인 설정</Label>
