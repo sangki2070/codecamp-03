@@ -26,8 +26,8 @@ export default function BoardsDetialContainerPage(props) {
   async function onClickDelete(event) {
     await deleteBoard({
       variables: { boardId: event.target.id },
-      refetchQueries: [{ query: FETCH_BOARD }],
     });
+    router.push("/boards");
   }
 
   async function onClickLike(event) {

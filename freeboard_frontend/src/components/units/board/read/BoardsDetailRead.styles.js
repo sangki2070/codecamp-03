@@ -224,14 +224,17 @@ export const BtnWrapper = styled.div`
 
 export const ListBtn = styled.img`
   margin-right: 40px;
+  cursor: pointer;
 `;
 
 export const ModyfiyBtn = styled.img`
-  margin-left: 40px;
+  margin-right: 40px;
+  cursor: pointer;
 `;
 
 export const DeleteBtn = styled.img`
-  margin-left: 40px;
+  /* margin-left: 20px; */
+  cursor: pointer;
 `;
 
 /* 댓글작성 부분 */
