@@ -2,12 +2,7 @@ import BoardWriteUI from "./BoardsWrite.present";
 import { useState, useRef } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import {
-  CREATE_BOARD,
-  UPDATE_BOARD,
-  FETCH_BOARD,
-  UPLOAD_FILE,
-} from "./BoardsWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from "./BoardsWrite.queries";
 
 export default function BoardsContainer(props) {
   const router = useRouter();
@@ -28,46 +23,12 @@ export default function BoardsContainer(props) {
 
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
-  const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.BoardsDetailPage },
   });
 
-  const [imageUrl, setImageUrl] = useState([]);
-
-  const fileRef = useRef();
-
-  async function onChangeFile(event) {
-    const myFile = event.target.files[0];
-    if (!myFile) {
-      alert("파일이 없습니다.");
-      return;
-    }
-
-    if (!myFile.size > 5 * 1000 * 1000) {
-      alert("파일 용량이 너무 큽니다.(제한: 5mg)");
-      return;
-    }
-
-    if (!myFile.type.includes("jpeg") && !myFile.type.includes("png")) {
-      alert("jpeg 또는 png만 업로드 가능합니다.");
-      return;
-    }
-
-    const result = await uploadFile({
-      variables: {
-        file: myFile,
-      },
-    });
-
-    console.log(result.data.uploadFile.url);
-    setImageUrl(imageUrl.concat([result.data.uploadFile.url]));
-  }
-
-  function onClickUpload() {
-    fileRef.current?.click();
-  }
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
   // 모달 부분
 
@@ -167,7 +128,6 @@ export default function BoardsContainer(props) {
     if (title) updateBoardInput.title = title;
     if (contents) updateBoardInput.contents = contents;
     if (youtubeUrl) updateBoardInput.youtubeUrl = youtubeUrl;
-    if (imageUrl) updateBoardInput.images = imageUrl;
     if (myZipcode) updateBoardInput.boardAddress.zipcode = myZipcode;
     if (myAddress) updateBoardInput.boardAddress.address = myAddress;
 
@@ -188,6 +148,13 @@ export default function BoardsContainer(props) {
     } catch (err) {
       alert(err.message);
     }
+  }
+
+  function onChangeFileUrls(fileUrl, index) {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    console.log(newFileUrls);
+    setFileUrls(newFileUrls);
   }
 
   async function onClickRegister() {
@@ -217,12 +184,13 @@ export default function BoardsContainer(props) {
             title: title,
             contents: contents,
             youtubeUrl: youtubeUrl,
-            images: [...imageUrl],
+
             boardAddress: {
               zipcode: myZipcode,
               address: myAddress,
               addressDetail: addressDetail,
             },
+            images: [...fileUrls],
           },
         },
       });
@@ -257,10 +225,8 @@ export default function BoardsContainer(props) {
       onChangeZipcode={onChangeZipcode}
       onChangeAddress={onChangeAddress}
       onChangeAddressDetail={onChangeAddressDetail}
-      onChangeFile={onChangeFile}
-      imageUrl={imageUrl}
-      onClickUpload={onClickUpload}
-      fileRef={fileRef}
+      fileUrls={fileUrls}
+      onChangeFileUrls={onChangeFileUrls}
     />
   );
 }

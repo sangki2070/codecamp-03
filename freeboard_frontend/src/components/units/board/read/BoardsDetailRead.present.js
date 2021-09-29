@@ -72,12 +72,14 @@ export default function BoardsDetailUI(props) {
                 key={index}
               ></BodyImage>;
             })} */}
-            {props.data?.fetchBoard.images.map((el, idx) => (
-              <BodyImage
-                src={`https://storage.googleapis.com/${el}`}
-                key={idx}
-              />
-            ))}
+            {props.data?.fetchBoard.images
+              ?.filter((el) => el !== "")
+              .map((el) => (
+                <BodyImage
+                  src={`https://storage.googleapis.com/${el}`}
+                  key={el}
+                />
+              ))}
           </div>
           <CenterContents>
             <BodyContents>

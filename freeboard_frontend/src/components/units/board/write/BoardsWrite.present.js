@@ -31,6 +31,8 @@ import {
   MyModal,
 } from "./BoardsWrite.styles";
 
+import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
+
 export default function BoardWriteUI(props) {
   return (
     <WrapperForm>
@@ -132,8 +134,17 @@ export default function BoardWriteUI(props) {
 
       <AttachmentForm>
         <Label>사진 첨부</Label>
+
         <AttachmentWrapper>
-          <AttachmentBtn onClick={props.onClickUpload}>
+          {props.fileUrls.map((el, index) => (
+            <Uploads01
+              key={`${el}_${index}`}
+              index={index}
+              fileUrl={el}
+              onChangeFileUrls={props.onChangeFileUrls}
+            />
+          ))}
+          {/* <AttachmentBtn onClick={props.onClickUpload}>
             + <Upload>Upload</Upload>
           </AttachmentBtn>
           <AttachmentBtn onClick={props.onClickUpload}>
@@ -141,16 +152,9 @@ export default function BoardWriteUI(props) {
           </AttachmentBtn>
           <AttachmentBtn onClick={props.onClickUpload}>
             + <Upload>Upload</Upload>
-          </AttachmentBtn>
+          </AttachmentBtn> */}
         </AttachmentWrapper>
       </AttachmentForm>
-
-      <input
-        ref={props.fileRef}
-        style={{ display: "none" }}
-        type="file"
-        onChange={props.onChangeFile}
-      />
 
       {/* <img src={`https://storage.googleapis.com/${props.imageUrl}`}></img> */}
 

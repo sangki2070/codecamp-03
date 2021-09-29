@@ -160,30 +160,30 @@ export const AttachmentForm = styled.div`
   /* height: 130px; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-top: 40px;
 `;
-export const Upload = styled.div`
-  width: 42px;
-`;
+// export const Upload = styled.div`
+//   width: 42px;
+// `;
 
-export const AttachmentBtn = styled.div`
-  width: 78px;
-  height: 78px;
-  background-color: #bdbdbd;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-`;
+// export const AttachmentBtn = styled.div`
+//   width: 78px;
+//   height: 78px;
+//   background-color: #bdbdbd;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   border: none;
+//   cursor: pointer;
+// `;
 
 export const AttachmentWrapper = styled.div`
   width: 282px;
   height: 100px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 `;
 
 // 라디오버튼 부분
