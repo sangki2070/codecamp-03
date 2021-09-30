@@ -2,7 +2,12 @@ import BoardWriteUI from "./BoardsWrite.present";
 import { useState, useRef } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { CREATE_BOARD, UPDATE_BOARD, FETCH_BOARD } from "./BoardsWrite.queries";
+import {
+  CREATE_BOARD,
+  UPDATE_BOARD,
+  FETCH_BOARD,
+  UPLOAD_FILE,
+} from "./BoardsWrite.queries";
 
 export default function BoardsContainer(props) {
   const router = useRouter();
@@ -23,12 +28,15 @@ export default function BoardsContainer(props) {
 
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.BoardsDetailPage },
   });
 
-  const [fileUrls, setFileUrls] = useState(["", "", ""]);
+  // const [fileUrls, setFileUrls] = useState(["", "", ""]); 1차 실습
+
+  const [files, setFiles] = useState([null, null, null]); // 2차실습
 
   // 모달 부분
 
@@ -176,6 +184,12 @@ export default function BoardsContainer(props) {
     }
 
     try {
+      const uploadFiles = files
+        .filter((el) => el)
+        .map((el) => uploadFile({ variables: { file: el } }));
+      const results = await Promise.all(uploadFiles);
+      const myImages = results.map((el) => el.data.uploadFile.url);
+
       const result = await createBoard({
         variables: {
           createBoardInput: {
@@ -190,7 +204,8 @@ export default function BoardsContainer(props) {
               address: myAddress,
               addressDetail: addressDetail,
             },
-            images: [...fileUrls],
+            // images: [...fileUrls], 1차 실습
+            images: myImages,
           },
         },
       });
@@ -199,6 +214,12 @@ export default function BoardsContainer(props) {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function onChangeFiles(file, index) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
   }
 
   return (
@@ -225,8 +246,9 @@ export default function BoardsContainer(props) {
       onChangeZipcode={onChangeZipcode}
       onChangeAddress={onChangeAddress}
       onChangeAddressDetail={onChangeAddressDetail}
-      fileUrls={fileUrls}
-      onChangeFileUrls={onChangeFileUrls}
+      // fileUrls={fileUrls}
+      // onChangeFileUrls={onChangeFileUrls}
+      onChangeFiles={onChangeFiles}
     />
   );
 }

@@ -33,6 +33,7 @@ import {
   Pnumber,
   RightMove,
   MyWord,
+  BoxImage1,
 } from "./BoardsList.styles";
 import { v4 as uuidv4 } from "uuid";
 
@@ -49,9 +50,13 @@ export default function BoardsListUI(props) {
             onChange={props.onchangeBestBoards}
             onClick={props.onClickMovetoBoard}
           >
-            <BoxImage
-              src={`https://storage.googleapis.com/${el.images[0]}`}
-            ></BoxImage>
+            {el.images[0] ? (
+              <BoxImage
+                src={`https://storage.googleapis.com/${el.images[0]}`}
+              ></BoxImage>
+            ) : (
+              <BoxImage1 src={"/images/box3.png"}></BoxImage1>
+            )}
             <BoxTitle>{el.title}</BoxTitle>
             <ProfileWrapper>
               <PhotoWrapper>

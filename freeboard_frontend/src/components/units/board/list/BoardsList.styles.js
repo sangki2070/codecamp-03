@@ -50,6 +50,12 @@ export const BoxImage = styled.img`
   border-radius: 20px 20px 0px 0px;
 `;
 
+export const BoxImage1 = styled.img`
+  width: 282px;
+  height: 120px;
+  border-radius: 20px 20px 0px 0px;
+`;
+
 export const BoxTitle = styled.div`
   width: 200px;
   height: 27px;

@@ -2,10 +2,13 @@ import { useMutation } from "@apollo/client";
 import Uploads01UI from "./Uploads01.present";
 import { UPLOAD_FILE } from "./Uploads01.queries";
 import { useRef } from "react";
+import { useState } from "react";
 
 export default function Uploads01(props) {
   const fileRef = useRef();
-  const [uploadFile] = useMutation(UPLOAD_FILE);
+  const [fileUrl, setFileUrl] = useState("");
+
+  // const [uploadFile] = useMutation(UPLOAD_FILE); 1차 실습
 
   function onClickUpload() {
     fileRef.current?.click();
@@ -27,19 +30,28 @@ export default function Uploads01(props) {
       alert("jpeg 또는 png만 업로드 가능합니다.");
       return;
     }
-    try {
-      const result = await uploadFile({ variables: { file } });
-      props.onChangeFileUrls(result.data.uploadFile.url, props.index);
-      console.log(result);
-    } catch (error) {}
+    // try {
+    //   const result = await uploadFile({ variables: { file } });
+    //   props.onChangeFileUrls(result.data.uploadFile.url, props.index);
+    //   console.log(result);
+    // } catch (error) {}
+
+    // 1차 실습
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = (data) => {
+      setFileUrl(data.target?.result);
+      props.onChangeFiles(file, props.index);
+    };
   }
 
   return (
     <Uploads01UI
       fileRef={fileRef}
-      fileUrl={props.fileUrl}
+      // fileUrl={props.fileUrl} 1차 실습
       onClickUpload={onClickUpload}
       onChangeFile={onChangeFile}
+      fileUrl={fileUrl}
     />
   );
 }

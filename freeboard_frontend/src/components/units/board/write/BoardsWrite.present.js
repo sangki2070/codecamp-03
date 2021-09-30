@@ -136,12 +136,11 @@ export default function BoardWriteUI(props) {
         <Label>사진 첨부</Label>
 
         <AttachmentWrapper>
-          {props.fileUrls.map((el, index) => (
+          {new Array(3).fill(1).map((el, index) => (
             <Uploads01
               key={`${el}_${index}`}
               index={index}
-              fileUrl={el}
-              onChangeFileUrls={props.onChangeFileUrls}
+              onChangeFiles={props.onChangeFiles}
             />
           ))}
           {/* <AttachmentBtn onClick={props.onClickUpload}>
