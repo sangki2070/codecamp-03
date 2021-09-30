@@ -25,6 +25,7 @@ export const FETCH_BOARDS_OF_THEBEST = gql`
       title
       likeCount
       createdAt
+      images
     }
   }
 `;

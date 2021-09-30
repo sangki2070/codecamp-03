@@ -8,7 +8,6 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import _ from "lodash";
-import { BestBoardsBox } from "./BoardsList.styles";
 
 export default function BoardListContainer() {
   const router = useRouter();
@@ -37,7 +36,7 @@ export default function BoardListContainer() {
     // const newBestBoards = [...dataBestBoards.fetchBoardsOfTheBest];
 
     setBestBoards(event.target.value);
-    console.log(bestBoards);
+    console.log(setBestBoards);
   }
 
   const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_COUNT);

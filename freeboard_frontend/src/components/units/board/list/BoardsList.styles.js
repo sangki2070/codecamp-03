@@ -38,6 +38,10 @@ export const BestBoardsBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
+  :hover {
+    background-color: skyblue;
+  }
 `;
 
 export const BoxImage = styled.img`
@@ -91,7 +95,7 @@ export const ProfilePhoto = styled.img`
 export const ProfileName = styled.span``;
 
 export const BoardsDate = styled.div`
-  width: 100px;
+  width: 120px;
   height: 18px;
   font-size: 12px;
   color: #828282;
@@ -106,6 +110,7 @@ export const LikeCount = styled.div`
   width: 27px;
   height: 24px;
   font-size: 16px;
+  padding-left: 5px;
 `;
 
 // 검색 부분
