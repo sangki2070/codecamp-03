@@ -32,7 +32,9 @@ import {
   LeftMove,
   Pnumber,
   RightMove,
+  MyWord,
 } from "./BoardsList.styles";
+import { v4 as uuidv4 } from "uuid";
 
 export default function BoardsListUI(props) {
   return (
@@ -40,23 +42,24 @@ export default function BoardsListUI(props) {
       <ListTitle>베스트 게시글</ListTitle>
 
       <BoxWrapper>
-        <BestBoardsBox>
-          <BoxImage src="/images/box1.png"></BoxImage>
-          <BoxTitle>게시물 제목입니다.</BoxTitle>
-          <ProfileWrapper>
-            <PhotoWrapper>
-              <ProfilePhoto src="/images/avatar.png"></ProfilePhoto>
-              <ProfileName>노원두</ProfileName>
-            </PhotoWrapper>
-            <LikePhoto src="/images/Like2.png"></LikePhoto>
-          </ProfileWrapper>
-          <LikeWrapper>
-            <BoardsDate>Date: 2021.02.18</BoardsDate>
-            <LikeCount>356</LikeCount>
-          </LikeWrapper>
-        </BestBoardsBox>
-
-        <BestBoardsBox>
+        {props.dataBestBoards?.fetchBoardsOfTheBest.map((el) => (
+          <BestBoardsBox key={el._id} onChange={props.onchangeBestBoards}>
+            <BoxImage src="/images/box1.png"></BoxImage>
+            <BoxTitle>{el.title}</BoxTitle>
+            <ProfileWrapper>
+              <PhotoWrapper>
+                <ProfilePhoto src="/images/avatar.png"></ProfilePhoto>
+                <ProfileName>{el.writer}</ProfileName>
+              </PhotoWrapper>
+              <LikePhoto src="/images/Like2.png"></LikePhoto>
+            </ProfileWrapper>
+            <LikeWrapper>
+              <BoardsDate>{el.createdAt}</BoardsDate>
+              <LikeCount>{el.likeCount}</LikeCount>
+            </LikeWrapper>
+          </BestBoardsBox>
+        ))}
+        {/* <BestBoardsBox>
           <BoxImage src="/images/box2.png"></BoxImage>
           <BoxTitle>게시물 제목입니다.</BoxTitle>
           <ProfileWrapper>
@@ -101,11 +104,15 @@ export default function BoardsListUI(props) {
             <BoardsDate>Date: 2021.02.18</BoardsDate>
             <LikeCount>356</LikeCount>
           </LikeWrapper>
-        </BestBoardsBox>
+        </BestBoardsBox> */}
       </BoxWrapper>
 
       <SearchWrapper>
-        <SearchArea type="text" placeholder="제목을 입력해주세요.">
+        <SearchArea
+          type="text"
+          placeholder="검색어를 입력하세요"
+          onChange={props.onChangeSearch}
+        >
           {/* <SearchIcon src="/images/SearchIcon.png"></SearchIcon>
                     <SearchContents></SearchContents> */}
         </SearchArea>
@@ -129,7 +136,16 @@ export default function BoardsListUI(props) {
         {props.data?.fetchBoards.map((el, index) => (
           <Row key={el._id} id={el._id} onClick={props.onClickMovetoBoard}>
             <Column onClick={props.onClickMovetoBoard}>{index}</Column>
-            <Column onClick={props.onClickMovetoBoard}>{el.title}</Column>
+            <Column onClick={props.onClickMovetoBoard}>
+              {el.title
+                .replaceAll(props.myKeyword, `#$#${props.myKeyword}#$#`)
+                .split("#$#")
+                .map((el) => (
+                  <MyWord key={uuidv4()} isMatched={props.myKeyword === el}>
+                    {el}
+                  </MyWord>
+                ))}
+            </Column>
             <Column onClick={props.onClickMovetoBoard}>{el.writer}</Column>
             <Column onClick={props.onClickMovetoBoard}>{el.createdAt}</Column>
           </Row>

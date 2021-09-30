@@ -20,6 +20,7 @@
     "apollo-upload-client": "^16.0.0",
     "axios": "^0.21.1",
     "graphql": "^15.5.1",
+    "lodash": "^4.17.21",
     "next": "11.1.0",
     "react": "17.0.2",
     "react-daum-postcode": "^2.0.6",
@@ -28,7 +29,8 @@
     "react-infinite-scroller": "^1.2.4",
     "react-player": "^2.9.0",
     "react-slick": "^0.28.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "7.32.0",

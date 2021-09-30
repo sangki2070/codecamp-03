@@ -248,3 +248,7 @@ export const RightMove = styled.span`
   }
   cursor: pointer;
 `;
+
+export const MyWord = styled.span`
+  color: ${(props) => (props.isMatched ? "red" : "black")};
+`;

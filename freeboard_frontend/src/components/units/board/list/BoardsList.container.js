@@ -1,22 +1,50 @@
 import BoardsListUI from "./BoardsList.present";
-import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./BoardsList.queries";
+import {
+  FETCH_BOARDS,
+  FETCH_BOARDS_COUNT,
+  FETCH_BOARDS_OF_THEBEST,
+} from "./BoardsList.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import _ from "lodash";
+import { BestBoardsBox } from "./BoardsList.styles";
 
 export default function BoardListContainer() {
   const router = useRouter();
   const [startPage, setStartpage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+  const [myKeyword, setMyKeyword] = useState();
+  const [bestBoards, setBestBoards] = useState(["", "", "", ""]);
+
+  const getDebounce = _.debounce((data) => {
+    refetch({ search: data, page: 1 });
+    setCurrentPage(1);
+    setMyKeyword(data);
+  }, 500);
+
+  function onChangeSearch(event) {
+    getDebounce(event.target.value);
+  }
+
   const { data, refetch } = useQuery(FETCH_BOARDS, {
     variables: { page: startPage },
   });
+
+  const { data: dataBestBoards } = useQuery(FETCH_BOARDS_OF_THEBEST);
+
+  function onchangeBestBoards(event) {
+    // const newBestBoards = [...dataBestBoards.fetchBoardsOfTheBest];
+
+    setBestBoards(event.target.value);
+    console.log(bestBoards);
+  }
 
   const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_COUNT);
   const lastPage = Math.ceil(dataBoardsCount?.fetchBoardsCount / 10);
 
   function onClickPage(event) {
-    refetch({ page: Number(event.target.id) });
+    refetch({ page: Number(event.target.id), search: myKeyword });
     setCurrentPage(Number(event.target.id));
   }
 
@@ -51,6 +79,11 @@ export default function BoardListContainer() {
       startPage={startPage}
       lastPage={lastPage}
       currentPage={currentPage}
+      onChangeSearch={onChangeSearch}
+      myKeyword={myKeyword}
+      bestBoards={bestBoards}
+      onchangeBestBoards={onchangeBestBoards}
+      dataBestBoards={dataBestBoards}
     />
   );
 }
