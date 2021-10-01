@@ -184,19 +184,28 @@ export const TableWrapper = styled.div`
 
 export const TableHeader = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 20px;
+  color: #0b2243;
+  font-weight: bold;
+  font-size: 15px;
 `;
 
 export const TableNumber = styled.div``;
 
-export const TableTitle = styled.div``;
+export const TableTitle = styled.div`
+  padding-left: 300px;
+`;
 
-export const TableWriter = styled.div``;
+export const TableWriter = styled.div`
+  padding-left: 270px;
+`;
 
-export const TableDate = styled.div``;
+export const TableDate = styled.div`
+  padding-left: 300px;
+`;
 
 export const TableLine = styled.div`
   width: 1200px;

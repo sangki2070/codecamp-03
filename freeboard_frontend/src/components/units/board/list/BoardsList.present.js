@@ -97,7 +97,7 @@ export default function BoardsListUI(props) {
           <TableNumber>번호</TableNumber>
           <TableTitle>제목</TableTitle>
           <TableWriter>작성자</TableWriter>
-          <TableDate>날찌</TableDate>
+          <TableDate>날짜</TableDate>
         </TableHeader>
         {props.data?.fetchBoards.map((el, index) => (
           <Row key={el._id} id={el._id} onClick={props.onClickMovetoBoard}>
@@ -113,7 +113,9 @@ export default function BoardsListUI(props) {
                 ))}
             </Column>
             <Column onClick={props.onClickMovetoBoard}>{el.writer}</Column>
-            <Column onClick={props.onClickMovetoBoard}>{el.createdAt}</Column>
+            <Column onClick={props.onClickMovetoBoard}>
+              {el.createdAt.substring(0, 10)}
+            </Column>
           </Row>
         ))}
       </TableWrapper>

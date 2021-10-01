@@ -15,17 +15,18 @@ export const Wrapper = styled.div`
 `;
 
 export const Flag = styled.img`
-  width: 100px;
+  width: 250px;
   height: 100px;
 `;
 
 export const Fair = styled.div`
-  width: 150px;
+  width: 200px;
   height: 100px;
 `;
 
 export const Rate = styled.div`
   height: 100px;
+  width: 200px;
 `;
 
 export const InnerWrapper = styled.div`

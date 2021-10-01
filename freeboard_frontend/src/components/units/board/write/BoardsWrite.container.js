@@ -132,22 +132,41 @@ export default function BoardsContainer(props) {
     setAddressDetail(event.target.value);
   }
   async function onClickModifyBtn() {
-    const updateBoardInput = { boardAddress: {} };
-    if (title) updateBoardInput.title = title;
-    if (contents) updateBoardInput.contents = contents;
-    if (youtubeUrl) updateBoardInput.youtubeUrl = youtubeUrl;
-    if (myZipcode) updateBoardInput.boardAddress.zipcode = myZipcode;
-    if (myAddress) updateBoardInput.boardAddress.address = myAddress;
+    const myUpdateboardInput = {};
+    if (title) myUpdateboardInput.title = title;
+    if (contents) myUpdateboardInput.contents = contents;
+    if (youtubeUrl) myUpdateboardInput.youtubeUrl = youtubeUrl;
+    if (myZipcode || myAddress || addressDetail) {
+      myUpdateboardInput.boardAddress = {};
+      if (myZipcode) myUpdateboardInput.boardAddress.zipcode = myZipcode;
+      if (myAddress) myUpdateboardInput.boardAddress.address = myAddress;
+      if (addressDetail)
+        myUpdateboardInput.boardAddress.addressDetail = addressDetail;
+    }
 
-    if (addressDetail)
-      updateBoardInput.boardAddress.addressDetail = addressDetail;
+    // const uploadFiles = files.map((el) =>
+    //   el ? uploadFile({ variables: { file: el } }) : null
+    // );
+    const uploadFiles = files // [File1, File2, null]
+      .map((el) => (el ? uploadFile({ variables: { file: el } }) : null));
+    const results = await Promise.all(uploadFiles);
+    const nextImages = results.map((el) => el?.data.uploadFile.url || "");
+    myUpdateboardInput.images = nextImages;
 
-    // console.log(myVariables);
+    console.log(nextImages);
+
+    if (data?.fetchBoard.images?.length) {
+      const prevImages = [...data?.fetchBoard.images];
+      myUpdateboardInput.images = prevImages.map((el, index) => nextImages[index] || el); // prettier-ignore
+    } else {
+      myUpdateboardInput.images = nextImages;
+    }
+
     try {
       await updateBoard({
         variables: {
-          updateBoardInput,
-          password,
+          updateBoardInput: myUpdateboardInput,
+          password: password,
           boardId: router.query.BoardsDetailPage,
         },
       });
@@ -158,12 +177,12 @@ export default function BoardsContainer(props) {
     }
   }
 
-  function onChangeFileUrls(fileUrl, index) {
-    const newFileUrls = [...fileUrls];
-    newFileUrls[index] = fileUrl;
-    console.log(newFileUrls);
-    setFileUrls(newFileUrls);
-  }
+  // function onChangeFileUrls(fileUrl, index) {
+  //   const newFileUrls = [...fileUrls];
+  //   newFileUrls[index] = fileUrl;
+  //   console.log(newFileUrls);
+  //   setFileUrls(newFileUrls);
+  // }
 
   async function onClickRegister() {
     if (name === "") {
@@ -185,10 +204,10 @@ export default function BoardsContainer(props) {
 
     try {
       const uploadFiles = files
-        .filter((el) => el)
-        .map((el) => uploadFile({ variables: { file: el } }));
+        // .filter((el) => el)
+        .map((el) => (el ? uploadFile({ variables: { file: el } }) : null));
       const results = await Promise.all(uploadFiles);
-      const myImages = results.map((el) => el.data.uploadFile.url);
+      const myImages = results.map((el) => el?.data.uploadFile.url || "");
 
       const result = await createBoard({
         variables: {

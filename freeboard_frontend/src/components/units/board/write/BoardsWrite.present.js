@@ -141,6 +141,7 @@ export default function BoardWriteUI(props) {
               key={`${el}_${index}`}
               index={index}
               onChangeFiles={props.onChangeFiles}
+              defaultFileUrl={props.data?.fetchBoard.images?.[index]}
             />
           ))}
           {/* <AttachmentBtn onClick={props.onClickUpload}>

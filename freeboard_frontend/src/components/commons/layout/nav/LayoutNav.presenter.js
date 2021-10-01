@@ -1,4 +1,4 @@
-import { Wrapper, SliderItem } from "./LayoutNav.styles";
+import { Wrapper, SliderItem, BodyVideo } from "./LayoutNav.styles";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,17 +15,26 @@ export default function LayoutNavUI() {
 
   return (
     <Wrapper>
-      <Slider {...settings}>
-        <div>
-          <SliderItem src="/images/home-landing.png" />
-        </div>
-        <div>
+      {/* <Slider {...settings}>
+        <div> */}
+      <BodyVideo
+        url={
+          "https://kr.tradingview.com/static/bundles/1b46d7c30e364bde36e56bf139724b23.mp4"
+        }
+        width={2000}
+        height={800}
+        muted={true}
+        playing={true}
+        loop={true}
+      ></BodyVideo>
+      {/* </div> */}
+      {/* <div>
           <SliderItem src="/images/fint1.png" />
         </div>
         <div>
           <SliderItem src="/images/fint2.png" />
-        </div>
-      </Slider>
+        </div> */}
+      {/* </Slider> */}
     </Wrapper>
   );
 }
