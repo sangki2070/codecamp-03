@@ -55,7 +55,7 @@ export default function BoardsListUI(props) {
                 src={`https://storage.googleapis.com/${el.images[0]}`}
               ></BoxImage>
             ) : (
-              <BoxImage1 src={"/images/box3.png"}></BoxImage1>
+              <BoxImage1 src={"/images/noimage3.svg"}></BoxImage1>
             )}
             <BoxTitle>{el.title}</BoxTitle>
             <ProfileWrapper>
