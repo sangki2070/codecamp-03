@@ -10,6 +10,7 @@ import {
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import { createUploadLink } from "apollo-upload-client";
+import LoginPage from "./loginauth";
 import Layout from "../src/components/commons";
 import Home from ".";
 
@@ -24,21 +25,26 @@ function MyApp({ Component, pageProps }) {
   });
 
   const HIDDEN_MAIN = ["/"];
+
   const HIDDEN_LAYOUT = [
     "/boards",
     "/boards/[BoardsDetailPage]",
     "/boards/[BoardsDetailPage]/edit",
     "/boards/currency",
     "/boards/new",
+    "/loginauth",
+    "/signup",
   ];
   const router = useRouter();
   const isHiddenMain = HIDDEN_MAIN.includes(router.pathname);
   const isHiddenLayout = HIDDEN_LAYOUT.includes(router.pathname);
+
   return (
     <>
       <Global styles={globalStyles} />
       <ApolloProvider client={client}>
         {!isHiddenLayout && <Home />}
+
         {/* <Home></Home> */}
 
         {!isHiddenMain && (
