@@ -10,7 +10,7 @@ import {
   SignupRightBack,
 } from "./signup.styles";
 
-export default function SignupUI() {
+export default function SignupUI(props) {
   return (
     <SignupWrapper>
       <SignupInnerWrapper>
@@ -21,30 +21,32 @@ export default function SignupUI() {
         <SignupInput
           type="text"
           placeholder="이메일을 입력해 주세요"
+          onChange={props.onChangeEmail}
         ></SignupInput>
-        <ErrorMessage>이메일은 필수 입력입니다.</ErrorMessage>
+        <ErrorMessage>{props.emailError}</ErrorMessage>
         <Label>이름</Label>
 
         <SignupInput
           type="text"
           placeholder="이름을 입력해 주세요"
+          onChange={props.onChangeName}
         ></SignupInput>
-        <ErrorMessage>이름은 필수 입력입니다.</ErrorMessage>
+        <ErrorMessage>{props.nameError}</ErrorMessage>
         <Label>비밀번호</Label>
-
         <SignupInput
           type="password"
           placeholder="비밀번호를 입력해 주세요"
+          onChange={props.onChangePassword}
         ></SignupInput>
-        <ErrorMessage>비밀번호는 필수 입력입니다.</ErrorMessage>
+        <ErrorMessage>{props.passwordError}</ErrorMessage>
         <Label>비밀번호 확인</Label>
-
         <SignupInput
           type="password"
           placeholder="비밀번호를 입력해 주세요"
+          onChange={props.onchangePasswordCheck}
         ></SignupInput>
-        <ErrorMessage>비밀번호는 필수 입력입니다.</ErrorMessage>
-        <SignupBtn>회원가입하기</SignupBtn>
+        <ErrorMessage>{props.passwrodCheckError}</ErrorMessage>
+        <SignupBtn onClick={props.onClickUserReigister}>회원가입하기</SignupBtn>
       </SignupInnerWrapper>
       <SignupRightBack src={"/images/a4.png"}></SignupRightBack>
     </SignupWrapper>

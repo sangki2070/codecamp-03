@@ -26,7 +26,7 @@ export const SignupInput = styled.input`
   border: 2px solid rgb(255, 255, 255);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.05);
-
+  color: rgb(255, 255, 255);
   padding-left: 16px;
   ::placeholder {
     color: rgb(255, 255, 255);
@@ -48,7 +48,7 @@ export const Label = styled.div`
 `;
 
 export const ErrorMessage = styled.div`
-  width: 210px;
+  width: 300px;
   height: 20px;
   /* font-family: Noto Sans CJK KR; */
   font-style: normal;
@@ -69,6 +69,10 @@ export const SignupBtn = styled.button`
   font-size: 16px;
 
   border: none;
+  cursor: pointer;
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 export const SignupRightBack = styled.img`
