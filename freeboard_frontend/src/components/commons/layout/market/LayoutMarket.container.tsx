@@ -36,7 +36,12 @@ export default function LayoutMarketPage() {
       setAda(markets.data.cardano.krw);
     }
     getResponse();
+
+    setInterval(() => {
+      getResponse();
+    }, 60000);
   }, []);
+
   return (
     <LayoutMarketUI
       btc={btc}

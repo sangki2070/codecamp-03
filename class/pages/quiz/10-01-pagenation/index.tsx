@@ -75,6 +75,10 @@ export default function PageNationBublingPage() {
       ))}
 
       <span onClick={onClickNextPage}>&#62;</span>
+      <br />
+      {new Array(100).fill(1).map((_, index) => (
+        <span key={index}>{index + 1}</span>
+      ))}
     </>
   );
 }

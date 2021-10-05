@@ -6,6 +6,7 @@ import {
   InMemoryCache,
   ApolloLink,
 } from "@apollo/client";
+import { useRouter } from "next/router";
 
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
@@ -13,46 +14,63 @@ import { createUploadLink } from "apollo-upload-client";
 import LoginPage from "./loginauth";
 import Layout from "../src/components/commons";
 import Home from ".";
+import SignupPage from "./signup/";
+import { createContext, useEffect, useState } from "react";
+const HIDDEN_MAIN = ["/"];
 
-import { useRouter } from "next/router";
+const HIDDEN_SIGNUP = ["/signup"];
+const HIDDEN_LOGIN = ["/loginauth"];
+
+export const GlobalContext = createContext(null);
+
 function MyApp({ Component, pageProps }) {
+  const [accessToken, setAccessToken] = useState("");
+  const [userInfo, setUserInfo] = useState({});
+
+  const value = {
+    accessToken: accessToken,
+    setAccessToken: setAccessToken,
+    userInfo: userInfo,
+    setUserInfo: setUserInfo,
+  };
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken") || "";
+    setAccessToken(accessToken);
+  }, []);
+
   const uploadLink = createUploadLink({
     uri: "http://backend03.codebootcamp.co.kr/graphql",
+    headers: { authorization: `Bearer ${accessToken}` },
   });
   const client = new ApolloClient({
     link: ApolloLink.from([uploadLink]),
     cache: new InMemoryCache(),
   });
 
-  const HIDDEN_MAIN = ["/"];
-
-  const HIDDEN_LAYOUT = [
-    "/boards",
-    "/boards/[BoardsDetailPage]",
-    "/boards/[BoardsDetailPage]/edit",
-    "/boards/currency",
-    "/boards/new",
-    "/loginauth",
-    "/signup",
-  ];
   const router = useRouter();
   const isHiddenMain = HIDDEN_MAIN.includes(router.pathname);
-  const isHiddenLayout = HIDDEN_LAYOUT.includes(router.pathname);
+  const isHiddenLogin = HIDDEN_LOGIN.includes(router.pathname);
+  const isHiddenSignup = HIDDEN_SIGNUP.includes(router.pathname);
 
   return (
     <>
-      <Global styles={globalStyles} />
-      <ApolloProvider client={client}>
-        {!isHiddenLayout && <Home />}
+      <GlobalContext.Provider value={value}>
+        <Global styles={globalStyles} />
+        <ApolloProvider client={client}>
+          {isHiddenMain && <Home />}
 
-        {/* <Home></Home> */}
+          {/* <Home></Home> */}
 
-        {!isHiddenMain && (
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        )}
-      </ApolloProvider>
+          {!isHiddenMain && !isHiddenSignup && !isHiddenLogin && (
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          )}
+          {isHiddenSignup && <SignupPage />}
+          {isHiddenLogin && <LoginPage />}
+        </ApolloProvider>
+      </GlobalContext.Provider>
     </>
   );
 }

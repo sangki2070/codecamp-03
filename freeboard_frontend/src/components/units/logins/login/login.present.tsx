@@ -15,7 +15,7 @@ import {
   LoginRightBack,
 } from "./login.styles";
 
-export default function LoginUI() {
+export default function LoginUI(props) {
   return (
     <LoginWrapper>
       <LoginInnerWrapper>
@@ -26,18 +26,20 @@ export default function LoginUI() {
         <LoginInput
           type="text"
           placeholder="이메일을 입력해주세요."
+          onChange={props.onChangeMyEmail}
         ></LoginInput>
-        <ErrorMessage>이메일은 필수 입력입니다.</ErrorMessage>
+        <ErrorMessage>{props.emailError}</ErrorMessage>
         <LoginInput
           type="text"
           placeholder="비밀번호를 입력해 주세요."
+          onChange={props.onchangeMyPassword}
         ></LoginInput>
-        <ErrorMessage>비밀번호는 필수 입력입니다.</ErrorMessage>
+        <ErrorMessage>{props.passwordError}</ErrorMessage>
         <CheckWrapper>
           <MyCheck></MyCheck>
           <div>로그인 상태 유지</div>
         </CheckWrapper>
-        <LoginBtn>로그인하기</LoginBtn>
+        <LoginBtn onClick={props.onClickLogin}>로그인하기</LoginBtn>
         <UnderLine></UnderLine>
         <SignupWrapper>
           <SignupWord>이메일 찾기</SignupWord>

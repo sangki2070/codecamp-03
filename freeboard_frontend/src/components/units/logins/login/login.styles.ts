@@ -62,6 +62,7 @@ export const LoginInput = styled.input`
     color: rgb(255, 255, 255);
   }
   margin-bottom: 20px;
+  color: rgb(255, 255, 255);
 `;
 
 export const MyCheck = styled(Checkbox)`
@@ -84,6 +85,10 @@ export const LoginBtn = styled.button`
   font-size: 16px;
 
   border: none;
+  cursor: pointer;
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 export const UnderLine = styled.div`

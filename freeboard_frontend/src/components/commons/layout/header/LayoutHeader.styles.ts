@@ -1,13 +1,21 @@
 import styled from "@emotion/styled";
-export const Wrapper = styled.div`
-  background-color: #39c8ce;
+import { Avatar, Badge } from "antd";
 
+export const MyAvatar = styled(Avatar)``;
+
+export const MyBadge = styled(Badge)``;
+
+export const Wrapper = styled.div`
+  background-color: rgb(18, 23, 34);
+  width: 100vw;
   height: 152px;
   /* padding-left: 700px; */
-  padding-top: 20px;
+  /* padding-top: 20px; */
+  padding-left: 70px;
+  padding-right: 70px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -17,49 +25,55 @@ export const Logo = styled.img`
   font-family: "live";
   font-style: italic;
   cursor: pointer;
-  width: 200px;
+  width: 80px;
   height: 100px;
   /* padding-bottom: 120px; */
 `;
 
 export const HeaderWrapper = styled.div`
-  width: 600px;
+  /* width: 600px; */
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   align-items: center;
   font-size: 18px;
 `;
 
 export const LogoName = styled.div`
-  color: #ffe79f;
-  font-size: 60px;
+  color: rgb(255, 255, 255);
   font-weight: bold;
+  font-family: Trebuchet MS, roboto, ubuntu, sans-serif;
+  font-size: 40px;
 `;
 
 export const Login = styled.div`
-  font-size: 30px;
   font-weight: bold;
+  font-family: Trebuchet MS, roboto, ubuntu, sans-serif;
+  font-size: 40px;
+  color: rgb(255, 255, 255);
 `;
 
 export const SignUp = styled.div`
-  font-size: 30px;
   font-weight: bold;
+  font-family: Trebuchet MS, roboto, ubuntu, sans-serif;
+  font-size: 40px;
   margin-left: 10px;
+  color: rgb(255, 255, 255);
 `;
 
 export const LoginWrapper = styled.div`
+  width: 300px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  width: 600px;
+  justify-content: space-between;
+
+  /* justify-content: flex-end; */
+  /* width: 600px; */
 `;
 
-export const InnerWrapper = styled.div`
-  width: 1200px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 18px;
+export const Name = styled.div`
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-family: Trebuchet MS, roboto, ubuntu, sans-serif;
+  font-size: 40px;
 `;
