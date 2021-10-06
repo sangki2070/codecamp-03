@@ -19,6 +19,9 @@ import {
   WeatherFooterWrapper,
   WeaterFooterItemWrapper,
   WeatherFooterImageWrapper,
+  Logo,
+  LogoName,
+  LogoWrapper,
 } from "./LayoutFooter.styles";
 
 import { useEffect, useState } from "react";
@@ -32,6 +35,8 @@ import {
   faPooStorm,
   faSnowflake,
   faSmog,
+  faWind,
+  faTint,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -78,45 +83,62 @@ export default function LayoutFooterUI() {
 
   return (
     <Wrapper>
-      <InnerWrapper>
-        <ButtonWrapper>
-          <GoogleWrapper>
-            <GoogleIcon src="/images/googleplay.png"></GoogleIcon>
-            <div>Google Play</div>
-          </GoogleWrapper>
-          <AppleWrapper>
-            <AppleIcon src="/images/appstore.svg"></AppleIcon>
-            <div>App Store</div>
-          </AppleWrapper>
-        </ButtonWrapper>
-        <WeatherWrapper>
-          <WeatherHeadWrapper>
-            <WeatherImageWrapper>
-              <FontAwesomeIcon
-                icon={weatherImage[weatherIcon]}
-                size="5x"
-              ></FontAwesomeIcon>
-            </WeatherImageWrapper>
-            <WeatherItemWrapper>
-              <Temperature>{temp - 273} &#8451;</Temperature>
-              <WeatherState>{weather}</WeatherState>
-              <City>{city}</City>
-            </WeatherItemWrapper>
-          </WeatherHeadWrapper>
-          <WeatherFooterWrapper>
-            <WeatherFooterImageWrapper>
-              <Wind src="/images/wind.svg"></Wind>
-              <Humidity src="/images/humidity.svg"></Humidity>
-              <Clouds src="/images/cloud.svg"></Clouds>
-            </WeatherFooterImageWrapper>
-            <WeaterFooterItemWrapper>
-              <div>{wind}</div>
-              <div>{humidity}</div>
-              <div>{clouds}</div>
-            </WeaterFooterItemWrapper>
-          </WeatherFooterWrapper>
-        </WeatherWrapper>
-      </InnerWrapper>
+      {/* <InnerWrapper> */}
+      <ButtonWrapper>
+        <GoogleWrapper>
+          <GoogleIcon src="/images/googleplay.png"></GoogleIcon>
+          <div>Google Play</div>
+        </GoogleWrapper>
+        <AppleWrapper>
+          <AppleIcon src="/images/appstore.svg"></AppleIcon>
+          <div>App Store</div>
+        </AppleWrapper>
+      </ButtonWrapper>
+      <LogoWrapper>
+        <Logo src={"/images/tvlogo1.jpeg"}></Logo>
+        <LogoName>TradingView</LogoName>
+      </LogoWrapper>
+
+      <WeatherWrapper>
+        <WeatherHeadWrapper>
+          <WeatherImageWrapper>
+            <FontAwesomeIcon
+              icon={weatherImage[weatherIcon]}
+              size="5x"
+              style={{ color: "white" }}
+            ></FontAwesomeIcon>
+          </WeatherImageWrapper>
+          <WeatherItemWrapper>
+            <Temperature style={{ color: "white" }}>
+              {temp - 273} &#8451;
+            </Temperature>
+            <WeatherState style={{ color: "white" }}>{weather}</WeatherState>
+            <City style={{ color: "white" }}>{city}</City>
+          </WeatherItemWrapper>
+        </WeatherHeadWrapper>
+        <WeatherFooterWrapper>
+          <WeatherFooterImageWrapper>
+            <FontAwesomeIcon
+              icon={faWind}
+              style={{ color: "white" }}
+            ></FontAwesomeIcon>
+            <FontAwesomeIcon
+              icon={faCloud}
+              style={{ color: "white" }}
+            ></FontAwesomeIcon>
+            <FontAwesomeIcon
+              icon={faTint}
+              style={{ color: "white" }}
+            ></FontAwesomeIcon>
+          </WeatherFooterImageWrapper>
+          <WeaterFooterItemWrapper>
+            <div>{wind}</div>
+            <div>{humidity}</div>
+            <div>{clouds}</div>
+          </WeaterFooterItemWrapper>
+        </WeatherFooterWrapper>
+      </WeatherWrapper>
+      {/* </InnerWrapper> */}
     </Wrapper>
   );
 }

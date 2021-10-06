@@ -2,10 +2,34 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   background-color: rgb(18, 23, 34);
-  width: 100%;
+  width: 100vw;
   height: 300px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 100px;
+  padding-right: 100px;
+`;
+
+export const Logo = styled.img`
+  font-size: 60px;
+  /* font-weight: bold; */
+  font-family: "live";
+  font-style: italic;
+  cursor: pointer;
+  width: 80px;
+  height: 100px;
+  /* padding-bottom: 120px; */
+`;
+export const LogoName = styled.div`
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-family: Trebuchet MS, roboto, ubuntu, sans-serif;
+  font-size: 40px;
+`;
+
+export const LogoWrapper = styled.div`
+  display: flex;
   align-items: center;
 `;
 
@@ -44,7 +68,7 @@ export const WeatherWrapper = styled.div`
   height: 200px;
   border-radius: 10px;
   border: 2px solid rgb(255, 255, 255);
-  background-color: #90caf9;
+  background-color: #1e222d;
   font-size: 20px;
   margin-left: 30px;
   padding: 15px;
@@ -66,7 +90,7 @@ export const AppleIcon = styled.img`
 
 export const InnerWrapper = styled.div`
   display: flex;
-  width: 1200px;
+  /* width: 1200px; */
   align-items: center;
   justify-content: space-between;
 `;
@@ -122,9 +146,11 @@ export const WeatherFooterWrapper = styled.div`
 export const WeaterFooterItemWrapper = styled.div`
   display: flex;
   justify-content: space-around;
+  color: white;
 `;
 
 export const WeatherFooterImageWrapper = styled.div`
   display: flex;
   justify-content: space-around;
+  padding-right: 10px;
 `;

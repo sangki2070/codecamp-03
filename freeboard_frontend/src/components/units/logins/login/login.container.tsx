@@ -44,7 +44,7 @@ export default function LoginContainer() {
       console.log(result.data?.loginUser.accessToken);
       setAccessToken(result.data?.loginUser.accessToken);
       localStorage.setItem("accessToken", result.data.loginUser.accessToken);
-      router.push("/boards");
+      router.push("/products/new");
     } catch (error) {
       alert("회원가입을 먼저 해주세요");
     }
