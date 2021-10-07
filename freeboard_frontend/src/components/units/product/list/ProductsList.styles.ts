@@ -124,12 +124,13 @@ export const WoreNavWrapper = styled.div`
 export const ProductsItemWrapper = styled.div`
   display: flex;
   height: 160px;
+  border-top: 1px solid #bdbdbd;
 `;
 
 export const ProductsItemImage = styled.div`
   width: 160px;
   height: 160px;
-  background-color: gray;
+  background-color: beige;
 `;
 
 export const ItemTitleWrapper = styled.div`
@@ -169,6 +170,8 @@ export const ItemLikeCount = styled.div``;
 export const ItemPriceWrapper = styled.div`
   display: flex;
   align-items: center;
+
+  width: 160px;
 `;
 
 export const ItemPriceImage = styled.div`

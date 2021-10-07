@@ -34,7 +34,7 @@ import {
   ItemAvatarWrapper,
 } from "./ProductsList.styles";
 
-export default function ProductsListUI() {
+export default function ProductsListUI(props) {
   return (
     <ProductsListWrapper>
       <TitleWrapper>
@@ -63,28 +63,28 @@ export default function ProductsListUI() {
         <ProductSearch placeholder="제품을 검색해 주세요."></ProductSearch>
         <Calender>2020.12.02 ~ 2020.12.02</Calender>
       </ProductNavWrapper>
-
-      <ProductsItemWrapper>
-        <ProductsItemImage></ProductsItemImage>
-
-        <ItemContentsWrapper>
-          <ItemTitleWrapper>
-            <ItemTitle>삼성전자 갤럭시 탭A 10.1</ItemTitle>
-            <ItemSubTitle>2019 LTE 32GB</ItemSubTitle>
-            <ItemTag>#삼성전자 #갤럭시탭 #갓성비</ItemTag>
-            <ItemAvatarWrapper>
-              <ItemAvatar></ItemAvatar>
-              <ItemSeller>판매자</ItemSeller>
-              <ItemLikeImage></ItemLikeImage>
-              <ItemLikeCount>20</ItemLikeCount>
-            </ItemAvatarWrapper>
-          </ItemTitleWrapper>
-          <ItemPriceWrapper>
-            <ItemPriceImage></ItemPriceImage>
-            <ItemPrice>1,684,620원</ItemPrice>
-          </ItemPriceWrapper>
-        </ItemContentsWrapper>
-      </ProductsItemWrapper>
+      {props.data?.fetchUseditems.map((el) => (
+        <ProductsItemWrapper key={el._id}>
+          <ProductsItemImage></ProductsItemImage>
+          <ItemContentsWrapper>
+            <ItemTitleWrapper>
+              <ItemTitle>{el.name}</ItemTitle>
+              <ItemSubTitle>{el.remarks}</ItemSubTitle>
+              <ItemTag>#삼성전자 #갤럭시탭 #갓성비</ItemTag>
+              <ItemAvatarWrapper>
+                <ItemAvatar></ItemAvatar>
+                <ItemSeller></ItemSeller>
+                <ItemLikeImage></ItemLikeImage>
+                <ItemLikeCount>20</ItemLikeCount>
+              </ItemAvatarWrapper>
+            </ItemTitleWrapper>
+            <ItemPriceWrapper>
+              <ItemPriceImage></ItemPriceImage>
+              <ItemPrice>{el.price}</ItemPrice>
+            </ItemPriceWrapper>
+          </ItemContentsWrapper>
+        </ProductsItemWrapper>
+      ))}
     </ProductsListWrapper>
   );
 }

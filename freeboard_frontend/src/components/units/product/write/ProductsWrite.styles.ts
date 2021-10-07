@@ -31,12 +31,6 @@ export const WriteTitle = styled.div`
   padding-bottom: 16px;
 `;
 
-export const WriteInput = styled.input`
-  width: 996px;
-  height: 52px;
-  margin-bottom: 40px;
-`;
-
 export const WriteEditor = styled.textarea`
   width: 996px;
   height: 320px;

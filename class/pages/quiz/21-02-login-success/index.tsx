@@ -22,7 +22,7 @@ export default function LoginSuccessPage() {
 
   useEffect(() => {
     if (userInfo.email) return;
-    if (accessToken === "") {
+    if (!accessToken) {
       router.push("/quiz/21-01-login");
       alert("로그인을 먼저 해주세요");
     }
@@ -30,10 +30,6 @@ export default function LoginSuccessPage() {
       name: data?.fetchUserLoggedIn.name,
       email: data?.fetchUserLoggedIn.email,
     });
-
-    // return () => {
-    //   // setAccessToken(accessToken);
-    // };
   }, []);
 
   return (
