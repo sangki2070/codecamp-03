@@ -29,7 +29,7 @@ import Lines01 from "../../../commons/lines/01/lines01";
 import Buttons01 from "../../../commons/buttons/01";
 import Carousel01 from "../../../commons/carousel/01";
 
-export default function ProductsReadUI() {
+export default function ProductsReadUI(props) {
   return (
     <ProductsReadWrapper>
       <HeaderWrapper>
@@ -50,7 +50,7 @@ export default function ProductsReadUI() {
       <BodyHeader>
         <BodyHeaderLeft>
           <BodyDate>2019 LTE 32GB</BodyDate>
-          <BodyTitle>삼성전자 갤럭시탭 A 10.1</BodyTitle>
+          <BodyTitle>{props.data?.fetchUseditem.name}</BodyTitle>
         </BodyHeaderLeft>
         <BodyHeaderRight>
           <BodyHeart></BodyHeart>
@@ -63,7 +63,7 @@ export default function ProductsReadUI() {
         {/* <Carousel01 /> */}
       </BodyImageWrapper>
 
-      <BodyWriteArea></BodyWriteArea>
+      <BodyWriteArea>{props.data?.fetchUseditem.contents}</BodyWriteArea>
 
       <BodyWriteWrapper>
         <BodyWriteTag></BodyWriteTag>

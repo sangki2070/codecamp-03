@@ -24,7 +24,7 @@ export default function ProductsWriteUI(props) {
     <ProductWriteWrapper>
       <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
         <TitleWrapper>
-          <FormTitle>상품 등록하기</FormTitle>
+          <FormTitle>{props.isEdit ? "게시물 등록" : "게시물 수정"}</FormTitle>
         </TitleWrapper>
         <WriteTitle>상품명</WriteTitle>
         <Input01
@@ -73,7 +73,12 @@ export default function ProductsWriteUI(props) {
         <MyRadio>사진1</MyRadio>
         <MyRadio>사진2</MyRadio>
         <TitleWrapper>
-          <ReigsterButton type="submit">등록하기</ReigsterButton>
+          {!props.isEdit && (
+            <ReigsterButton type="submit">수정하기</ReigsterButton>
+          )}
+          {props.isEdit && (
+            <ReigsterButton type="submit">등록하기</ReigsterButton>
+          )}
         </TitleWrapper>
       </form>
     </ProductWriteWrapper>

@@ -5,9 +5,11 @@ import { useMutation } from "@apollo/client";
 
 import ProductsWriteUI from "./ProductsWrite.present";
 import { CREATE_USED_ITEM } from "./ProductsWrite.queries";
+import { useRouter } from "next/router";
 
-export default function ProductsWriteContainer() {
+export default function ProductsWriteContainer(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
+  const router = useRouter();
 
   const { handleSubmit, register, formState } = useForm({
     mode: "onChange",
@@ -26,6 +28,7 @@ export default function ProductsWriteContainer() {
         },
       });
       console.log(result);
+      router.push(`${result.data.createUseditem._id}`);
     } catch (error) {
       console.log(error);
     }
@@ -37,6 +40,7 @@ export default function ProductsWriteContainer() {
       onClickSubmit={onClickSubmit}
       register={register}
       formStat={formState}
+      isEdit={props.isEdit}
     />
   );
 }
