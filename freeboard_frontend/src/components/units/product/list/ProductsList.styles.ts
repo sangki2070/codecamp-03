@@ -1,4 +1,14 @@
 import styled from "@emotion/styled";
+import InfiniteScroll from "react-infinite-scroller";
+
+export const ScrollArea = styled(InfiniteScroll)`
+  /* width: 1240px; */
+  height: 1200px;
+`;
+
+export const Loader = styled.div`
+  overflow: auto;
+`;
 
 export const ProductsListWrapper = styled.div`
   width: 1200px;

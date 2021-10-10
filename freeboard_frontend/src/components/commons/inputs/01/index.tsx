@@ -12,6 +12,7 @@ export default function Input01(props) {
       type={props.type}
       {...props.register}
       placeholder={props.name}
+      defaultValue={props.defaultValue}
     />
   );
 }

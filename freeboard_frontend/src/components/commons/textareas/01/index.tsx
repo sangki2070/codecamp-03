@@ -8,5 +8,11 @@ const TextArea01 = styled.textarea`
 `;
 
 export default function Textarea01(props) {
-  return <TextArea01 {...props.register} placeholder={props.name} />;
+  return (
+    <TextArea01
+      {...props.register}
+      placeholder={props.name}
+      defaultValue={props.defaultValue}
+    />
+  );
 }

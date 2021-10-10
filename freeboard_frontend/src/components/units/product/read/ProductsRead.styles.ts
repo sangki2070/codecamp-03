@@ -104,10 +104,9 @@ export const BodyHeaderRight = styled.div`
   align-items: center;
 `;
 
-export const BodyHeart = styled.div`
+export const BodyHeart = styled.img`
   width: 30px;
   height: 30px;
-  background-color: gray;
 `;
 
 export const BodyHeartCount = styled.div``;

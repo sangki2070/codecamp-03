@@ -53,8 +53,13 @@ export default function ProductsReadUI(props) {
           <BodyTitle>{props.data?.fetchUseditem.name}</BodyTitle>
         </BodyHeaderLeft>
         <BodyHeaderRight>
-          <BodyHeart></BodyHeart>
-          <BodyHeartCount>20</BodyHeartCount>
+          <BodyHeart
+            src={"/images/productsheart.svg"}
+            onClick={props.onClickPick}
+          ></BodyHeart>
+          <BodyHeartCount>
+            {props.data?.fetchUseditem.pickedCount}
+          </BodyHeartCount>
         </BodyHeaderRight>
       </BodyHeader>
 
@@ -74,8 +79,9 @@ export default function ProductsReadUI(props) {
       <Lines01 />
 
       <ButtonWrapper>
-        <Buttons01 name="목록으로" />
-        <Buttons01 name="구매하기" />
+        <Buttons01 name="목록으로" onClick={props.onClickMoveProducts} />
+        <Buttons01 name="삭제하기" onClick={props.onClickDelete} />
+        <Buttons01 name="수정하기" onClick={props.onClickMoveEdit} />
       </ButtonWrapper>
       <Lines01 />
     </ProductsReadWrapper>

@@ -13,7 +13,7 @@ export const MyModal = styled(Modal)``;
 export const Star = styled(Rate)``;
 
 export const ScrollWrapper = styled(InfiniteScroll)`
-  width: 1240px;
+  width: 1300px;
 `;
 
 export const Loader = styled.div`

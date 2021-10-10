@@ -32,6 +32,8 @@ import {
   ItemTitleWrapper,
   ItemSeller,
   ItemAvatarWrapper,
+  ScrollArea,
+  Loader,
 } from "./ProductsList.styles";
 
 export default function ProductsListUI(props) {
@@ -63,28 +65,37 @@ export default function ProductsListUI(props) {
         <ProductSearch placeholder="제품을 검색해 주세요."></ProductSearch>
         <Calender>2020.12.02 ~ 2020.12.02</Calender>
       </ProductNavWrapper>
-      {props.data?.fetchUseditems.map((el) => (
-        <ProductsItemWrapper key={el._id}>
-          <ProductsItemImage></ProductsItemImage>
-          <ItemContentsWrapper>
-            <ItemTitleWrapper>
-              <ItemTitle>{el.name}</ItemTitle>
-              <ItemSubTitle>{el.remarks}</ItemSubTitle>
-              <ItemTag>#삼성전자 #갤럭시탭 #갓성비</ItemTag>
-              <ItemAvatarWrapper>
-                <ItemAvatar></ItemAvatar>
-                <ItemSeller></ItemSeller>
-                <ItemLikeImage></ItemLikeImage>
-                <ItemLikeCount>20</ItemLikeCount>
-              </ItemAvatarWrapper>
-            </ItemTitleWrapper>
-            <ItemPriceWrapper>
-              <ItemPriceImage></ItemPriceImage>
-              <ItemPrice>{el.price}</ItemPrice>
-            </ItemPriceWrapper>
-          </ItemContentsWrapper>
-        </ProductsItemWrapper>
-      ))}
+      <Loader ref={props.loader}>
+        <ScrollArea
+          pageStart={0}
+          loadMore={props.onLoadMore}
+          hasMore={false || true}
+          useWindow={false}
+        >
+          {props.data?.fetchUseditems.map((el) => (
+            <ProductsItemWrapper key={el._id}>
+              <ProductsItemImage></ProductsItemImage>
+              <ItemContentsWrapper>
+                <ItemTitleWrapper>
+                  <ItemTitle>{el.name}</ItemTitle>
+                  <ItemSubTitle>{el.remarks}</ItemSubTitle>
+                  <ItemTag>#삼성전자 #갤럭시탭 #갓성비</ItemTag>
+                  <ItemAvatarWrapper>
+                    <ItemAvatar></ItemAvatar>
+                    <ItemSeller></ItemSeller>
+                    <ItemLikeImage></ItemLikeImage>
+                    <ItemLikeCount>20</ItemLikeCount>
+                  </ItemAvatarWrapper>
+                </ItemTitleWrapper>
+                <ItemPriceWrapper>
+                  <ItemPriceImage></ItemPriceImage>
+                  <ItemPrice>{el.price}</ItemPrice>
+                </ItemPriceWrapper>
+              </ItemContentsWrapper>
+            </ProductsItemWrapper>
+          ))}
+        </ScrollArea>
+      </Loader>
     </ProductsListWrapper>
   );
 }

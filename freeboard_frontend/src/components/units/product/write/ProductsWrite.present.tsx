@@ -22,7 +22,14 @@ import Textarea01 from "../../../commons/textareas/01";
 export default function ProductsWriteUI(props) {
   return (
     <ProductWriteWrapper>
-      <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+      <form
+        onSubmit={
+          props.isEdit
+            ? props.handleSubmit(props.onClickSubmit)
+            : props.handleSubmit(props.onClickUpdate)
+        }
+      >
+        {/* <form onSubmit={props.handleSubmit(props.onClickSubmit)}> */}
         <TitleWrapper>
           <FormTitle>{props.isEdit ? "게시물 등록" : "게시물 수정"}</FormTitle>
         </TitleWrapper>
@@ -31,23 +38,27 @@ export default function ProductsWriteUI(props) {
           type="text"
           name="상품명을 작성해주세요."
           register={props.register("myName")}
+          defaultValue={props.data?.fetchUseditem.name}
         ></Input01>
         <WriteTitle>한줄요약</WriteTitle>
         <Input01
           type="text"
           name="한줄요약을 작성해 주세요."
           register={props.register("myRemarks")}
+          defaultValue={props.data?.fetchUseditem.remarks}
         ></Input01>
         <WriteTitle>상품설명</WriteTitle>
         <Textarea01
           name="상품을 설명해 주세요."
           register={props.register("myContents")}
+          defaultValue={props.data?.fetchUseditem.contents}
         ></Textarea01>
         <WriteTitle>판매가격</WriteTitle>
         <Input01
           type="text"
           name="상품가격을 입력해 주세요."
           register={props.register("myPrice")}
+          defaultValue={props.data?.fetchUseditem.price}
         ></Input01>
         <WriteTitle>태그입력</WriteTitle>
         <Input01 name="#태그 #태그 #태그"></Input01>

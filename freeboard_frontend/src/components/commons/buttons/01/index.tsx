@@ -6,5 +6,5 @@ const MyButton = styled.button`
 `;
 
 export default function Buttons01(props) {
-  return <MyButton>{props.name}</MyButton>;
+  return <MyButton onClick={props.onClick}>{props.name}</MyButton>;
 }
