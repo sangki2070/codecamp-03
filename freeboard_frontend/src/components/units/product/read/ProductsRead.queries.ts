@@ -8,6 +8,12 @@ export const FETCH_USED_ITEM = gql`
       remarks
       contents
       pickedCount
+      seller {
+        _id
+        email
+        name
+      }
+      createdAt
     }
   }
 `;

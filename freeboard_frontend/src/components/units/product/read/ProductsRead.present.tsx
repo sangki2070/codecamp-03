@@ -11,7 +11,7 @@ import {
   HeaderFlex,
   BodyHeader,
   BodyHeaderLeft,
-  BodyDate,
+  BodyName,
   BodyTitle,
   BodyHeaderRight,
   BodyHeart,
@@ -33,11 +33,13 @@ export default function ProductsReadUI(props) {
   return (
     <ProductsReadWrapper>
       <HeaderWrapper>
-        <SellerAvatar></SellerAvatar>
+        <SellerAvatar src={"/images/productsavatar.svg"}></SellerAvatar>
         <HeaderFlex>
           <HeaderLeft>
-            <SellerName>판매자</SellerName>
-            <ProductsDate>Date: 2021.02.18</ProductsDate>
+            <SellerName>{props.data?.fetchUseditem.seller.name}</SellerName>
+            <ProductsDate>
+              Date: {props.data?.fetchUseditem.createdAt.slice(0, 10)}
+            </ProductsDate>
           </HeaderLeft>
           <HeaderRight>
             <Upload></Upload>
@@ -49,7 +51,7 @@ export default function ProductsReadUI(props) {
 
       <BodyHeader>
         <BodyHeaderLeft>
-          <BodyDate>2019 LTE 32GB</BodyDate>
+          <BodyName>2019 LTE 32GB</BodyName>
           <BodyTitle>{props.data?.fetchUseditem.name}</BodyTitle>
         </BodyHeaderLeft>
         <BodyHeaderRight>

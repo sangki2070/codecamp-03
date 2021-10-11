@@ -3,11 +3,17 @@ import InfiniteScroll from "react-infinite-scroller";
 
 export const ScrollArea = styled(InfiniteScroll)`
   /* width: 1240px; */
-  height: 1200px;
+  height: 960px;
 `;
 
 export const Loader = styled.div`
   overflow: auto;
+`;
+
+export const BestProductsArea = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const ProductsListWrapper = styled.div`
@@ -20,8 +26,8 @@ export const ProductsListWrapper = styled.div`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
   padding-top: 80px;
   padding-bottom: 100px;
-  padding-left: 102px;
-  padding-right: 102px;
+  /* padding-left: 102px;
+  padding-right: 102px; */
 `;
 
 export const ListTitle = styled.div`
@@ -33,8 +39,13 @@ export const ListTitle = styled.div`
 export const BestProductWrapper = styled.div`
   width: 282px;
   height: 391px;
-  border: 1px solid black;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  :hover {
+    opacity: 0.6;
+    background-color: gray;
+  }
+  cursor: pointer;
 `;
 
 export const TitleWrapper = styled.div`
@@ -43,10 +54,9 @@ export const TitleWrapper = styled.div`
   padding-bottom: 80px;
 `;
 
-export const BestProductImage = styled.div`
+export const BestProductImage = styled.img`
   width: 242px;
   height: 242px;
-  background-color: gray;
 `;
 
 export const BestProductTitle = styled.div`
@@ -84,10 +94,9 @@ export const BestProductLikeWrapper = styled.div`
   align-items: center;
 `;
 
-export const LikeImage = styled.div`
+export const LikeImage = styled.img`
   width: 20px;
   height: 20px;
-  background-color: gray;
 `;
 export const LikeCount = styled.div``;
 
@@ -135,18 +144,23 @@ export const ProductsItemWrapper = styled.div`
   display: flex;
   height: 160px;
   border-top: 1px solid #bdbdbd;
+
+  :hover {
+    opacity: 0.6;
+    background-color: gray;
+  }
+  cursor: pointer;
 `;
 
-export const ProductsItemImage = styled.div`
+export const ProductsItemImage = styled.img`
   width: 160px;
   height: 160px;
-  background-color: beige;
 `;
 
 export const ItemTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 export const ItemContentsWrapper = styled.div`
@@ -163,31 +177,32 @@ export const ItemSubTitle = styled.div``;
 
 export const ItemTag = styled.div``;
 
-export const ItemAvatar = styled.div`
+export const ItemAvatar = styled.img`
   width: 20px;
   height: 20px;
-  background-color: green;
 `;
 
-export const ItemLikeImage = styled.div`
+export const ItemLikeImage = styled.img`
   width: 20px;
   height: 20px;
-  background-color: green;
 `;
 
-export const ItemLikeCount = styled.div``;
+export const ItemLikeCount = styled.div`
+  padding-left: 8px;
+`;
 
 export const ItemPriceWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
   width: 160px;
 `;
 
-export const ItemPriceImage = styled.div`
+export const ItemPriceImage = styled.img`
   width: 20px;
   height: 20px;
-  background-color: green;
+  margin-right: 11px;
 `;
 
 export const ItemPrice = styled.div`
@@ -196,9 +211,41 @@ export const ItemPrice = styled.div`
   font-size: 24px;
 `;
 
-export const ItemSeller = styled.div``;
+export const ItemSeller = styled.div`
+  width: 60px;
+  padding-left: 5px;
+`;
 
 export const ItemAvatarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const ItemSellerWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ItemPickWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Line = styled.div`
+  width: 1200px;
+  height: 1px;
+  background-color: #bdbdbd;
+  margin-bottom: 28px;
+`;
+
+export const WriteButton = styled.button`
+  width: 124px;
+  height: 52px;
+  margin-top: 40px;
+`;
+
+export const ButtonArea = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 `;

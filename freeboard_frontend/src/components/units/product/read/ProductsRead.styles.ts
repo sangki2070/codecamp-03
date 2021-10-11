@@ -24,10 +24,9 @@ export const HeaderWrapper = styled.div`
   padding-bottom: 30px;
 `;
 
-export const SellerAvatar = styled.div`
+export const SellerAvatar = styled.img`
   width: 40px;
   height: 40px;
-  background-color: gray;
 `;
 
 export const SellerName = styled.div`
@@ -85,7 +84,7 @@ export const BodyHeader = styled.div`
 
 export const BodyHeaderLeft = styled.div``;
 
-export const BodyDate = styled.div`
+export const BodyName = styled.div`
   width: 125px;
   height: 30px;
   color: #bdbdbd;
