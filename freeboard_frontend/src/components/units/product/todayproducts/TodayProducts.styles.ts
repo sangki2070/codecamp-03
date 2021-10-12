@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
 
 export const TodayProductsWrapper = styled.div`
-  margin-top: 717px;
+  position: absolute;
+  top: 2050px;
+  left: 1550px;
 `;
 
 export const TodayWrapper = styled.div`
   width: 196px;
-  height: 505px;
+  /* height: 505px; */
   border: 1px solid #bdbdbd;
   display: flex;
   flex-direction: column;
@@ -18,6 +20,7 @@ export const TodayTitle = styled.div`
   height: 27px;
   font-weight: bold;
   font-size: 18px;
+  margin-top: 20px;
 `;
 
 export const TodayProductsArea = styled.div`
@@ -26,6 +29,11 @@ export const TodayProductsArea = styled.div`
   border: 1px solid #bdbdbd;
   margin-top: 20px;
   padding: 10px;
+  :hover {
+    opacity: 0.7;
+    background-color: red;
+  }
+  cursor: pointer;
 `;
 
 export const PickArea = styled.div`

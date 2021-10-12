@@ -59,7 +59,7 @@ export default function ProductsListUI(props) {
             <BestProductWrapper
               key={el._id}
               // id={el._id}
-              onClick={props.onClickMovetoProducts(el._id)}
+              onClick={props.onClickMovetoProducts(el)}
               // onClick={props.onClickMovetoProducts}
             >
               <BestProductImage src={"/images/noimage3.svg"}></BestProductImage>
@@ -97,7 +97,7 @@ export default function ProductsListUI(props) {
             {props.data?.fetchUseditems.map((el) => (
               <ProductsItemWrapper
                 key={el._id}
-                onClick={props.onClickMovetoProducts(el._id)}
+                onClick={props.onClickMovetoProducts(el)}
               >
                 <ProductsItemImage
                   src={"/images/noimage3.svg"}
@@ -138,7 +138,8 @@ export default function ProductsListUI(props) {
           </WriteButton>
         </ButtonArea>
       </ProductsListWrapper>
-      <TodayProductsContainer></TodayProductsContainer>
+
+      <TodayProductsContainer />
     </MainWrapper>
   );
 }

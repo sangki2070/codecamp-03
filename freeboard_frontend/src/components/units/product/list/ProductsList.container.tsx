@@ -4,7 +4,7 @@ import {
   FETCH_USED_ITEMS,
   FETCH_USED_ITEMS_OF_THE_BEST,
 } from "./ProductsListqueries";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function ProductsListContainer() {
@@ -15,9 +15,28 @@ export default function ProductsListContainer() {
 
   const loader = useRef(null);
 
-  const onClickMovetoProducts = (id) => (event) => {
-    router.push(`products/${id}`);
-    console.log(id);
+  const onClickMovetoProducts = (el) => (event) => {
+    router.push(`products/${el._id}`);
+
+    const baskets = JSON.parse(localStorage.getItem("baskets")) || [];
+
+    let isExists = false;
+    baskets.forEach((basketEl) => {
+      if (el._id === basketEl._id) isExists = true;
+    });
+    if (isExists) {
+      return;
+    }
+
+    const newEl = { ...el };
+    delete newEl.__typename;
+    baskets.push(newEl);
+
+    if (baskets.length > 3) {
+      baskets.shift();
+    }
+
+    localStorage.setItem("baskets", JSON.stringify(baskets));
   };
 
   const onClickProductsWrite = () => () => {
@@ -48,6 +67,7 @@ export default function ProductsListContainer() {
       bestData={bestData}
       onClickMovetoProducts={onClickMovetoProducts}
       onClickProductsWrite={onClickProductsWrite}
+      // basketItems={basketItems}
     />
   );
 }

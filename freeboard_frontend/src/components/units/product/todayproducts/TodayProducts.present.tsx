@@ -15,26 +15,44 @@ import {
   TodayWordWrapper,
 } from "./TodayProducts.styles";
 
-export default function TodayProductsUI() {
+import { useState, useEffect } from "react";
+
+export default function TodayProductsUI(props) {
+  const [basketItems, setBasketItems] = useState([]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("baskets")) || [];
+    setBasketItems(items);
+
+    console.log(basketItems);
+  }, []);
+
   return (
     <TodayProductsWrapper>
       <TodayWrapper>
         <TodayTitle>오늘의 상품</TodayTitle>
-        <TodayProductsArea>
-          <PickArea>
-            <PickImage src={"/images/productsheart.svg"}></PickImage>
-            <PickCount>20</PickCount>
-          </PickArea>
-          <TodayImageWrapper>
-            <TodayImage src={"/images/noimage3.svg"}></TodayImage>
-          </TodayImageWrapper>
-          <TodayWordWrapper>
-            <TodayProductsName>삼성전자 갤럭시탭A 10.1</TodayProductsName>
-            <TodayProductsRemarks>2019 LTE 32GB</TodayProductsRemarks>
-            <TodayProductsPrice>240,120원</TodayProductsPrice>
-            <TodayProductsTag>#삼성전자 #갤럭시탭 #갓성비</TodayProductsTag>
-          </TodayWordWrapper>
-        </TodayProductsArea>
+        {basketItems
+          ?.map((el) => (
+            <TodayProductsArea
+              key={el._id}
+              onClick={props.onClickMovetoToday(el)}
+            >
+              <PickArea>
+                <PickImage src={"/images/productsheart.svg"}></PickImage>
+                <PickCount>{el.pickedCount}</PickCount>
+              </PickArea>
+              <TodayImageWrapper>
+                <TodayImage src={"/images/noimage3.svg"}></TodayImage>
+              </TodayImageWrapper>
+              <TodayWordWrapper>
+                <TodayProductsName>{el.name}</TodayProductsName>
+                <TodayProductsRemarks>2019 LTE 32GB</TodayProductsRemarks>
+                <TodayProductsPrice>{el.price} 원</TodayProductsPrice>
+                <TodayProductsTag>#삼성전자 #갤럭시탭 #갓성비</TodayProductsTag>
+              </TodayWordWrapper>
+            </TodayProductsArea>
+          ))
+          .reverse()}
       </TodayWrapper>
     </TodayProductsWrapper>
   );

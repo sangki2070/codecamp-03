@@ -1,5 +1,12 @@
+import { useRouter } from "next/router";
 import TodayProductsUI from "./TodayProducts.present";
 
 export default function TodayProductsContainer() {
-  return <TodayProductsUI></TodayProductsUI>;
+  const router = useRouter();
+
+  const onClickMovetoToday = (el) => () => {
+    router.push(`products/${el._id}`);
+  };
+
+  return <TodayProductsUI onClickMovetoToday={onClickMovetoToday} />;
 }
