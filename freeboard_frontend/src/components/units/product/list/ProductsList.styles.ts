@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 import InfiniteScroll from "react-infinite-scroller";
 
+export const MainWrapper = styled.div`
+  display: flex;
+`;
+
 export const ScrollArea = styled(InfiniteScroll)`
   /* width: 1240px; */
   height: 960px;

@@ -76,11 +76,6 @@ export default function BoardCommentPage() {
   }
 
   async function onClickComment() {
-    // try {
-
-    // } catch (error) {
-
-    // }
     await createBoardComment({
       variables: {
         boardId: String(router.query.BoardsDetailPage),
