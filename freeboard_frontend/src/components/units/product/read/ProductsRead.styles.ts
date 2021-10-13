@@ -1,20 +1,22 @@
 import styled from "@emotion/styled";
 
-export const ProductsReadWrapper = styled.div`
-  width: 1200px;
-  /* height: 1847px; */
+export const MainWrapper = styled.div`
+  width: 1250px;
   top: 717px;
   left: 360px;
   background-color: #ffffff;
   margin: 100px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+`;
+
+export const ProductsReadWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-top: 80px;
   padding-bottom: 100px;
   padding-left: 102px;
   padding-right: 102px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 export const HeaderWrapper = styled.div`
