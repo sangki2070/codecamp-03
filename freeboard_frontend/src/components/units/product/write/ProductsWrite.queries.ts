@@ -8,6 +8,7 @@ export const CREATE_USED_ITEM = gql`
       remarks
       contents
       price
+      images
     }
   }
 `;
@@ -38,6 +39,16 @@ export const FETCH_USED_ITEM = gql`
       remarks
       contents
       price
+      images
+    }
+  }
+`;
+
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      _id
+      url
     }
   }
 `;

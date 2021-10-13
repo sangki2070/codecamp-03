@@ -17,9 +17,9 @@ import {
 } from "./ProductsWrite.styles";
 
 import Input01 from "../../../commons/inputs/01";
-// import Textarea01 from "../../../commons/textareas/01";
-
 import ReactQuil01 from "../../../commons/webeditor/reactQuil";
+import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
+import Uploads02 from "../../../commons/uploads/02/Uploads02.container";
 
 export default function ProductsWriteUI(props) {
   return (
@@ -86,7 +86,24 @@ export default function ProductsWriteUI(props) {
           </AddressWrapper>
         </MiddleWrapper>
         <WriteTitle>사진첨부</WriteTitle>
-        <UploadImage></UploadImage>
+        <UploadImage>
+          {/* {new Array(5).fill(1).map((el, index) => (
+            <Uploads01
+              key={`${el}_${index}`}
+              index={index}
+              register={props.register("myImage")}
+            />
+          ))} */}
+          {new Array(3).fill(1).map((el, index) => (
+            <Uploads02
+              onChangeFiles={props.onChangeFiles}
+              defaultFileUrl={props.data?.fetchBoard.images?.[index]}
+              key={`${el}_${index}`}
+              index={index}
+              type="submit"
+            />
+          ))}
+        </UploadImage>
         <WriteTitle>메인 사진 촬영</WriteTitle>
         <MyRadio>사진1</MyRadio>
         <MyRadio>사진2</MyRadio>

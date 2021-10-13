@@ -8,13 +8,18 @@ import {
   CREATE_USED_ITEM,
   FETCH_USED_ITEM,
   UPDATE_USED_ITEM,
+  UPLOAD_FILE,
 } from "./ProductsWrite.queries";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function ProductsWriteContainer(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
   const [updateUseditem] = useMutation(UPDATE_USED_ITEM);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
   const router = useRouter();
+
+  const [files, setFiles] = useState([null, null, null]);
 
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.ProductsDetailPage },
@@ -26,7 +31,18 @@ export default function ProductsWriteContainer(props) {
   });
 
   async function onClickSubmit(data) {
+    // const uploadFiles = files
+    //   .map((el) => (el ? uploadFile({ variables: { file: el } }) : null))
+    // const results = await Promise.all(uploadFiles)
+    // const myImages = result.map((el) => el?.data.uploadFile.url || "")
+
     try {
+      const uploadFiles = files
+        // .filter((el) => el)
+        .map((el) => (el ? uploadFile({ variables: { file: el } }) : null));
+      const results = await Promise.all(uploadFiles);
+      const myImages = results.map((el) => el?.data.uploadFile.url || "");
+
       const result = await createUseditem({
         variables: {
           createUseditemInput: {
@@ -34,10 +50,12 @@ export default function ProductsWriteContainer(props) {
             remarks: data.myRemarks,
             contents: data.myContents,
             price: Number(data.myPrice),
+            images: myImages,
           },
         },
       });
       console.log(result);
+      console.log("데이터확인", data.myImages);
       router.push(`${result.data.createUseditem._id}`);
     } catch (error) {
       console.log(error);
@@ -48,6 +66,20 @@ export default function ProductsWriteContainer(props) {
     setValue("myContents", value === "<p><br></P" ? "" : value);
     trigger("myContents");
   }
+
+  // function onchangeMyFiles(value) {
+  //   setValue("myImage", value);
+  //   trigger("myImage");
+  // }
+
+  function onChangeFiles(file, index) {
+    // setValue("myImage", file);
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
+    // trigger("myImage");
+  }
+
   async function onClickUpdate(data) {
     const myUpdateUseditemInput = {};
     if (data.myName) myUpdateUseditemInput.name = data.myName;
@@ -80,6 +112,8 @@ export default function ProductsWriteContainer(props) {
       onClickUpdate={onClickUpdate}
       data={data}
       onChangeMyEditor={onChangeMyEditor}
+      // onchangeMyFiles={onchangeMyFiles}
+      onChangeFiles={onChangeFiles}
     />
   );
 }

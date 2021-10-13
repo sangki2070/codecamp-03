@@ -70,10 +70,9 @@ export const WriteInput3 = styled.input`
 export const GpsWrapper = styled.div``;
 
 export const UploadImage = styled.div`
-  width: 180px;
-  height: 180px;
-  background-color: gray;
-  margin-bottom: 40px;
+  width: 282px;
+  height: 100px;
+  display: flex;
 `;
 
 export const MyRadio = styled(Radio)`

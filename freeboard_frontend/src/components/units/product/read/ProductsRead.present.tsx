@@ -69,7 +69,8 @@ export default function ProductsReadUI(props) {
 
       <BodyImageWrapper>
         {/* <BodyImage></BodyImage> */}
-        <Carousel01 />
+
+        <Carousel01 data={props.data} />
       </BodyImageWrapper>
 
       {process.browser && (
