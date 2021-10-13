@@ -122,7 +122,7 @@ export const BodyImageWrapper = styled.div`
 
 export const BodyWriteArea = styled.div`
   width: 792px;
-  height: 108px;
+  /* height: 108px; */
 
   margin-top: 80px;
 `;

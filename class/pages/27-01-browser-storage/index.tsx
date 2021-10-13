@@ -14,9 +14,9 @@ export default function BrowserStoragePage() {
   function onClickGetCookie() {
     // console.log("myCookie", document.cookie);
 
-    const temp = document.cookie
+    const temp = document.cookie // temp = "aaa=철수"
       .split("; ")
-      .filter((el) => el.startsWith("zzz="))[0];
+      .filter((el) => el.startsWith("aaa="))[0];
 
     console.log(temp.split("=")[1]);
   }

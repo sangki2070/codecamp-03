@@ -17,7 +17,9 @@ import {
 } from "./ProductsWrite.styles";
 
 import Input01 from "../../../commons/inputs/01";
-import Textarea01 from "../../../commons/textareas/01";
+// import Textarea01 from "../../../commons/textareas/01";
+
+import ReactQuil01 from "../../../commons/webeditor/reactQuil";
 
 export default function ProductsWriteUI(props) {
   return (
@@ -48,11 +50,16 @@ export default function ProductsWriteUI(props) {
           defaultValue={props.data?.fetchUseditem.remarks}
         ></Input01>
         <WriteTitle>상품설명</WriteTitle>
-        <Textarea01
+        {/* <Textarea01
           name="상품을 설명해 주세요."
           register={props.register("myContents")}
           defaultValue={props.data?.fetchUseditem.contents}
-        ></Textarea01>
+        ></Textarea01> */}
+        <ReactQuil01
+          name="상품을 설명해 주세요."
+          onChange={props.onChangeMyEditor}
+          defaultValue={props.data?.fetchUseditem.contents}
+        ></ReactQuil01>
         <WriteTitle>판매가격</WriteTitle>
         <Input01
           type="text"

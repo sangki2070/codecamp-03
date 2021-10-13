@@ -29,6 +29,8 @@ import Lines01 from "../../../commons/lines/01/lines01";
 import Buttons01 from "../../../commons/buttons/01";
 import Carousel01 from "../../../commons/carousel/01";
 
+import Dompurify from "dompurify";
+
 export default function ProductsReadUI(props) {
   return (
     <ProductsReadWrapper>
@@ -66,12 +68,19 @@ export default function ProductsReadUI(props) {
       </BodyHeader>
 
       <BodyImageWrapper>
-        <BodyImage></BodyImage>
-        {/* <Carousel01 /> */}
+        {/* <BodyImage></BodyImage> */}
+        <Carousel01 />
       </BodyImageWrapper>
 
-      <BodyWriteArea>{props.data?.fetchUseditem.contents}</BodyWriteArea>
-
+      {process.browser && (
+        <BodyWriteArea>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: Dompurify.sanitize(props.data?.fetchUseditem.contents),
+            }}
+          />
+        </BodyWriteArea>
+      )}
       <BodyWriteWrapper>
         <BodyWriteTag></BodyWriteTag>
       </BodyWriteWrapper>

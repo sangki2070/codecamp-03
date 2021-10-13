@@ -20,10 +20,11 @@ export default function ProductsWriteContainer(props) {
     variables: { useditemId: router.query.ProductsDetailPage },
   });
 
-  const { handleSubmit, register, formState } = useForm({
+  const { handleSubmit, register, formState, setValue, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
+
   async function onClickSubmit(data) {
     try {
       const result = await createUseditem({
@@ -43,6 +44,10 @@ export default function ProductsWriteContainer(props) {
     }
   }
 
+  function onChangeMyEditor(value) {
+    setValue("myContents", value === "<p><br></P" ? "" : value);
+    trigger("myContents");
+  }
   async function onClickUpdate(data) {
     const myUpdateUseditemInput = {};
     if (data.myName) myUpdateUseditemInput.name = data.myName;
@@ -74,6 +79,7 @@ export default function ProductsWriteContainer(props) {
       isEdit={props.isEdit}
       onClickUpdate={onClickUpdate}
       data={data}
+      onChangeMyEditor={onChangeMyEditor}
     />
   );
 }

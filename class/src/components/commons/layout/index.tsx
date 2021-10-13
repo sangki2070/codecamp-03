@@ -21,7 +21,7 @@ const HIDDEN_FOOTER = ["/13-01-layout-hidden"];
 export default function Layout(props) {
   const router = useRouter();
   const isHiddenFooter = HIDDEN_FOOTER.includes(router.pathname);
-  console.log(router);
+
   return (
     <Wrapper>
       {/* <Header>여기는 헤더 영역입니다.</Header> */}
