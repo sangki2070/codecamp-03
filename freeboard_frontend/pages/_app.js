@@ -26,12 +26,18 @@ export const GlobalContext = createContext(null);
 function MyApp({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState("");
   const [userInfo, setUserInfo] = useState({});
+  const [myLat, setMyLat] = useState("");
+  const [myLng, setMyLng] = useState("");
 
   const value = {
     accessToken: accessToken,
     setAccessToken: setAccessToken,
     userInfo: userInfo,
     setUserInfo: setUserInfo,
+    myLat: myLat,
+    setMyLat: setMyLat,
+    myLng: myLng,
+    setMyLng: setMyLng,
   };
 
   useEffect(() => {

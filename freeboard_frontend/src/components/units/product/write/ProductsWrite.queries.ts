@@ -9,6 +9,10 @@ export const CREATE_USED_ITEM = gql`
       contents
       price
       images
+      useditemAddress {
+        lat
+        lng
+      }
     }
   }
 `;

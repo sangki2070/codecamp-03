@@ -23,7 +23,7 @@ export default function ProductsCommentsUI(props) {
           <Title>문의하기</Title>
         </CommentsTitleWrapper>
 
-        <Comments01 />
+        <Comments01 onSubmit={props.handleSubmit(props.onClickQuestion)} />
       </>
       {props.data?.fetchUseditemQuestions.map((el) => (
         <CommentsDisplayWrapper key={el._id}>

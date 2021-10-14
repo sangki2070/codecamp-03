@@ -30,6 +30,7 @@ import Lines01 from "../../../commons/lines/01/lines01";
 import Buttons01 from "../../../commons/buttons/01";
 import Carousel01 from "../../../commons/carousel/01";
 import ProductsCommentsContainer from "../comments/ProductsComments.container";
+import MapArea from "../../../commons/map/01";
 
 import Dompurify from "dompurify";
 
@@ -90,7 +91,7 @@ export default function ProductsReadUI(props) {
         </BodyWriteWrapper>
         <Lines01 />
 
-        <BodyMapArea></BodyMapArea>
+        <MapArea></MapArea>
         <Lines01 />
 
         <ButtonWrapper>

@@ -11,7 +11,8 @@ import {
   UPLOAD_FILE,
 } from "./ProductsWrite.queries";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../../../../../pages/_app";
 
 export default function ProductsWriteContainer(props) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
@@ -29,6 +30,8 @@ export default function ProductsWriteContainer(props) {
     mode: "onChange",
     resolver: yupResolver(schema),
   });
+
+  const { myLat, myLng } = useContext(GlobalContext);
 
   async function onClickSubmit(data) {
     // const uploadFiles = files
@@ -51,6 +54,10 @@ export default function ProductsWriteContainer(props) {
             contents: data.myContents,
             price: Number(data.myPrice),
             images: myImages,
+            useditemAddress: {
+              lat: myLat,
+              lng: myLng,
+            },
           },
         },
       });
@@ -66,11 +73,6 @@ export default function ProductsWriteContainer(props) {
     setValue("myContents", value === "<p><br></P" ? "" : value);
     trigger("myContents");
   }
-
-  // function onchangeMyFiles(value) {
-  //   setValue("myImage", value);
-  //   trigger("myImage");
-  // }
 
   function onChangeFiles(file, index) {
     // setValue("myImage", file);
@@ -114,6 +116,7 @@ export default function ProductsWriteContainer(props) {
       onChangeMyEditor={onChangeMyEditor}
       // onchangeMyFiles={onchangeMyFiles}
       onChangeFiles={onChangeFiles}
+      setValue={setValue}
     />
   );
 }

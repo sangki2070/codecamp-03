@@ -2,24 +2,21 @@ import {
   ProductWriteWrapper,
   FormTitle,
   WriteTitle,
-  WriteEditor,
   MapWrapper,
-  MapArea,
   MiddleWrapper,
-  AddressWrapper,
-  WriteInput2,
-  WriteInput3,
-  GpsWrapper,
   UploadImage,
   MyRadio,
   ReigsterButton,
   TitleWrapper,
+  Gps,
+  MapAdTitle,
 } from "./ProductsWrite.styles";
 
 import Input01 from "../../../commons/inputs/01";
 import ReactQuil01 from "../../../commons/webeditor/reactQuil";
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 import Uploads02 from "../../../commons/uploads/02/Uploads02.container";
+import MapArea from "../../../commons/map/01";
 
 export default function ProductsWriteUI(props) {
   return (
@@ -50,11 +47,7 @@ export default function ProductsWriteUI(props) {
           defaultValue={props.data?.fetchUseditem.remarks}
         ></Input01>
         <WriteTitle>상품설명</WriteTitle>
-        {/* <Textarea01
-          name="상품을 설명해 주세요."
-          register={props.register("myContents")}
-          defaultValue={props.data?.fetchUseditem.contents}
-        ></Textarea01> */}
+
         <ReactQuil01
           name="상품을 설명해 주세요."
           onChange={props.onChangeMyEditor}
@@ -71,29 +64,15 @@ export default function ProductsWriteUI(props) {
         <Input01 name="#태그 #태그 #태그"></Input01>
         <MiddleWrapper>
           <MapWrapper>
-            <WriteTitle>거래위치</WriteTitle>
-            <MapArea></MapArea>
+            <MapAdTitle>
+              <WriteTitle>거래위치</WriteTitle>
+              <Gps>GPS</Gps>
+            </MapAdTitle>
+            <MapArea name="map"></MapArea>
           </MapWrapper>
-          <AddressWrapper>
-            <WriteTitle>GPS</WriteTitle>
-            <GpsWrapper>
-              <WriteInput3></WriteInput3>
-              <WriteInput3></WriteInput3>
-            </GpsWrapper>
-            <WriteTitle>주소</WriteTitle>
-            <WriteInput2></WriteInput2>
-            <WriteInput2></WriteInput2>
-          </AddressWrapper>
         </MiddleWrapper>
         <WriteTitle>사진첨부</WriteTitle>
         <UploadImage>
-          {/* {new Array(5).fill(1).map((el, index) => (
-            <Uploads01
-              key={`${el}_${index}`}
-              index={index}
-              register={props.register("myImage")}
-            />
-          ))} */}
           {new Array(3).fill(1).map((el, index) => (
             <Uploads02
               onChangeFiles={props.onChangeFiles}

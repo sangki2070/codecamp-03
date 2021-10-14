@@ -25,6 +25,17 @@ export const FormTitle = styled.div`
   padding-bottom: 80px;
 `;
 
+export const Gps = styled.div`
+  font-size: 16px;
+  font-weight: weight 500;
+  padding-bottom: 16px;
+  margin-left: 350px;
+`;
+
+export const MapAdTitle = styled.div`
+  display: flex;
+`;
+
 export const WriteTitle = styled.div`
   font-size: 16px;
   font-weight: weight 500;
@@ -37,12 +48,6 @@ export const WriteEditor = styled.textarea`
 `;
 
 export const MapWrapper = styled.div``;
-
-export const MapArea = styled.div`
-  width: 384px;
-  height: 252px;
-  background-color: gray;
-`;
 
 export const MiddleWrapper = styled.div`
   display: flex;
