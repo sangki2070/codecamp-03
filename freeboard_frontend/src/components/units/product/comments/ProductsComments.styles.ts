@@ -9,6 +9,12 @@ export const CommentsWrapper = styled.div`
   padding-right: 25px;
 `;
 
+export const RecommentsBtn = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+`;
+
 export const CommentsTitleWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -30,7 +36,8 @@ export const Title = styled.div`
 export const CommentsDisplayWrapper = styled.div`
   margin-top: 40px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  /* align-items: center; */
 `;
 
 export const CommentsAvatar = styled.img`
@@ -63,6 +70,7 @@ export const CommentDate = styled.div`
 `;
 
 export const CommentsTopWrapper = styled.div`
+  width: 100%;
   display: flex;
 `;
 
@@ -71,4 +79,9 @@ export const UnderLine = styled.div`
   height: 2px;
   border: 1px solid #ffffff;
   margin-top: 20px;
+`;
+
+export const ModifyBtn = styled.img`
+  width: 18px;
+  height: 18px;
 `;

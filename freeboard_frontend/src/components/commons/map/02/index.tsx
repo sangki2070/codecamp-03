@@ -17,8 +17,8 @@ export default function MapArea02(props) {
         const options = {
           // center: new window.kakao.maps.LatLng(33.450701, 126.570667),
           center: new window.kakao.maps.LatLng(
-            props.data?.fetchUseditem.useditemAddress.lat,
-            props.data?.fetchUseditem.useditemAddress.lng
+            props.data?.fetchUseditem.useditemAddress?.lat || 33.450701,
+            props.data?.fetchUseditem.useditemAddress?.lng || 126.570667
           ),
           level: 4,
         };
@@ -33,7 +33,7 @@ export default function MapArea02(props) {
         marker.setMap(map);
       });
     };
-  }, [props.data?.fetchUseditem.useditemAddress.lat]);
+  });
   return (
     <>
       <div id="map" style={{ width: "792px", height: "360px" }}></div>

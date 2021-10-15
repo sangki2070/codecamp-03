@@ -3,9 +3,9 @@ import { Rate } from "antd";
 import InfiniteScroll from "react-infinite-scroller";
 import { Modal } from "antd";
 
-export const PasswordInput = styled.input`
-  width: 100%;
-  margin-top: 10px;
+export const RecommentsBtn = styled.img`
+  width: 20px;
+  height: 20px;
 `;
 
 export const MyModal = styled(Modal)``;

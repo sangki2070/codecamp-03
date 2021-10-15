@@ -43,22 +43,23 @@ export const BottomWord = styled.div`
 export const BottomBtn = styled.button`
   width: 91px;
   height: 52px;
-  background-color: black;
+  background-color: #ffd600;
   color: white;
   font-weight: 500;
   font-size: 16px;
+  border: none;
 `;
 
-export default function Comments01(props) {
+export default function Comments02(props) {
   return (
     <WriteWrapper>
       <WriteArea
         placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에대한 민형사상 책임은 게시자에게 있습니다."
-        onChange={props.onChangeQuestionComments}
+        onChange={props.onChangeQuestionModify}
       ></WriteArea>
       <BottomWrapper>
         <BottomWord>0/100</BottomWord>
-        <BottomBtn onClick={props.onClickQuestion}>문의하기</BottomBtn>
+        <BottomBtn onClick={props.onClickUpdateQuestion}>수정하기</BottomBtn>
       </BottomWrapper>
     </WriteWrapper>
   );

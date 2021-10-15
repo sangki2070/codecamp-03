@@ -28,6 +28,7 @@ function MyApp({ Component, pageProps }) {
   const [userInfo, setUserInfo] = useState({});
   const [myLat, setMyLat] = useState("");
   const [myLng, setMyLng] = useState("");
+  const [location, setLocation] = useState("");
 
   const value = {
     accessToken: accessToken,
@@ -38,6 +39,8 @@ function MyApp({ Component, pageProps }) {
     setMyLat: setMyLat,
     myLng: myLng,
     setMyLng: setMyLng,
+    location: location,
+    setLocation: setLocation,
   };
 
   useEffect(() => {

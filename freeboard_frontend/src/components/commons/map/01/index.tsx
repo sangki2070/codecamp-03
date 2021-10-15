@@ -35,12 +35,13 @@ const MapAdWrapper = styled.div`
 `;
 
 export default function MapArea(props) {
-  const { setMyLat, setMyLng, myLat, myLng } = useContext(GlobalContext);
+  const { setMyLat, setMyLng, myLat, myLng, setLocation, location } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=a0290023f3c59e26ad85f5ea9165188f";
+      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=a0290023f3c59e26ad85f5ea9165188f&libraries=services";
     document.head.appendChild(script);
 
     script.onload = () => {
@@ -51,12 +52,24 @@ export default function MapArea(props) {
           level: 3,
         };
         const map = new window.kakao.maps.Map(container, options);
-        console.log(map);
 
         const marker = new window.kakao.maps.Marker({
           // 지도 중심좌표에 마커를 생성합니다
           position: map.getCenter(),
         });
+
+        const geocoder = new window.kakao.maps.services.Geocoder();
+        console.log(geocoder);
+
+        const coord = new window.kakao.maps.LatLng(myLat, myLng);
+        console.log("2번", coord);
+
+        const callback = function (result, status) {
+          if (status === window.kakao.maps.services.Status.OK) {
+            setLocation(result[0].address.address_name);
+            // setLocation("");
+          }
+        };
 
         // 지도에 마커를 표시합니다
         marker.setMap(map);
@@ -79,6 +92,9 @@ export default function MapArea(props) {
 
             setMyLat(latlng.getLat());
             setMyLng(latlng.getLng());
+
+            geocoder.coord2Address(myLng, myLat, callback);
+            // setLocation("");
           }
         );
       });
@@ -96,7 +112,7 @@ export default function MapArea(props) {
             <WriteInput3 value={myLng}></WriteInput3>
           </GpsWrapper>
           <WriteTitle>주소</WriteTitle>
-          <WriteInput2></WriteInput2>
+          <WriteInput2 value={location}></WriteInput2>
           <WriteInput2></WriteInput2>
         </AddressWrapper>
       </MapAdWrapper>
