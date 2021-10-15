@@ -15,6 +15,10 @@ export const FETCH_USED_ITEM = gql`
         name
       }
       createdAt
+      useditemAddress {
+        lat
+        lng
+      }
     }
   }
 `;

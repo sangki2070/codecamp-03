@@ -68,7 +68,7 @@ export default function ProductsWriteUI(props) {
               <WriteTitle>거래위치</WriteTitle>
               <Gps>GPS</Gps>
             </MapAdTitle>
-            <MapArea name="map"></MapArea>
+            <MapArea></MapArea>
           </MapWrapper>
         </MiddleWrapper>
         <WriteTitle>사진첨부</WriteTitle>

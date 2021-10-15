@@ -87,23 +87,19 @@ export default function MapArea(props) {
 
   return (
     <>
-      {props.name ? (
-        <MapAdWrapper>
-          <div id="map" style={{ width: "384px", height: "252px" }}></div>
+      <MapAdWrapper>
+        <div id="map" style={{ width: "384px", height: "252px" }}></div>
 
-          <AddressWrapper>
-            <GpsWrapper>
-              <WriteInput3 value={myLat}></WriteInput3>
-              <WriteInput3 value={myLng}></WriteInput3>
-            </GpsWrapper>
-            <WriteTitle>주소</WriteTitle>
-            <WriteInput2></WriteInput2>
-            <WriteInput2></WriteInput2>
-          </AddressWrapper>
-        </MapAdWrapper>
-      ) : (
-        <div id="map" style={{ width: "792px", height: "360px" }}></div>
-      )}
+        <AddressWrapper>
+          <GpsWrapper>
+            <WriteInput3 value={myLat}></WriteInput3>
+            <WriteInput3 value={myLng}></WriteInput3>
+          </GpsWrapper>
+          <WriteTitle>주소</WriteTitle>
+          <WriteInput2></WriteInput2>
+          <WriteInput2></WriteInput2>
+        </AddressWrapper>
+      </MapAdWrapper>
     </>
   );
 }
