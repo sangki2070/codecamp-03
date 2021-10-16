@@ -5,7 +5,7 @@ export const WriteWrapper = styled.div`
   width: 1094px;
   height: 117px;
   border: 1px solid #bdbdbd;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   display: flex;
   flex-direction: column;
   margin-left: 100px;
@@ -52,26 +52,26 @@ export const BottomBtn = styled.button`
   border: none;
 `;
 
-// const UPDATE_USEDITEM_QUESTION_ANSWER = gql`
-//   mutation updateUseditemQuestionAnswer(
-//     $updateUseditemQuestionAnswerInput: UpdateUseditemQuestionAnswerInput!
-//     $useditemQuestionAnswerId: ID!
-//   ) {
-//     updateUseditemQuestionAnswer(
-//       updateUseditemQuestionAnswerInput: $updateUseditemQuestionAnswerInput
-//       useditemQuestionAnswerId: $useditemQuestionAnswerId
-//     ) {
-//       _id
-//       contents
-//       user {
-//         _id
-//         name
-//       }
-//     }
-//   }
-// `;
+const UPDATE_USEDITEM_QUESTION_ANSWER = gql`
+  mutation updateUseditemQuestionAnswer(
+    $updateUseditemQuestionAnswerInput: UpdateUseditemQuestionAnswerInput!
+    $useditemQuestionAnswerId: ID!
+  ) {
+    updateUseditemQuestionAnswer(
+      updateUseditemQuestionAnswerInput: $updateUseditemQuestionAnswerInput
+      useditemQuestionAnswerId: $useditemQuestionAnswerId
+    ) {
+      _id
+      contents
+      user {
+        _id
+        name
+      }
+    }
+  }
+`;
 
-export default function Comments03(props) {
+export default function Comments04(props) {
   // const [updateUseditemQuestionAnswer] = useMutation(UPDATE_USEDITEM_QUESTION_ANSWER)
 
   // async function onClickReQuestionUpdate(){
@@ -91,18 +91,18 @@ export default function Comments03(props) {
 
   return (
     <>
-      {props.isReQuestion && (
-        <WriteWrapper>
-          <WriteArea
-            placeholder="답글을 등록해주세요."
-            onChange={props.onChangeReQuestion}
-          ></WriteArea>
-          <BottomWrapper>
-            <BottomWord>0/100</BottomWord>
-            <BottomBtn onClick={props.onClickReQuestion}>답글등록</BottomBtn>
-          </BottomWrapper>
-        </WriteWrapper>
-      )}
+      <WriteWrapper>
+        <WriteArea
+          placeholder="답글을 등록해주세요."
+          onChange={props.onChangeReQuestion}
+        ></WriteArea>
+        <BottomWrapper>
+          <BottomWord>0/100</BottomWord>
+          <BottomBtn onClick={props.onClickReQuestionAnswer}>
+            답글등록
+          </BottomBtn>
+        </BottomWrapper>
+      </WriteWrapper>
     </>
   );
 }

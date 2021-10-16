@@ -64,7 +64,14 @@ export default function ProductsCommentsUI(props) {
           )}
 
           {props.isAnswer === el._id && (
-            <Profile01 reData={props.reData}></Profile01>
+            <Profile01
+              reData={props.reData}
+              onChangeReQuestion={props.onChangeReQuestion}
+              onClickReQuestionAnswer={props.onClickReQuestionAnswer}
+              isReQuestion={props.isReQuestion}
+              reQuestionAnswer={props.reQuestionAnswer}
+              setReQuestionAnswer={props.setReQuestionAnswer}
+            ></Profile01>
           )}
 
           {props.isActive === el._id && (

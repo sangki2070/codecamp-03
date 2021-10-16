@@ -30,6 +30,7 @@ export default function ProductsCommentsContainer() {
   const [updateQuestion, setUpdateQuestion] = useState("");
   const [reQuestion, setReQuestion] = useState("");
   const [isReQuestion, setIsReQuestion] = useState(true);
+  const [reQuestionAnswer, setReQuestionAnswer] = useState(false);
   const { data } = useQuery(FETCH_USED_ITEM_QUESTIONS, {
     variables: { useditemId: String(router.query.ProductsDetailPage) },
   });
@@ -120,6 +121,27 @@ export default function ProductsCommentsContainer() {
     } catch (error) {}
   }
 
+  async function onClickReQuestionAnswer() {
+    try {
+      await createUseditemQuestionAnswer({
+        variables: {
+          createUseditemQuestionAnswerInput: {
+            contents: reQuestion,
+          },
+          useditemQuestionId: isAnswer,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_USED_ITEM_QUESTION_ANSWERS,
+            variables: { useditemQuestionId: isAnswer },
+          },
+        ],
+      });
+      console.log(isAnswer);
+      setReQuestionAnswer(false);
+    } catch (error) {}
+  }
+
   return (
     <ProductsCommentsUI
       data={data}
@@ -136,6 +158,9 @@ export default function ProductsCommentsContainer() {
       reData={reData}
       setIsReQuestion={setIsReQuestion}
       isReQuestion={isReQuestion}
+      setReQuestionAnswer={setReQuestionAnswer}
+      reQuestionAnswer={reQuestionAnswer}
+      onClickReQuestionAnswer={onClickReQuestionAnswer}
     />
   );
 }
