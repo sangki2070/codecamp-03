@@ -33,7 +33,7 @@ export default function MapArea02(props) {
         marker.setMap(map);
       });
     };
-  });
+  }, [props.data?.fetchUseditem.useditemAddress?.lat]);
   return (
     <>
       <div id="map" style={{ width: "792px", height: "360px" }}></div>

@@ -37,28 +37,29 @@ export default function ProductsWriteUI(props) {
           type="text"
           name="상품명을 작성해주세요."
           register={props.register("myName")}
-          defaultValue={props.data?.fetchUseditem.name}
+          defaultValue={props.fetchData?.fetchUseditem.name}
         ></Input01>
         <WriteTitle>한줄요약</WriteTitle>
         <Input01
           type="text"
           name="한줄요약을 작성해 주세요."
           register={props.register("myRemarks")}
-          defaultValue={props.data?.fetchUseditem.remarks}
+          defaultValue={props.fetchData?.fetchUseditem.remarks}
         ></Input01>
         <WriteTitle>상품설명</WriteTitle>
 
         <ReactQuil01
           name="상품을 설명해 주세요."
           onChange={props.onChangeMyEditor}
-          defaultValue={props.data?.fetchUseditem.contents}
+          defaultValue={props.fetchData?.fetchUseditem.contents}
+          isEdit={props.isEdit}
         ></ReactQuil01>
         <WriteTitle>판매가격</WriteTitle>
         <Input01
           type="text"
           name="상품가격을 입력해 주세요."
           register={props.register("myPrice")}
-          defaultValue={props.data?.fetchUseditem.price}
+          defaultValue={props.fetchData?.fetchUseditem.price}
         ></Input01>
         <WriteTitle>태그입력</WriteTitle>
         <Input01 name="#태그 #태그 #태그"></Input01>
@@ -68,7 +69,9 @@ export default function ProductsWriteUI(props) {
               <WriteTitle>거래위치</WriteTitle>
               <Gps>GPS</Gps>
             </MapAdTitle>
-            <MapArea></MapArea>
+            <MapArea
+              onChangeAddressDetail={props.onChangeAddressDetail}
+            ></MapArea>
           </MapWrapper>
         </MiddleWrapper>
         <WriteTitle>사진첨부</WriteTitle>
@@ -76,7 +79,7 @@ export default function ProductsWriteUI(props) {
           {new Array(3).fill(1).map((el, index) => (
             <Uploads02
               onChangeFiles={props.onChangeFiles}
-              defaultFileUrl={props.data?.fetchBoard.images?.[index]}
+              defaultFileUrl={props.fetchData?.fetchUseditem.images?.[index]}
               key={`${el}_${index}`}
               index={index}
               type="submit"

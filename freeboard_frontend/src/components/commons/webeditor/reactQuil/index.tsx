@@ -62,13 +62,30 @@ export default function ReactQuil01(props) {
     },
   };
   return (
-    <ReactQuill
-      style={{ height: "320px", width: "996px", marginBottom: "100px" }}
-      modules={modules}
-      //   {...props.register}
-      placeholder={props.name}
-      defaultValue={props.defaultValue}
-      onChange={props.onChange}
-    />
+    <>
+      {props.isEdit && (
+        <ReactQuill
+          style={{ height: "320px", width: "996px", marginBottom: "100px" }}
+          modules={modules}
+          //   {...props.register}
+          placeholder={props.name}
+          onChange={props.onChange}
+        />
+      )}
+      {!props.isEdit && (
+        <>
+          {props.defaultValue && (
+            <ReactQuill
+              style={{ height: "320px", width: "996px", marginBottom: "100px" }}
+              modules={modules}
+              //   {...props.register}
+              placeholder={props.name}
+              onChange={props.onChange}
+              defaultValue={props.defaultValue}
+            />
+          )}
+        </>
+      )}
+    </>
   );
 }

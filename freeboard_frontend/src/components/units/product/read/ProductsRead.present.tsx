@@ -34,6 +34,8 @@ import MapArea02 from "../../../commons/map/02";
 
 import Dompurify from "dompurify";
 
+import { Tooltip } from "antd";
+
 export default function ProductsReadUI(props) {
   return (
     <MainWrapper>
@@ -48,8 +50,13 @@ export default function ProductsReadUI(props) {
               </ProductsDate>
             </HeaderLeft>
             <HeaderRight>
-              <Upload></Upload>
-              <Location></Location>
+              <Upload src="/images/Clip.png"></Upload>
+              <Tooltip
+                placement="topRight"
+                title={`${props.data?.fetchUseditem.useditemAddress?.address} ${props.data?.fetchUseditem.useditemAddress?.addressDetail}`}
+              >
+                <Location src="/images/Location.png"></Location>
+              </Tooltip>
             </HeaderRight>
           </HeaderFlex>
         </HeaderWrapper>

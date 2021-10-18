@@ -64,11 +64,8 @@ export default function MapArea(props) {
         const coord = new window.kakao.maps.LatLng(myLat, myLng);
         console.log("2번", coord);
 
-        const callback = function (result, status) {
-          if (status === window.kakao.maps.services.Status.OK) {
-            setLocation(result[0].address.address_name);
-            // setLocation("");
-          }
+        const test = function (coords, callback) {
+          geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
         };
 
         // 지도에 마커를 표시합니다
@@ -84,6 +81,11 @@ export default function MapArea(props) {
           map,
           "click",
           function (mouseEvent: IMouseEvent) {
+            test(mouseEvent.latLng, function (result, status) {
+              if (status === window.kakao.maps.services.Status.OK) {
+                setLocation(result[0].address.address_name);
+              }
+            });
             // 클릭한 위도, 경도 정보를 가져옵니다
             const latlng = mouseEvent.latLng;
 
@@ -93,8 +95,8 @@ export default function MapArea(props) {
             setMyLat(latlng.getLat());
             setMyLng(latlng.getLng());
 
-            geocoder.coord2Address(myLng, myLat, callback);
-            // setLocation("");
+            console.log("aabdsdf", window.kakao.maps);
+            console.log("234234", location);
           }
         );
       });
@@ -113,7 +115,7 @@ export default function MapArea(props) {
           </GpsWrapper>
           <WriteTitle>주소</WriteTitle>
           <WriteInput2 value={location}></WriteInput2>
-          <WriteInput2></WriteInput2>
+          <WriteInput2 onChange={props.onChangeAddressDetail}></WriteInput2>
         </AddressWrapper>
       </MapAdWrapper>
     </>

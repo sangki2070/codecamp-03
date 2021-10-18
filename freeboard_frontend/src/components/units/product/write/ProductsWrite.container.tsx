@@ -11,7 +11,7 @@ import {
   UPLOAD_FILE,
 } from "./ProductsWrite.queries";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
 
 export default function ProductsWriteContainer(props) {
@@ -21,8 +21,9 @@ export default function ProductsWriteContainer(props) {
   const router = useRouter();
 
   const [files, setFiles] = useState([null, null, null]);
+  const [addressDetail, setAddressDetail] = useState("");
 
-  const { data } = useQuery(FETCH_USED_ITEM, {
+  const { data: fetchData } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.ProductsDetailPage },
   });
 
@@ -31,14 +32,9 @@ export default function ProductsWriteContainer(props) {
     resolver: yupResolver(schema),
   });
 
-  const { myLat, myLng } = useContext(GlobalContext);
+  const { myLat, myLng, location } = useContext(GlobalContext);
 
   async function onClickSubmit(data) {
-    // const uploadFiles = files
-    //   .map((el) => (el ? uploadFile({ variables: { file: el } }) : null))
-    // const results = await Promise.all(uploadFiles)
-    // const myImages = result.map((el) => el?.data.uploadFile.url || "")
-
     try {
       const uploadFiles = files
         // .filter((el) => el)
@@ -55,6 +51,8 @@ export default function ProductsWriteContainer(props) {
             price: Number(data.myPrice),
             images: myImages,
             useditemAddress: {
+              address: location,
+              addressDetail: addressDetail,
               lat: myLat,
               lng: myLng,
             },
@@ -74,6 +72,10 @@ export default function ProductsWriteContainer(props) {
     trigger("myContents");
   }
 
+  function onChangeAddressDetail(event) {
+    setAddressDetail(event.target.value);
+  }
+
   function onChangeFiles(file, index) {
     // setValue("myImage", file);
     const newFiles = [...files];
@@ -89,6 +91,30 @@ export default function ProductsWriteContainer(props) {
     if (data.myContents) myUpdateUseditemInput.contents = data.myContents;
     if (Number(data.myPrice))
       myUpdateUseditemInput.price = Number(data.myPrice);
+    if (myLat || myLng || addressDetail || location) {
+      myUpdateUseditemInput.useditemAddress = {};
+      if (myLat) myUpdateUseditemInput.useditemAddress.lat = myLat;
+      if (myLng) myUpdateUseditemInput.useditemAddress.lng = myLng;
+      if (location) myUpdateUseditemInput.useditemAddress.address = location;
+      if (addressDetail)
+        myUpdateUseditemInput.useditemAddress.addressDetail = addressDetail;
+    }
+
+    const uploadFiles = files.map((el) =>
+      el ? uploadFile({ variables: { file: el } }) : null
+    );
+    const results = await Promise.all(uploadFiles);
+    const nextImages = results.map((el) => el?.data.uploadFile.url || "");
+    myUpdateUseditemInput.images = nextImages;
+
+    if (fetchData?.fetchUseditem.images.length) {
+      const prevImages = [...fetchData?.fetchUseditem.images];
+      myUpdateUseditemInput.images = prevImages.map(
+        (el, index) => nextImages[index] || el
+      );
+    } else {
+      myUpdateUseditemInput.images = nextImages;
+    }
 
     try {
       const updateresult = await updateUseditem({
@@ -99,10 +125,20 @@ export default function ProductsWriteContainer(props) {
       });
       router.push(`/products/${router.query.ProductsDetailPage}`);
       console.log(updateresult);
+      console.log("asda111123", data);
     } catch (error) {
       console.log(error);
     }
   }
+
+  useEffect(() => {
+    if (!props.isEdit && fetchData?.fetchUseditem) {
+      setValue("myName", fetchData?.fetchUseditem.name);
+      setValue("myRemarks", fetchData?.fetchUseditem.remarks);
+      setValue("myContents", fetchData?.fetchUseditem.contents);
+      setValue("myPrice", fetchData?.fetchUseditem.price);
+    }
+  }, [!props.isEdit, fetchData?.fetchUseditem]);
 
   return (
     <ProductsWriteUI
@@ -112,11 +148,12 @@ export default function ProductsWriteContainer(props) {
       formStat={formState}
       isEdit={props.isEdit}
       onClickUpdate={onClickUpdate}
-      data={data}
+      fetchData={fetchData}
       onChangeMyEditor={onChangeMyEditor}
       // onchangeMyFiles={onchangeMyFiles}
       onChangeFiles={onChangeFiles}
       setValue={setValue}
+      onChangeAddressDetail={onChangeAddressDetail}
     />
   );
 }

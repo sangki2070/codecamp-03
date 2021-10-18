@@ -57,16 +57,14 @@ export const HeaderRight = styled.div`
   justify-content: space-between;
 `;
 
-export const Upload = styled.div`
+export const Upload = styled.img`
   width: 20px;
   height: 10px;
-  background-color: gray;
 `;
 
-export const Location = styled.div`
+export const Location = styled.img`
   width: 15px;
   height: 20px;
-  background-color: gray;
 `;
 
 export const HeaderFlex = styled.div`

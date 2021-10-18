@@ -71,6 +71,7 @@ export default function ProductsCommentsUI(props) {
               isReQuestion={props.isReQuestion}
               reQuestionAnswer={props.reQuestionAnswer}
               setReQuestionAnswer={props.setReQuestionAnswer}
+              isAnswer={props.isAnswer}
             ></Profile01>
           )}
 

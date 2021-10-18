@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import Comments04 from "../../comments/04";
+import Comments05 from "../../comments/05";
 
 const CommentsAvatar = styled.img`
   width: 40px;
@@ -40,13 +41,25 @@ const ProfileMainWrapper = styled.div`
   margin-top: 30px;
 `;
 
-export const RecommentsBtn = styled.img`
+const RecommentsBtn = styled.img`
   width: 20px;
   height: 20px;
   margin-left: 10px;
 `;
 
+const RecommentsModifyBtn = styled.img`
+  width: 18px;
+  height: 18px;
+`;
+
 export default function Profile01(props) {
+  const [ModifyBtn, setModifyBtn] = useState("");
+
+  const onClickModifyBtn = (el) => (event) => {
+    setModifyBtn(el._id);
+    console.log("werss");
+  };
+
   const onClickReQuestionAnswer = (el) => (event) => {
     props.setReQuestionAnswer(true);
   };
@@ -55,16 +68,33 @@ export default function Profile01(props) {
     <>
       {props.reData?.fetchUseditemQuestionAnswers.map((el) => (
         <ProfileMainWrapper key={el._id}>
-          <CommentsAvatar src={"/images/productsavatar.svg"}></CommentsAvatar>
-          <ProfileArea>
-            <CommentsName>{el.user.name}</CommentsName>
-            <CommentsContents>{el.contents}</CommentsContents>
-            <CommentDate>date : </CommentDate>
-          </ProfileArea>
-          <RecommentsBtn
-            src="/images/recomments.svg"
-            onClick={onClickReQuestionAnswer(el)}
-          ></RecommentsBtn>
+          {ModifyBtn !== el._id && (
+            <>
+              <CommentsAvatar
+                src={"/images/productsavatar.svg"}
+              ></CommentsAvatar>
+              <ProfileArea>
+                <CommentsName>{el.user.name}</CommentsName>
+                <CommentsContents>{el.contents}</CommentsContents>
+                <CommentDate>date : </CommentDate>
+              </ProfileArea>
+              <RecommentsModifyBtn
+                src="/images/commentbtn.png"
+                onClick={onClickModifyBtn(el)}
+              ></RecommentsModifyBtn>
+              <RecommentsBtn
+                src="/images/recomments.svg"
+                onClick={onClickReQuestionAnswer(el)}
+              ></RecommentsBtn>
+            </>
+          )}
+          {ModifyBtn === el._id && (
+            <Comments05
+              id={el._id}
+              isAnswer={props.isAnswer}
+              setModifyBtn={setModifyBtn}
+            ></Comments05>
+          )}
         </ProfileMainWrapper>
       ))}
 
