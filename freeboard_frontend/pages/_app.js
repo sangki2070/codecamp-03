@@ -13,8 +13,12 @@ import { globalStyles } from "../src/commons/styles/globalStyles";
 import { createUploadLink } from "apollo-upload-client";
 import LoginPage from "./loginauth";
 import Layout from "../src/components/commons";
+
 import Home from ".";
 import SignupPage from "./signup/";
+import { getAccessToken } from "../src/commons/libraries/getAccesstoken";
+import { onError } from "@apollo/client/link/error";
+
 import { createContext, useEffect, useState } from "react";
 const HIDDEN_MAIN = ["/"];
 
@@ -44,19 +48,40 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken") || "";
-    console.log(accessToken);
-    setAccessToken(accessToken);
+    // const accessToken = localStorage.getItem("accessToken") || "";
+    // console.log(accessToken);
+    // setAccessToken(accessToken);
+    if (localStorage.getItem("refreshToken")) getAccessToken(setAccessToken);
   }, []);
 
-  console.log("sfsdfsdf", location);
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        if (err.extensions?.code === "UNAUTHENTICATED") {
+          // operation.getContext().headers
+          // 기존에 날렸던 쿼리의 헤더정보들
+          operation.setContext({
+            headers: {
+              ...operation.getContext().headers,
+              authorization: `Bearer ${getAccessToken(setAccessToken)}`,
+
+              // 기존 쿼리중 엑세스토큰만 바꿔서 다시날림
+            },
+          });
+
+          return forward(operation);
+        }
+      }
+    }
+  });
 
   const uploadLink = createUploadLink({
-    uri: "http://backend03.codebootcamp.co.kr/graphql",
+    uri: "https://backend03.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${accessToken}` },
+    credentials: "include",
   });
   const client = new ApolloClient({
-    link: ApolloLink.from([uploadLink]),
+    link: ApolloLink.from([errorLink, uploadLink]),
     cache: new InMemoryCache(),
   });
 

@@ -13,6 +13,7 @@ import {
 } from "./ProductsWrite.styles";
 
 import Input01 from "../../../commons/inputs/01";
+import Input02 from "../../../commons/inputs/02";
 import ReactQuil01 from "../../../commons/webeditor/reactQuil";
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 import Uploads02 from "../../../commons/uploads/02/Uploads02.container";
@@ -62,7 +63,13 @@ export default function ProductsWriteUI(props) {
           defaultValue={props.fetchData?.fetchUseditem.price}
         ></Input01>
         <WriteTitle>태그입력</WriteTitle>
-        <Input01 name="#태그 #태그 #태그"></Input01>
+        <Input02
+          type="text"
+          name="#태그 #태그 #태그"
+          register={props.register("myTags")}
+          defaultValue={props.fetchData?.fetchUseditem.tags}
+          // fetchData={props.fetchData}
+        ></Input02>
         <MiddleWrapper>
           <MapWrapper>
             <MapAdTitle>

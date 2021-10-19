@@ -4,7 +4,7 @@ import {
   FETCH_USED_ITEMS,
   FETCH_USED_ITEMS_OF_THE_BEST,
 } from "./ProductsListqueries";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function ProductsListContainer() {
@@ -12,8 +12,6 @@ export default function ProductsListContainer() {
   const router = useRouter();
 
   const { data: bestData } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
-
-  const loader = useRef(null);
 
   const onClickMovetoProducts = (el) => (event) => {
     router.push(`products/${el._id}`);
@@ -63,7 +61,6 @@ export default function ProductsListContainer() {
     <ProductsListUI
       data={data}
       onLoadMore={onLoadMore}
-      loader={loader}
       bestData={bestData}
       onClickMovetoProducts={onClickMovetoProducts}
       onClickProductsWrite={onClickProductsWrite}

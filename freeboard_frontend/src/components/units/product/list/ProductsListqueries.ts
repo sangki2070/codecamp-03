@@ -9,6 +9,8 @@ export const FETCH_USED_ITEMS = gql`
       contents
       price
       pickedCount
+      images
+      tags
       seller {
         _id
         email
@@ -29,6 +31,8 @@ export const FETCH_USED_ITEMS_OF_THE_BEST = gql`
       contents
       price
       pickedCount
+      images
+      tags
     }
   }
 `;

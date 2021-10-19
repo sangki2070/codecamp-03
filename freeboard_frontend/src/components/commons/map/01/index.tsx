@@ -46,6 +46,7 @@ export default function MapArea(props) {
 
     script.onload = () => {
       window.kakao.maps.load(function () {
+        // if (window.kakao.maps.services) {
         const container = document.getElementById("map");
         const options = {
           center: new window.kakao.maps.LatLng(33.450701, 126.570667),
@@ -58,6 +59,7 @@ export default function MapArea(props) {
           position: map.getCenter(),
         });
 
+        console.log(window.kakao.maps.services);
         const geocoder = new window.kakao.maps.services.Geocoder();
         console.log(geocoder);
 
@@ -99,6 +101,7 @@ export default function MapArea(props) {
             console.log("234234", location);
           }
         );
+        // }
       });
     };
   }, []);
@@ -110,11 +113,11 @@ export default function MapArea(props) {
 
         <AddressWrapper>
           <GpsWrapper>
-            <WriteInput3 value={myLat}></WriteInput3>
-            <WriteInput3 value={myLng}></WriteInput3>
+            <WriteInput3 value={myLat} readOnly></WriteInput3>
+            <WriteInput3 value={myLng} readOnly></WriteInput3>
           </GpsWrapper>
           <WriteTitle>주소</WriteTitle>
-          <WriteInput2 value={location}></WriteInput2>
+          <WriteInput2 value={location} readOnly></WriteInput2>
           <WriteInput2 onChange={props.onChangeAddressDetail}></WriteInput2>
         </AddressWrapper>
       </MapAdWrapper>

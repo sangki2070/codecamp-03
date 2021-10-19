@@ -63,6 +63,11 @@ export const BestProductImage = styled.img`
   height: 242px;
 `;
 
+export const BestProductImage1 = styled.img`
+  width: 242px;
+  height: 242px;
+`;
+
 export const BestProductTitle = styled.div`
   height: 27px;
   font-size: 18px;
@@ -146,7 +151,7 @@ export const WoreNavWrapper = styled.div`
 
 export const ProductsItemWrapper = styled.div`
   display: flex;
-  height: 160px;
+  height: 200px;
   border-top: 1px solid #bdbdbd;
 
   :hover {
@@ -154,6 +159,9 @@ export const ProductsItemWrapper = styled.div`
     background-color: gray;
   }
   cursor: pointer;
+  align-items: center;
+  /* padding-top: 28px; */
+  /* margin-bottom: 28px; */
 `;
 
 export const ProductsItemImage = styled.img`
@@ -161,25 +169,44 @@ export const ProductsItemImage = styled.img`
   height: 160px;
 `;
 
-export const ItemTitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+export const ProductsItemImage1 = styled.img`
+  width: 160px;
+  height: 160px;
 `;
+
+export const ItemTitleWrapper = styled.div`
+  width: 100%;
+`;
+
+export const ItemBoxWrapper = styled.div``;
 
 export const ItemContentsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 160px;
   width: 1040px;
   padding-left: 40px;
 `;
 
-export const ItemTitle = styled.div``;
+export const ItemTitle = styled.div`
+  /* margin-top: 28px; */
+  height: 36px;
+  font-size: 24px;
+`;
 
-export const ItemSubTitle = styled.div``;
+export const ItemSubTitle = styled.div`
+  margin-top: 4px;
+`;
 
-export const ItemTag = styled.div``;
+export const ItemTagWrapper = styled.div`
+  display: flex;
+  margin-top: 8px;
+`;
+
+export const ItemTag = styled.span`
+  color: #bdbdbd;
+`;
 
 export const ItemAvatar = styled.img`
   width: 20px;
@@ -222,7 +249,9 @@ export const ItemSeller = styled.div`
 
 export const ItemAvatarWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+
+  margin-top: 27px;
 `;
 
 export const ItemSellerWrapper = styled.div`

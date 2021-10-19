@@ -24,6 +24,7 @@ import {
   BodyMapArea,
   ButtonWrapper,
   MainWrapper,
+  BodyWriteMiddleTag,
 } from "./ProductsRead.styles";
 
 import Lines01 from "../../../commons/lines/01/lines01";
@@ -93,9 +94,15 @@ export default function ProductsReadUI(props) {
             />
           </BodyWriteArea>
         )}
+
         <BodyWriteWrapper>
-          <BodyWriteTag></BodyWriteTag>
+          {props.data?.fetchUseditem.tags.map((el, index) => (
+            <BodyWriteMiddleTag key={index}>
+              <BodyWriteTag>#{el}</BodyWriteTag>
+            </BodyWriteMiddleTag>
+          ))}
         </BodyWriteWrapper>
+
         <Lines01 />
 
         <MapArea02 data={props.data}></MapArea02>

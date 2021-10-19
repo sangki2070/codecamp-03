@@ -9,6 +9,7 @@ export const FETCH_USED_ITEM = gql`
       contents
       pickedCount
       images
+      tags
       seller {
         _id
         email

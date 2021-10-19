@@ -9,6 +9,7 @@ export const CREATE_USED_ITEM = gql`
       contents
       price
       images
+      tags
       useditemAddress {
         lat
         lng
@@ -31,6 +32,7 @@ export const UPDATE_USED_ITEM = gql`
       remarks
       contents
       price
+      tags
     }
   }
 `;
@@ -44,6 +46,7 @@ export const FETCH_USED_ITEM = gql`
       contents
       price
       images
+      tags
     }
   }
 `;

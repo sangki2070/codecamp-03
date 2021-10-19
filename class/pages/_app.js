@@ -6,6 +6,9 @@ import {
   InMemoryCache,
   ApolloLink,
 } from "@apollo/client";
+
+import { onError } from "@apollo/client/link/error";
+
 import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
@@ -14,6 +17,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { initializeApp } from "firebase/app";
 import { createUploadLink } from "apollo-upload-client";
 import { createContext, useEffect, useState } from "react";
+import { getAccessToken } from "../src/commons/libraries/getAccesstoken";
 // import Head from "next/head";
 
 export const firebaseApp = initializeApp({
@@ -41,17 +45,43 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     // localStorage.clear();
-    const accessToken = localStorage.getItem("accessToken") || "";
-    setAccessToken(accessToken);
+    // const accessToken = localStorage.getItem("accessToken") || "";
+    // setAccessToken(accessToken);
+    if (localStorage.getItem("refreshToken")) getAccessToken(setAccessToken);
   }, []);
 
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    if (graphQLErrors) {
+      for (const err of graphQLErrors) {
+        if (err.extensions?.code === "UNAUTHENTICATED") {
+          // operation.getContext().headers
+          // 기존에 날렸던 쿼리의 헤더정보들
+          operation.setContext({
+            headers: {
+              ...operation.getContext().headers,
+              authorization: `Bearer ${getAccessToken(setAccessToken)}`,
+
+              // 기존 쿼리중 엑세스토큰만 바꿔서 다시날림
+            },
+          });
+
+          return forward(operation);
+        }
+      }
+    }
+  });
+
+  // 그라프큐엘 에러...., 어떤 쿼리를 썼는지, 다시날릴때 사용할 포워드
+  // 반복문은 공식문서에 따라 작성
+
   const uploadLink = createUploadLink({
-    uri: "http://backend03.codebootcamp.co.kr/graphql",
+    uri: "https://backend03.codebootcamp.co.kr/graphql",
     headers: { authorization: `Bearer ${accessToken}` },
+    credentials: "include",
   });
 
   const client = new ApolloClient({
-    link: ApolloLink.from([uploadLink]),
+    link: ApolloLink.from([errorLink, uploadLink]),
     cache: new InMemoryCache(),
   });
 

@@ -1,13 +1,13 @@
 import { useMutation } from "@apollo/client";
 import { useContext, useState } from "react";
 import LoginUI from "./login.present";
-import { LOGIN_USER } from "./login.queries";
+import { LOGIN_USER_EXAMPLE } from "./login.queries";
 
 import { useRouter } from "next/router";
 import { GlobalContext } from "../../../../../pages/_app";
 
 export default function LoginContainer() {
-  const [loginUser] = useMutation(LOGIN_USER);
+  const [loginUserExample] = useMutation(LOGIN_USER_EXAMPLE);
   const { setAccessToken } = useContext(GlobalContext);
   const [myEmail, setMyEmail] = useState("");
   const [myPassword, setMyPassword] = useState("");
@@ -35,16 +35,18 @@ export default function LoginContainer() {
     }
 
     try {
-      const result = await loginUser({
+      const result = await loginUserExample({
         variables: {
           email: myEmail,
           password: myPassword,
         },
       });
-      console.log(result.data?.loginUser.accessToken);
-      setAccessToken(result.data?.loginUser.accessToken);
-      localStorage.setItem("accessToken", result.data.loginUser.accessToken);
+
+      localStorage.setItem("refreshToken", "true");
+      setAccessToken(result.data?.loginUserExample.accessToken);
       router.push("/products/new");
+      // setAccessToken(result.data?.loginUser.accessToken);
+      // localStorage.setItem("accessToken", result.data.loginUser.accessToken);
     } catch (error) {
       alert("회원가입을 먼저 해주세요");
     }

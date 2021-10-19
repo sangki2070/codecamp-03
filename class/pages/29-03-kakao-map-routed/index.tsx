@@ -58,13 +58,6 @@ export default function KakaoMapPage() {
 
   return (
     <>
-      {/* <Head>
-        <script
-          type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a0290023f3c59e26ad85f5ea9165188f"
-        ></script>
-      </Head> */}
-
       <div id="map" style={{ width: "500px", height: "400px" }}></div>
     </>
   );

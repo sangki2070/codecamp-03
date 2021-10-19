@@ -127,16 +127,22 @@ export const BodyWriteArea = styled.div`
   margin-top: 80px;
 `;
 
-export const BodyWriteTag = styled.div`
+export const BodyWriteTag = styled.span`
   width: 300px;
   height: 25px;
-  background-color: gray;
   margin-top: 40px;
+  font-size: 16px;
+  color: #bdbdbd;
+`;
+
+export const BodyWriteMiddleTag = styled.div`
+  margin-right: 10px;
 `;
 
 export const BodyWriteWrapper = styled.div`
   width: 800px;
   display: flex;
+
   justify-content: flex-start;
   margin-bottom: 40px;
 `;

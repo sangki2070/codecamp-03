@@ -50,6 +50,7 @@ export default function ProductsWriteContainer(props) {
             contents: data.myContents,
             price: Number(data.myPrice),
             images: myImages,
+            tags: data.myTags.split(" "),
             useditemAddress: {
               address: location,
               addressDetail: addressDetail,
@@ -91,6 +92,7 @@ export default function ProductsWriteContainer(props) {
     if (data.myContents) myUpdateUseditemInput.contents = data.myContents;
     if (Number(data.myPrice))
       myUpdateUseditemInput.price = Number(data.myPrice);
+    if (data.myTags) myUpdateUseditemInput.tags = data.myTags;
     if (myLat || myLng || addressDetail || location) {
       myUpdateUseditemInput.useditemAddress = {};
       if (myLat) myUpdateUseditemInput.useditemAddress.lat = myLat;
@@ -137,6 +139,7 @@ export default function ProductsWriteContainer(props) {
       setValue("myRemarks", fetchData?.fetchUseditem.remarks);
       setValue("myContents", fetchData?.fetchUseditem.contents);
       setValue("myPrice", fetchData?.fetchUseditem.price);
+      setValue("myTags", fetchData?.fetchUseditem.tags);
     }
   }, [!props.isEdit, fetchData?.fetchUseditem]);
 

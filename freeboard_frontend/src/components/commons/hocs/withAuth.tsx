@@ -8,7 +8,7 @@ export const withAuth = (Component) => (props) => {
   // const { accessToken } = useContext(GlobalContext);
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("refreshToken");
     console.log(accessToken);
     if (!accessToken) {
       alert("로그인후 이용해주세요");

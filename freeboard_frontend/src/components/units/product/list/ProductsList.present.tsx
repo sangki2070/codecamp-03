@@ -37,11 +37,12 @@ import {
   BestProductsArea,
   ItemSellerWrapper,
   ItemPickWrapper,
-  Line,
   WriteButton,
   ButtonArea,
-  PriceArea,
   MainWrapper,
+  BestProductImage1,
+  ProductsItemImage1,
+  ItemBoxWrapper,
 } from "./ProductsList.styles";
 
 import TodayProductsContainer from "../todayproducts/TodayProducts.container";
@@ -62,7 +63,16 @@ export default function ProductsListUI(props) {
               onClick={props.onClickMovetoProducts(el)}
               // onClick={props.onClickMovetoProducts}
             >
-              <BestProductImage src={"/images/noimage3.svg"}></BestProductImage>
+              {el.images[0] ? (
+                <BestProductImage1
+                  src={`https://storage.googleapis.com/${el.images[0]}`}
+                ></BestProductImage1>
+              ) : (
+                <BestProductImage
+                  src={"/images/noimage3.svg"}
+                ></BestProductImage>
+              )}
+
               <BestProductTitle>{el.name}</BestProductTitle>
               <BestProductInfoWrapper>
                 <BestProductBoddyWrapper>
@@ -87,7 +97,7 @@ export default function ProductsListUI(props) {
           <Calender>2020.12.02 ~ 2020.12.02</Calender>
         </ProductNavWrapper>
 
-        <Loader ref={props.loader}>
+        <Loader>
           <ScrollArea
             pageStart={0}
             loadMore={props.onLoadMore}
@@ -99,14 +109,24 @@ export default function ProductsListUI(props) {
                 key={el._id}
                 onClick={props.onClickMovetoProducts(el)}
               >
-                <ProductsItemImage
-                  src={"/images/noimage3.svg"}
-                ></ProductsItemImage>
+                {el.images[0] ? (
+                  <ProductsItemImage
+                    src={`https://storage.googleapis.com/${el.images[0]}`}
+                  ></ProductsItemImage>
+                ) : (
+                  <ProductsItemImage1
+                    src={"/images/noimage3.svg"}
+                  ></ProductsItemImage1>
+                )}
                 <ItemContentsWrapper>
-                  <ItemTitleWrapper>
-                    <ItemTitle>{el.name}</ItemTitle>
-                    <ItemSubTitle>{el.remarks}</ItemSubTitle>
-                    <ItemTag>#삼성전자 #갤럭시탭 #갓성비</ItemTag>
+                  <ItemBoxWrapper>
+                    <ItemTitleWrapper>
+                      <ItemTitle>{el.name}</ItemTitle>
+                      <ItemSubTitle>{el.remarks}</ItemSubTitle>
+                      {el.tags.map((el, index) => (
+                        <ItemTag key={index}>#{el}</ItemTag>
+                      ))}
+                    </ItemTitleWrapper>
                     <ItemAvatarWrapper>
                       <ItemSellerWrapper>
                         <ItemAvatar
@@ -121,12 +141,12 @@ export default function ProductsListUI(props) {
                         <ItemLikeCount>{el.pickedCount}</ItemLikeCount>
                       </ItemPickWrapper>
                     </ItemAvatarWrapper>
-                  </ItemTitleWrapper>
-                  <ItemPriceWrapper>
-                    <ItemPriceImage src={"/images/won.svg"}></ItemPriceImage>
-                    <ItemPrice>{el.price} 원</ItemPrice>
-                  </ItemPriceWrapper>
+                  </ItemBoxWrapper>
                 </ItemContentsWrapper>
+                <ItemPriceWrapper>
+                  <ItemPriceImage src={"/images/won.svg"}></ItemPriceImage>
+                  <ItemPrice>{el.price} 원</ItemPrice>
+                </ItemPriceWrapper>
               </ProductsItemWrapper>
             ))}
           </ScrollArea>
