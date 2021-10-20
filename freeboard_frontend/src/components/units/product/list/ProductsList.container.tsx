@@ -8,7 +8,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function ProductsListContainer() {
-  const { data, fetchMore } = useQuery(FETCH_USED_ITEMS);
+  const [isSoldOut, setIsSoldOut] = useState(false);
+  const { data, fetchMore } = useQuery(FETCH_USED_ITEMS, {
+    variables: {
+      isSoldout: isSoldOut,
+    },
+  });
   const router = useRouter();
 
   const { data: bestData } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
@@ -41,6 +46,16 @@ export default function ProductsListContainer() {
     router.push(`products/new`);
   };
 
+  const onClickSoldItems = () => () => {
+    setIsSoldOut(true);
+    console.log("123123", isSoldOut);
+  };
+
+  const onClickNotSoldItems = () => () => {
+    setIsSoldOut(false);
+    console.log("44444", isSoldOut);
+  };
+
   function onLoadMore() {
     if (!data) return;
 
@@ -64,6 +79,9 @@ export default function ProductsListContainer() {
       bestData={bestData}
       onClickMovetoProducts={onClickMovetoProducts}
       onClickProductsWrite={onClickProductsWrite}
+      onClickSoldItems={onClickSoldItems}
+      onClickNotSoldItems={onClickNotSoldItems}
+      isSoldOut={isSoldOut}
       // basketItems={basketItems}
     />
   );

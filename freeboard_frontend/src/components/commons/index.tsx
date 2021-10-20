@@ -14,15 +14,23 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* margin: auto; */
   /* background-color: #1e222d; */
+  /* margin-left: 195px; */
 `;
 
 const SidebarWrapper = styled.div`
   display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
 `;
 
 export default function Layout(props) {
-  const HIDDEN_MYPAGE = ["/mypages"];
+  const HIDDEN_MYPAGE = [
+    "/mypages/market",
+    "/mypages/point",
+    "/mypages/profile",
+  ];
   const router = useRouter();
   const isHiddenMypages = HIDDEN_MYPAGE.includes(router.pathname);
 
@@ -32,10 +40,14 @@ export default function Layout(props) {
       <LayoutNav></LayoutNav>
       <LayoutMarketPage></LayoutMarketPage>
       <LayoutMenuPage></LayoutMenuPage>
-      <SidebarWrapper>
-        {isHiddenMypages && <LayoutSidebar></LayoutSidebar>}
+      {isHiddenMypages ? (
+        <SidebarWrapper>
+          <LayoutSidebar></LayoutSidebar>
+          <Body>{props.children}</Body>
+        </SidebarWrapper>
+      ) : (
         <Body>{props.children}</Body>
-      </SidebarWrapper>
+      )}
       <LayoutFooter></LayoutFooter>
     </Wrapper>
   );

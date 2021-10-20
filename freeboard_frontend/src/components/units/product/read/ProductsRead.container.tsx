@@ -5,6 +5,7 @@ import {
   DELETE_USED_ITEM,
   FETCH_USED_ITEM,
   TOGGLE_USED_ITEM_PICK,
+  CREATE_POINT_TRANSACTION_OF_BUING_AND_SELLING,
 } from "./ProductsRead.queries";
 import { useRouter } from "next/router";
 
@@ -13,6 +14,20 @@ export default function ProductsReadContainer() {
 
   const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
   const [toggleUseditemPick] = useMutation(TOGGLE_USED_ITEM_PICK);
+  const [createPointTransactionOfBuyingAndSelling] = useMutation(
+    CREATE_POINT_TRANSACTION_OF_BUING_AND_SELLING
+  );
+
+  async function onClickBuy() {
+    createPointTransactionOfBuyingAndSelling({
+      variables: {
+        useritemId: router.query.ProductsDetailPage,
+      },
+    });
+    alert("구매가 완료되었습니다.");
+    router.push(`/products/`);
+    console.log("123123");
+  }
 
   async function onClickPick() {
     toggleUseditemPick({
@@ -60,6 +75,7 @@ export default function ProductsReadContainer() {
       onClickMoveEdit={onClickMoveEdit}
       onClickDelete={onClickDelete}
       onClickPick={onClickPick}
+      onClickBuy={onClickBuy}
     />
   );
 }

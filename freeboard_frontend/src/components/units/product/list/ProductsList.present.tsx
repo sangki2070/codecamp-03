@@ -43,6 +43,7 @@ import {
   BestProductImage1,
   ProductsItemImage1,
   ItemBoxWrapper,
+  WrordNav1,
 } from "./ProductsList.styles";
 
 import TodayProductsContainer from "../todayproducts/TodayProducts.container";
@@ -90,8 +91,18 @@ export default function ProductsListUI(props) {
 
         <ProductNavWrapper>
           <WoreNavWrapper>
-            <WrordNav>판매중인 상품</WrordNav>
-            <WrordNav>판매된 상품</WrordNav>
+            <WrordNav
+              onClick={props.onClickNotSoldItems()}
+              isSoldOut={props.isSoldOut}
+            >
+              판매중인 상품
+            </WrordNav>
+            <WrordNav1
+              onClick={props.onClickSoldItems()}
+              isSoldOut={props.isSoldOut}
+            >
+              판매된 상품
+            </WrordNav1>
           </WoreNavWrapper>
           <ProductSearch placeholder="제품을 검색해 주세요."></ProductSearch>
           <Calender>2020.12.02 ~ 2020.12.02</Calender>

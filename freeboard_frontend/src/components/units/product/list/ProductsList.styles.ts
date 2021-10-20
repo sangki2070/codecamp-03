@@ -125,6 +125,16 @@ export const ProductNavWrapper = styled.div`
 
 export const WrordNav = styled.div`
   font-size: 18px;
+  color: ${(props) => (props.isSoldOut === false ? "blue" : "")};
+  font-weight: ${(props) => (props.isSoldOut === false ? "bold" : "")};
+  cursor: pointer;
+`;
+
+export const WrordNav1 = styled.div`
+  font-size: 18px;
+  color: ${(props) => (props.isSoldOut === true ? "blue" : "")};
+  font-weight: ${(props) => (props.isSoldOut === true ? "bold" : "")};
+  cursor: pointer;
 `;
 
 export const ProductSearch = styled.input`

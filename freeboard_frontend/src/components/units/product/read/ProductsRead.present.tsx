@@ -112,6 +112,7 @@ export default function ProductsReadUI(props) {
           <Buttons01 name="목록으로" onClick={props.onClickMoveProducts} />
           <Buttons01 name="삭제하기" onClick={props.onClickDelete} />
           <Buttons01 name="수정하기" onClick={props.onClickMoveEdit} />
+          <Buttons01 name="구매하기" onClick={props.onClickBuy} />
         </ButtonWrapper>
         <Lines01 />
       </ProductsReadWrapper>
