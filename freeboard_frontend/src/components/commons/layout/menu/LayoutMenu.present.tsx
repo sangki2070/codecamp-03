@@ -15,7 +15,7 @@ export default function LayoutMenuUI(props) {
         수익률 게시판
       </MenuItem>
       <> | </>
-      <MenuItem id="/" onClick={props.onClickMenu}>
+      <MenuItem id="/mypages/market" onClick={props.onClickMypage}>
         마이페이지
       </MenuItem>
     </Wrapper>

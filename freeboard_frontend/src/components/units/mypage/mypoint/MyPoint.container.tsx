@@ -5,6 +5,7 @@ import {
   FETCH_POINT_TRANSACTIONS,
   FETCH_POINT_TRANSACTIONS_OF_LOADING,
   FETCH_POINT_TRANSACTIONS_OF_BUYING,
+  FETCH_POINT_TRANSACTIONS_OF_SELLING,
 } from "./MyPoint.queries";
 
 export default function MyPointContainer() {
@@ -15,7 +16,13 @@ export default function MyPointContainer() {
 
   const { data: data2 } = useQuery(FETCH_POINT_TRANSACTIONS_OF_LOADING);
 
-  const { data: data3 } = useQuery(FETCH_POINT_TRANSACTIONS_OF_BUYING);
+  const { data: data3 } = useQuery(FETCH_POINT_TRANSACTIONS_OF_BUYING, {
+    variables: {
+      page: 1,
+    },
+  });
+
+  const { data: data4 } = useQuery(FETCH_POINT_TRANSACTIONS_OF_SELLING);
 
   function onClickAllPoint() {
     setIsChange(true);
@@ -48,6 +55,7 @@ export default function MyPointContainer() {
       data1={data1}
       data2={data2}
       data3={data3}
+      data4={data4}
     />
   );
 }

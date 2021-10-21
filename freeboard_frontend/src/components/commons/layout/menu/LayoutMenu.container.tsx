@@ -8,5 +8,14 @@ export default function LayoutMenuPage() {
     router.push(event.target.id);
   }
 
-  return <LayoutMenuUI onClickMenu={onClickMenu}></LayoutMenuUI>;
+  function onClickMypage(event) {
+    router.push(event.target.id);
+  }
+
+  return (
+    <LayoutMenuUI
+      onClickMenu={onClickMenu}
+      onClickMypage={onClickMypage}
+    ></LayoutMenuUI>
+  );
 }

@@ -10,6 +10,7 @@ const TableWrapper = styled.div`
   /* justify-content: space-around; */
   font-size: 18px;
   font-weight: bold;
+  text-align: center;
 `;
 
 const MapWrapper = styled.div`
@@ -20,51 +21,39 @@ const MapWrapper = styled.div`
   align-items: center;
   /* justify-content: space-around; */
   font-size: 14px;
+  text-align: center;
 `;
-
-const Date1 = styled.span`
-  margin-left: 70px;
-`;
-const ProductsName1 = styled.span`
-  margin-left: 250px;
-`;
-const Transaction1 = styled.span`
-  margin-left: 250px;
-`;
-const Balance1 = styled.span`
-  margin-left: 100px;
-`;
-
-// ======================= 나누는 영역 =========================
 
 const Date = styled.span`
-  margin-left: 60px;
+  width: 25%;
 `;
 const ProductsName = styled.span`
-  margin-left: 180px;
+  width: 25%;
 `;
 const Transaction = styled.span`
-  margin-left: 180px;
+  width: 25%;
 `;
 const Balance = styled.span`
-  margin-left: 90px;
+  width: 25%;
 `;
 
-export default function Table04() {
+export default function Table04(props) {
   return (
     <>
       <TableWrapper>
-        <Date1>거래일</Date1>
-        <ProductsName1>상품명</ProductsName1>
-        <Transaction1>거래내역</Transaction1>
-        <Balance1>거래 후 잔액</Balance1>
+        <Date>거래일</Date>
+        <ProductsName>상품명</ProductsName>
+        <Transaction>거래내역</Transaction>
+        <Balance>거래 후 잔액</Balance>
       </TableWrapper>
-      <MapWrapper>
-        <Date>2020.09.28</Date>
-        <ProductsName>한번밖에 안 쓴 노트북 팝니다.</ProductsName>
-        <Transaction>+1,000,000</Transaction>
-        <Balance>₩1,222,222</Balance>
-      </MapWrapper>
+      {props.data4?.fetchPointTransactionsOfSelling.map((el) => (
+        <MapWrapper key={el._id}>
+          <Date>{el.createdAt.slice(0, 10)}</Date>
+          <ProductsName>{el.useditem.name}</ProductsName>
+          <Transaction>{el.amount}</Transaction>
+          <Balance>{el.balance}</Balance>
+        </MapWrapper>
+      ))}
     </>
   );
 }

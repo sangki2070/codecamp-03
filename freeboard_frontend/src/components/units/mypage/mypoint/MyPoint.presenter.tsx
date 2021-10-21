@@ -33,7 +33,9 @@ export default function MyPointUI(props) {
         {!props.isChange && props.isChanged && (
           <Table03 data3={props.data3}></Table03>
         )}
-        {props.isChange && props.isChanged && <Table04></Table04>}
+        {props.isChange && props.isChanged && (
+          <Table04 data4={props.data4}></Table04>
+        )}
       </MainWrapper>
     </MyPointArea>
   );

@@ -41,7 +41,7 @@ export const BodyTitle = styled.div`
 `;
 
 export const BodyAvatar = styled.img`
-  margin-top: 80px;
+  margin-top: 40px;
   width: 80px;
   height: 80px;
 `;

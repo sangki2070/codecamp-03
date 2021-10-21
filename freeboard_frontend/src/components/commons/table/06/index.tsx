@@ -23,43 +23,48 @@ const MapWrapper = styled.div`
   text-align: center;
 `;
 
-const Date = styled.span`
-  width: 20%;
+const Index = styled.span`
+  width: 10%;
 `;
 const ProductsName = styled.span`
   width: 30%;
 `;
-const Transaction = styled.span`
-  width: 20%;
-  color: #0031e0;
+
+const Status = styled.span`
+  width: 10%;
+  color: #121722;
+  font-weight: bold;
 `;
-const Transaction1 = styled.span`
-  width: 20%;
-`;
-const Balance = styled.span`
+
+const Price = styled.span`
   width: 20%;
 `;
 const Seller = styled.span`
   width: 10%;
 `;
+const Date = styled.span`
+  width: 20%;
+`;
 
-export default function Table03(props) {
+export default function Table06(props) {
   return (
     <>
       <TableWrapper>
-        <Date>거래일</Date>
+        <Index>번호</Index>
         <ProductsName>상품명</ProductsName>
-        <Transaction1>거래내역</Transaction1>
-        <Balance>거래 후 잔액</Balance>
+        <Status></Status>
+        <Price>판매가격</Price>
         <Seller>판매자</Seller>
+        <Date>날짜</Date>
       </TableWrapper>
-      {props.data3?.fetchPointTransactionsOfBuying.map((el) => (
+      {props.data2?.fetchUseditemsIPicked.map((el, index) => (
         <MapWrapper key={el._id}>
+          <Index>{index}</Index>
+          <ProductsName>{el.name}</ProductsName>
+          {el.buyer?.email ? <Status>판매완료</Status> : <Status></Status>}
+          <Price>{el.price}</Price>
+          <Seller>{el.seller.name}</Seller>
           <Date>{el.createdAt.slice(0, 10)}</Date>
-          <ProductsName>{el.useditem.name}</ProductsName>
-          <Transaction>{el.amount}</Transaction>
-          <Balance>{el.balance}</Balance>
-          <Seller></Seller>
         </MapWrapper>
       ))}
     </>

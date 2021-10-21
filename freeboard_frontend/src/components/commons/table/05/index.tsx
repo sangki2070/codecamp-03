@@ -22,47 +22,49 @@ const MapWrapper = styled.div`
   font-size: 14px;
 `;
 
-const Date = styled.span`
+const Index = styled.span`
   /* margin-left: 70px; */
-  width: 20%;
+  width: 10%;
 `;
 
-const UID = styled.span`
+const ProductsName = styled.span`
   /* margin-left: 145px; */
-  width: 40%;
+  width: 35%;
 `;
 
-const ChargeContents = styled.span`
-  /* margin-left: 153px; */
-  width: 20%;
-  color: #ffd600;
-`;
-
-const ChargeContents1 = styled.span`
+const ProductsPrice = styled.span`
   /* margin-left: 153px; */
   width: 20%;
 `;
 
-const Balance = styled.span`
+const Date = styled.span`
   /* margin-left: 175px; */
   width: 20%;
 `;
 
-export default function Table02(props) {
+const Status = styled.span`
+  width: 15%;
+  color: #121722;
+  font-weight: bold;
+`;
+
+export default function Table05(props) {
   return (
     <>
       <TableWrapper>
-        <Date>충전일</Date>
-        <UID>결제 ID</UID>
-        <ChargeContents1>충전내역</ChargeContents1>
-        <Balance>충전 후 잔액</Balance>
+        <Index>번호</Index>
+        <ProductsName>상품명</ProductsName>
+        <Status></Status>
+        <ProductsPrice>판매가격</ProductsPrice>
+        <Date>날짜</Date>
       </TableWrapper>
-      {props.data2?.fetchPointTransactionsOfLoading.map((el) => (
+      {props.data1?.fetchUseditemsISold.map((el, index) => (
         <MapWrapper key={el._id}>
+          <Index>{index}</Index>
+          <ProductsName>{el.name}</ProductsName>
+          {el.buyer?.email ? <Status>판매완료</Status> : <Status></Status>}
+          <ProductsPrice>{el.price}</ProductsPrice>
           <Date>{el.createdAt.slice(0, 10)}</Date>
-          <UID>{el.impUid}</UID>
-          <ChargeContents>+{el.amount}</ChargeContents>
-          <Balance>₩{el.balance}</Balance>
         </MapWrapper>
       ))}
     </>
