@@ -1,13 +1,15 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import MyProfileUI from "./MyProfile.presenter";
-import { RESET_USER_PASSWORD } from "./MyProfile.queries";
+import { RESET_USER_PASSWORD, UPDATE_USER } from "./MyProfile.queries";
 
 export default function MyProfileContainer() {
   const [resetUserPassword] = useMutation(RESET_USER_PASSWORD);
+  const [updateUser] = useMutation(UPDATE_USER);
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [reName, setReName] = useState("");
 
   function onChangePassword(event) {
     setPassword(event.target.value);
@@ -21,6 +23,10 @@ export default function MyProfileContainer() {
     if (event.target.value !== "") {
       setPasswordError("");
     }
+  }
+
+  function onChangeName(event) {
+    setReName(event.target.value);
   }
 
   async function onClickPasswordReset() {
@@ -53,12 +59,31 @@ export default function MyProfileContainer() {
     }
   }
 
+  async function onClickChangeName() {
+    if (reName === "") {
+      alert("이름을 입력해 주세요");
+      return;
+    }
+
+    try {
+      await updateUser({
+        variables: {
+          updateUserInput: {
+            name: reName,
+          },
+        },
+      });
+    } catch (error) {}
+  }
+
   return (
     <MyProfileUI
       onClickPasswordReset={onClickPasswordReset}
       onChangeRePassword={onChangeRePassword}
       onChangePassword={onChangePassword}
       passwordError={passwordError}
+      onChangeName={onChangeName}
+      onClickChangeName={onClickChangeName}
     ></MyProfileUI>
   );
 }
