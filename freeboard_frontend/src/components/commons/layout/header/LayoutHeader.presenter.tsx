@@ -11,6 +11,8 @@ import {
   Name,
   MyAvatar,
   MyBadge,
+  HeaderPicture,
+  HeaderAvatar,
 } from "./LayoutHeader.styles";
 
 export default function LayoutHeaderUI(props) {
@@ -24,20 +26,14 @@ export default function LayoutHeaderUI(props) {
         {props.data?.fetchUserLoggedIn.name && (
           <Name>{props.data?.fetchUserLoggedIn.name}님</Name>
         )}
-        {props.data?.fetchUserLoggedIn.name && (
-          <MyBadge count={"new"}>
-            <MyAvatar
-              shape="square"
-              size={64}
-              icon={<UserOutlined />}
-              style={{
-                color: "rgb(18, 23, 34)",
-                backgroundColor: "white",
-                fontWeight: "bold",
-              }}
-            ></MyAvatar>
-          </MyBadge>
+        {props.data?.fetchUserLoggedIn.picture ? (
+          <HeaderPicture
+            src={`https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`}
+          ></HeaderPicture>
+        ) : (
+          <HeaderAvatar src="/images/avatar1.svg"></HeaderAvatar>
         )}
+
         {/* <Name>{props.data?.fetchUserLoggedIn.email}</Name> */}
         {!props.data?.fetchUserLoggedIn.name && <Login>LogIn |</Login>}
         {!props.data?.fetchUserLoggedIn.name && <SignUp> SignUp</SignUp>}

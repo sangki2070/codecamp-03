@@ -8,6 +8,7 @@ export const FETCH_USED_ITEM_QUESTIONS = gql`
       user {
         _id
         name
+        picture
       }
       createdAt
     }
@@ -72,7 +73,9 @@ export const FETCH_USED_ITEM_QUESTION_ANSWERS = gql`
       user {
         _id
         name
+        picture
       }
+      createdAt
     }
   }
 `;

@@ -1,15 +1,22 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import MyProfileUI from "./MyProfile.presenter";
-import { RESET_USER_PASSWORD, UPDATE_USER } from "./MyProfile.queries";
+import {
+  RESET_USER_PASSWORD,
+  UPDATE_USER,
+  UPLOAD_FILE,
+} from "./MyProfile.queries";
 
 export default function MyProfileContainer() {
   const [resetUserPassword] = useMutation(RESET_USER_PASSWORD);
   const [updateUser] = useMutation(UPDATE_USER);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [reName, setReName] = useState("");
+
+  const [file, setFile] = useState(null);
 
   function onChangePassword(event) {
     setPassword(event.target.value);
@@ -27,6 +34,10 @@ export default function MyProfileContainer() {
 
   function onChangeName(event) {
     setReName(event.target.value);
+  }
+
+  function onChangeFile(file) {
+    setFile(file);
   }
 
   async function onClickPasswordReset() {
@@ -76,6 +87,22 @@ export default function MyProfileContainer() {
     } catch (error) {}
   }
 
+  async function onClickChangePicture() {
+    try {
+      const resultPicture = await uploadFile({ variables: { file: file } });
+      const myPicture = resultPicture.data?.uploadFile.url;
+
+      await updateUser({
+        variables: {
+          updateUserInput: {
+            picture: myPicture,
+          },
+        },
+      });
+      console.log("33123", myPicture);
+    } catch (error) {}
+  }
+
   return (
     <MyProfileUI
       onClickPasswordReset={onClickPasswordReset}
@@ -84,6 +111,8 @@ export default function MyProfileContainer() {
       passwordError={passwordError}
       onChangeName={onChangeName}
       onClickChangeName={onClickChangeName}
+      onChangeFile={onChangeFile}
+      onClickChangePicture={onClickChangePicture}
     ></MyProfileUI>
   );
 }

@@ -12,6 +12,7 @@ import {
   CommentsTopWrapper,
   ModifyBtn,
   RecommentsBtn,
+  CommentsPicture,
 } from "./ProductsComments.styles";
 
 import Comments01 from "../../../commons/comments/01";
@@ -36,9 +37,15 @@ export default function ProductsCommentsUI(props) {
         <CommentsDisplayWrapper key={el._id}>
           {props.isActive !== el._id && (
             <CommentsTopWrapper>
-              <CommentsAvatar
-                src={"/images/productsavatar.svg"}
-              ></CommentsAvatar>
+              {el.user.picture ? (
+                <CommentsPicture
+                  src={`https://storage.googleapis.com/${el.user.picture}`}
+                ></CommentsPicture>
+              ) : (
+                <CommentsAvatar
+                  src={"/images/productsavatar.svg"}
+                ></CommentsAvatar>
+              )}
               <ProfileArea>
                 <CommentsName>{el.user.name}</CommentsName>
                 <CommentsContents>{el.contents}</CommentsContents>

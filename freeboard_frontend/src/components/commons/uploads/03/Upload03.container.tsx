@@ -9,7 +9,7 @@ export default function Upload03(props) {
     fileRef.current?.click();
   }
 
-  async function onChangeFile(event) {
+  async function onChangeImage(event) {
     const file = event?.target.files?.[0];
 
     if (!file?.size) {
@@ -32,6 +32,7 @@ export default function Upload03(props) {
     fileReader.onload = (data) => {
       setFileUrl(data.target?.result);
       //   props.onChangeFiles(file, props.index);
+      props.onChangeFile(file);
     };
   }
 
@@ -39,8 +40,9 @@ export default function Upload03(props) {
     <Upload03UI
       fileRef={fileRef}
       onClickUpload={onClickUpload}
-      onChangeFile={onChangeFile}
+      onChangeImage={onChangeImage}
       fileUrl={fileUrl}
+
       //   defaultFileUrl={props.defaultFileUrl}
     ></Upload03UI>
   );

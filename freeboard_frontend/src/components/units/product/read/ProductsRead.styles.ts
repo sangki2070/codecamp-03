@@ -31,6 +31,12 @@ export const SellerAvatar = styled.img`
   height: 40px;
 `;
 
+export const SellerPicture = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+`;
+
 export const SellerName = styled.div`
   width: 45px;
   height: 24px;

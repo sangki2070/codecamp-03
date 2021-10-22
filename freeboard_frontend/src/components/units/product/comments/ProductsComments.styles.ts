@@ -46,6 +46,13 @@ export const CommentsAvatar = styled.img`
   margin-top: 5px;
 `;
 
+export const CommentsPicture = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 5px;
+`;
+
 export const CommentsName = styled.div`
   width: 45px;
   height: 24px;

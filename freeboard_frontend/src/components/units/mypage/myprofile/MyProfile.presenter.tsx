@@ -16,6 +16,7 @@ import {
   ProfilePictureTitle,
   ProfilePicture,
   ProfilePictureSubTitle,
+  ProfilePictureBtn,
 } from "./MyProfile.styles";
 
 import Upload03 from "../../../commons/uploads/03/Upload03.container";
@@ -68,9 +69,14 @@ export default function MyProfileUI(props) {
       <ProfilePictureWrapper>
         <ProfilePicture>
           <ProfilePictureSubTitle>새 프로필 사진</ProfilePictureSubTitle>
-          <Upload03></Upload03>
+          <Upload03 onChangeFile={props.onChangeFile}></Upload03>
         </ProfilePicture>
       </ProfilePictureWrapper>
+      <BtnWrapper>
+        <ProfilePictureBtn onClick={props.onClickChangePicture}>
+          프로필사진 변경
+        </ProfilePictureBtn>
+      </BtnWrapper>
     </MyProfileArea>
   );
 }

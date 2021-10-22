@@ -9,6 +9,13 @@ const CommentsAvatar = styled.img`
   margin-top: 5px;
 `;
 
+const CommentsPicture = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 5px;
+`;
+
 const ProfileArea = styled.div`
   width: 1150px;
   display: flex;
@@ -70,13 +77,19 @@ export default function Profile01(props) {
         <ProfileMainWrapper key={el._id}>
           {ModifyBtn !== el._id && (
             <>
-              <CommentsAvatar
-                src={"/images/productsavatar.svg"}
-              ></CommentsAvatar>
+              {el.user.picture ? (
+                <CommentsPicture
+                  src={`https://storage.googleapis.com/${el.user.picture}`}
+                ></CommentsPicture>
+              ) : (
+                <CommentsAvatar
+                  src={"/images/productsavatar.svg"}
+                ></CommentsAvatar>
+              )}
               <ProfileArea>
                 <CommentsName>{el.user.name}</CommentsName>
                 <CommentsContents>{el.contents}</CommentsContents>
-                <CommentDate>date : </CommentDate>
+                <CommentDate>date : {el.createdAt.slice(0, 10)}</CommentDate>
               </ProfileArea>
               <RecommentsModifyBtn
                 src="/images/commentbtn.png"

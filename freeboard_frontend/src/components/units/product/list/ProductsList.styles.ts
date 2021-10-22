@@ -223,6 +223,12 @@ export const ItemAvatar = styled.img`
   height: 20px;
 `;
 
+export const ItemPicture = styled.img`
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+`;
+
 export const ItemLikeImage = styled.img`
   width: 20px;
   height: 20px;

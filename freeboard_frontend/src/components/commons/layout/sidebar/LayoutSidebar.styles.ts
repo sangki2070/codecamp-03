@@ -42,8 +42,15 @@ export const BodyTitle = styled.div`
 
 export const BodyAvatar = styled.img`
   margin-top: 40px;
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 200px;
+`;
+
+export const BodyPicture = styled.img`
+  margin-top: 40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
 `;
 
 export const BodyProfileName = styled.div`

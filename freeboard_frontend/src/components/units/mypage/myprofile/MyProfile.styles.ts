@@ -135,3 +135,16 @@ export const ProfilePictureSubTitle = styled.div`
   width: 120px;
   margin-right: 130px;
 `;
+
+export const ProfilePictureBtn = styled.button`
+  width: 180px;
+  height: 52px;
+  background-color: #bdbdbd;
+  cursor: pointer;
+  :hover {
+    opacity: 0.7;
+  }
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 40px;
+`;

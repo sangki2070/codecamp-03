@@ -44,6 +44,7 @@ import {
   ProductsItemImage1,
   ItemBoxWrapper,
   WrordNav1,
+  ItemPicture,
 } from "./ProductsList.styles";
 
 import TodayProductsContainer from "../todayproducts/TodayProducts.container";
@@ -140,9 +141,15 @@ export default function ProductsListUI(props) {
                     </ItemTitleWrapper>
                     <ItemAvatarWrapper>
                       <ItemSellerWrapper>
-                        <ItemAvatar
-                          src={"/images/productsavatar.svg"}
-                        ></ItemAvatar>
+                        {el.seller.picture ? (
+                          <ItemPicture
+                            src={`https://storage.googleapis.com/${el.seller.picture}`}
+                          ></ItemPicture>
+                        ) : (
+                          <ItemAvatar
+                            src={"/images/productsavatar.svg"}
+                          ></ItemAvatar>
+                        )}
                         <ItemSeller>{el.seller.name}</ItemSeller>
                       </ItemSellerWrapper>
                       <ItemPickWrapper>

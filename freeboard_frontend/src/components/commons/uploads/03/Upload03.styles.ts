@@ -5,7 +5,7 @@ export const UploadWrapper = styled.div``;
 export const UploadImage = styled.img`
   width: 200px;
   height: 200px;
-  margin-right: 24px;
+  /* margin-right: 24px; */
   cursor: pointer;
   border-radius: 100px;
 `;
@@ -63,4 +63,9 @@ export const PrevWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const PrevPictureWrapper = styled.div`
+  width: 200px;
+  height: 200px;
 `;

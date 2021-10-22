@@ -21,6 +21,7 @@ import {
   ChargeModal,
   ChargeModalIcon,
   ChargeModalWrapper,
+  BodyPicture,
 } from "./LayoutSidebar.styles";
 
 import PaymentPage1 from "../../payment";
@@ -31,7 +32,14 @@ export default function LayoutSidebarUI(props) {
       <SidebarBody>
         <BodyHeadWrapper>
           <BodyTitle>MYPAGE</BodyTitle>
-          <BodyAvatar src="/images/avatar1.svg"></BodyAvatar>
+
+          {props.data?.fetchUserLoggedIn.picture ? (
+            <BodyPicture
+              src={`https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`}
+            ></BodyPicture>
+          ) : (
+            <BodyAvatar src="/images/avatar1.svg"></BodyAvatar>
+          )}
           <BodyProfileName>
             {props.data?.fetchUserLoggedIn.name}
           </BodyProfileName>

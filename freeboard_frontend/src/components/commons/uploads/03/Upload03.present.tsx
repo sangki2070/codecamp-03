@@ -9,6 +9,7 @@ import {
   UploadMainWrapper,
   PrevTitle,
   PrevWrapper,
+  PrevPictureWrapper,
 } from "./Upload03.styles";
 
 import { PictureOutlined } from "@ant-design/icons";
@@ -35,9 +36,11 @@ export default function Upload03UI(props) {
         </PrevWrapper>
       ) : (
         <PrevWrapper>
-          <PictureOutlined
-            style={{ fontSize: "200px", color: "#08c" }}
-          ></PictureOutlined>
+          <PrevPictureWrapper>
+            <PictureOutlined
+              style={{ fontSize: "200px", color: "#08c" }}
+            ></PictureOutlined>
+          </PrevPictureWrapper>
           <PrevTitle>이미지 미리보기</PrevTitle>
         </PrevWrapper>
       )}
@@ -45,7 +48,7 @@ export default function Upload03UI(props) {
       <UploadFileHidden
         type="file"
         ref={props.fileRef}
-        onChange={props.onChangeFile}
+        onChange={props.onChangeImage}
       />
     </UploadMainWrapper>
   );

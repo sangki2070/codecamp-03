@@ -5,6 +5,18 @@ export const MyAvatar = styled(Avatar)``;
 
 export const MyBadge = styled(Badge)``;
 
+export const HeaderPicture = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+`;
+
+export const HeaderAvatar = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+`;
+
 export const Wrapper = styled.div`
   background-color: rgb(18, 23, 34);
   width: 100vw;

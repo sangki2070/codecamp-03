@@ -10,10 +10,12 @@ export const FETCH_USED_ITEM = gql`
       pickedCount
       images
       tags
+
       seller {
         _id
         email
         name
+        picture
       }
       createdAt
       useditemAddress {

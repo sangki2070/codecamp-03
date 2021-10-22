@@ -25,6 +25,7 @@ import {
   ButtonWrapper,
   MainWrapper,
   BodyWriteMiddleTag,
+  SellerPicture,
 } from "./ProductsRead.styles";
 
 import Lines01 from "../../../commons/lines/01/lines01";
@@ -42,7 +43,13 @@ export default function ProductsReadUI(props) {
     <MainWrapper>
       <ProductsReadWrapper>
         <HeaderWrapper>
-          <SellerAvatar src={"/images/productsavatar.svg"}></SellerAvatar>
+          {props.data?.fetchUseditem.seller.picture ? (
+            <SellerPicture
+              src={`https://storage.googleapis.com/${props.data?.fetchUseditem.seller.picture}`}
+            ></SellerPicture>
+          ) : (
+            <SellerAvatar src={"/images/productsavatar.svg"}></SellerAvatar>
+          )}
           <HeaderFlex>
             <HeaderLeft>
               <SellerName>{props.data?.fetchUseditem.seller.name}</SellerName>
