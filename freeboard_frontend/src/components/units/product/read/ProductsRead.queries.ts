@@ -47,3 +47,13 @@ export const CREATE_POINT_TRANSACTION_OF_BUING_AND_SELLING = gql`
     }
   }
 `;
+
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
+      email
+      name
+    }
+  }
+`;

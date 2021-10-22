@@ -89,18 +89,21 @@ export const BestProductPrice = styled.div`
 
 export const BestProductBoddyWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: space-between;
-  height: 70px;
+  height: 30px;
+  width: 100%;
   align-items: center;
 `;
 
 export const BestProductLikeWrapper = styled.div`
-  height: 70px;
+  height: 30px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: space-between;
   align-items: center;
+  padding-right: 5px;
 `;
 
 export const LikeImage = styled.img`
@@ -111,6 +114,7 @@ export const LikeCount = styled.div``;
 
 export const BestProductInfoWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   padding-top: 20px;
 `;

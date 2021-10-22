@@ -79,10 +79,12 @@ export default function ProductsListUI(props) {
               <BestProductInfoWrapper>
                 <BestProductBoddyWrapper>
                   <BestProductDate>{el.remarks}</BestProductDate>
-                  <BestProductPrice>{el.price}</BestProductPrice>
+                  <LikeImage src={"/images/productsheart.svg"}></LikeImage>
                 </BestProductBoddyWrapper>
                 <BestProductLikeWrapper>
-                  <LikeImage src={"/images/productsheart.svg"}></LikeImage>
+                  <BestProductPrice>
+                    {el.price.toLocaleString("ko-KR")} 원
+                  </BestProductPrice>
                   <LikeCount>{el.pickedCount}</LikeCount>
                 </BestProductLikeWrapper>
               </BestProductInfoWrapper>
@@ -163,7 +165,7 @@ export default function ProductsListUI(props) {
                 </ItemContentsWrapper>
                 <ItemPriceWrapper>
                   <ItemPriceImage src={"/images/won.svg"}></ItemPriceImage>
-                  <ItemPrice>{el.price} 원</ItemPrice>
+                  <ItemPrice>{el.price.toLocaleString("ko-KR")} 원</ItemPrice>
                 </ItemPriceWrapper>
               </ProductsItemWrapper>
             ))}

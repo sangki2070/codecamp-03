@@ -1,4 +1,8 @@
-import { UserOutlined } from "@ant-design/icons";
+import {
+  LogoutOutlined,
+  LoginOutlined,
+  SolutionOutlined,
+} from "@ant-design/icons";
 
 import {
   Wrapper,
@@ -26,17 +30,38 @@ export default function LayoutHeaderUI(props) {
         {props.data?.fetchUserLoggedIn.name && (
           <Name>{props.data?.fetchUserLoggedIn.name}님</Name>
         )}
-        {props.data?.fetchUserLoggedIn.picture ? (
-          <HeaderPicture
-            src={`https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`}
-          ></HeaderPicture>
-        ) : (
-          <HeaderAvatar src="/images/avatar1.svg"></HeaderAvatar>
+        {props.data?.fetchUserLoggedIn.name &&
+          props.data?.fetchUserLoggedIn.picture && (
+            <HeaderPicture
+              src={`https://storage.googleapis.com/${props.data?.fetchUserLoggedIn.picture}`}
+            ></HeaderPicture>
+          )}
+        {props.data?.fetchUserLoggedIn.name &&
+          !props.data?.fetchUserLoggedIn.picture && (
+            <HeaderAvatar src="/images/avatar1.svg"></HeaderAvatar>
+          )}
+        {props.data?.fetchUserLoggedIn.name && (
+          <LogoutOutlined
+            style={{ fontSize: "80px", color: "white", cursor: "pointer" }}
+            onClick={props.onClickLogOut}
+          />
         )}
 
-        {/* <Name>{props.data?.fetchUserLoggedIn.email}</Name> */}
-        {!props.data?.fetchUserLoggedIn.name && <Login>LogIn |</Login>}
-        {!props.data?.fetchUserLoggedIn.name && <SignUp> SignUp</SignUp>}
+        {!props.data?.fetchUserLoggedIn.name && (
+          <LoginOutlined
+            style={{
+              fontSize: "80px",
+              color: "white",
+              cursor: "pointer",
+              marginLeft: "180px",
+            }}
+          />
+        )}
+        {!props.data?.fetchUserLoggedIn.name && (
+          <SolutionOutlined
+            style={{ fontSize: "80px", color: "white", cursor: "pointer" }}
+          />
+        )}
       </LoginWrapper>
     </Wrapper>
   );

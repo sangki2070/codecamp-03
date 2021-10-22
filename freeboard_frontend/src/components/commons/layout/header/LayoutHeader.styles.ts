@@ -74,7 +74,7 @@ export const SignUp = styled.div`
 `;
 
 export const LoginWrapper = styled.div`
-  width: 300px;
+  width: 400px;
   display: flex;
   align-items: center;
   justify-content: space-between;

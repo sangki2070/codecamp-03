@@ -6,6 +6,7 @@ import {
   FETCH_USED_ITEM,
   TOGGLE_USED_ITEM_PICK,
   CREATE_POINT_TRANSACTION_OF_BUING_AND_SELLING,
+  FETCH_USER_LOGGED_IN,
 } from "./ProductsRead.queries";
 import { useRouter } from "next/router";
 
@@ -49,6 +50,8 @@ export default function ProductsReadContainer() {
     },
   });
 
+  const { data: data1 } = useQuery(FETCH_USER_LOGGED_IN);
+
   async function onClickDelete() {
     try {
       await deleteUseditem({
@@ -76,6 +79,7 @@ export default function ProductsReadContainer() {
       onClickDelete={onClickDelete}
       onClickPick={onClickPick}
       onClickBuy={onClickBuy}
+      data1={data1}
     />
   );
 }
