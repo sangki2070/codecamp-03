@@ -10,7 +10,7 @@ import {
 
 export default function MyPointContainer() {
   const [isChange, setIsChange] = useState(true);
-  const [isChanged, setIsChanged] = useState(true);
+  const [isChanged, setIsChanged] = useState(false);
 
   const { data: data1 } = useQuery(FETCH_POINT_TRANSACTIONS);
 
@@ -25,6 +25,8 @@ export default function MyPointContainer() {
   const { data: data4 } = useQuery(FETCH_POINT_TRANSACTIONS_OF_SELLING);
 
   function onClickAllPoint() {
+    // setIsChange(true);
+    // setIsChanged(true);
     setIsChange(true);
     setIsChanged(false);
   }
@@ -42,6 +44,8 @@ export default function MyPointContainer() {
   function onClickSellPoint() {
     setIsChange(true);
     setIsChanged(true);
+    // setIsChange(true);
+    // setIsChanged(false);
   }
 
   return (

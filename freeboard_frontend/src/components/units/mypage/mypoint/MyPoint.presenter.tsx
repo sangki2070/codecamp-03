@@ -15,13 +15,37 @@ import Table04 from "../../../commons/table/04";
 export default function MyPointUI(props) {
   return (
     <MyPointArea>
-      <AllPoint onClick={props.onClickAllPoint}>전체내역</AllPoint>
+      <AllPoint
+        onClick={props.onClickAllPoint}
+        isChange={props.isChange}
+        isChanged={props.isChanged}
+      >
+        전체내역
+      </AllPoint>
       <>|</>
-      <ChargePoint onClick={props.onClickChargePoint}>충전내역</ChargePoint>
+      <ChargePoint
+        onClick={props.onClickChargePoint}
+        isChange={props.isChange}
+        isChanged={props.isChanged}
+      >
+        충전내역
+      </ChargePoint>
       <>|</>
-      <BuyPoint onClick={props.onClickBuyPoint}>구매내역</BuyPoint>
+      <BuyPoint
+        onClick={props.onClickBuyPoint}
+        isChange={props.isChange}
+        isChanged={props.isChanged}
+      >
+        구매내역
+      </BuyPoint>
       <>|</>
-      <SellPoint onClick={props.onClickSellPoint}>판매내역</SellPoint>
+      <SellPoint
+        onClick={props.onClickSellPoint}
+        isChange={props.isChange}
+        isChanged={props.isChanged}
+      >
+        판매내역
+      </SellPoint>
 
       <MainWrapper>
         {props.isChange && !props.isChanged && (

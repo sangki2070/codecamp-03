@@ -22,6 +22,9 @@ const FETCH_USER_LOGGED_IN = gql`
 
 const LayoutSidebar = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isMarketPage, setIsMarketPage] = useState(false);
+  const [isPointPage, setIsPointPage] = useState(false);
+  const [isProfilePage, setIsProfilePage] = useState(false);
   const router = useRouter();
 
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
@@ -41,14 +44,23 @@ const LayoutSidebar = () => {
   function onClickMoveToMarket() {
     // router.push("/mypages/market");
     router.push("/mypages/market");
+    setIsMarketPage(true);
+    setIsPointPage(false);
+    setIsProfilePage(false);
   }
 
   function onClickMoveToPoint() {
     router.push("/mypages//point");
+    setIsMarketPage(false);
+    setIsPointPage(true);
+    setIsProfilePage(false);
   }
 
   function onClickMoveToProfile() {
     router.push("/mypages//profile");
+    setIsMarketPage(false);
+    setIsPointPage(false);
+    setIsProfilePage(true);
   }
 
   return (
@@ -61,6 +73,9 @@ const LayoutSidebar = () => {
       onClickMoveToMarket={onClickMoveToMarket}
       onClickMoveToPoint={onClickMoveToPoint}
       onClickMoveToProfile={onClickMoveToProfile}
+      isMarketPage={isMarketPage}
+      isPointPage={isPointPage}
+      isProfilePage={isProfilePage}
     />
   );
 };

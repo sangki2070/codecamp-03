@@ -17,9 +17,13 @@ export default function MyMarketUI(props) {
     <MyMarketPageWrapper>
       <TopWrapper>
         <div>
-          <MyProducts onClick={props.onClickIsMarket}>나의상품</MyProducts>
+          <MyProducts onClick={props.onClickIsMarket} isMarket={props.isMarket}>
+            나의상품
+          </MyProducts>
           <> | </>
-          <MyFavorite onClick={props.onClickFavorite}>마이 찜</MyFavorite>
+          <MyFavorite onClick={props.onClickFavorite} isMarket={props.isMarket}>
+            마이 찜
+          </MyFavorite>
         </div>
 
         <SearchWrapper>

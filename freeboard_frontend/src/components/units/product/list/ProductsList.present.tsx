@@ -45,9 +45,11 @@ import {
   ItemBoxWrapper,
   WrordNav1,
   ItemPicture,
+  MyWord,
 } from "./ProductsList.styles";
 
 import TodayProductsContainer from "../todayproducts/TodayProducts.container";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ProductsListUI(props) {
   return (
@@ -83,7 +85,7 @@ export default function ProductsListUI(props) {
                 </BestProductBoddyWrapper>
                 <BestProductLikeWrapper>
                   <BestProductPrice>
-                    {el.price.toLocaleString("ko-KR")} 원
+                    {Number(el.price).toLocaleString("ko-KR")} 원
                   </BestProductPrice>
                   <LikeCount>{el.pickedCount}</LikeCount>
                 </BestProductLikeWrapper>
@@ -107,7 +109,11 @@ export default function ProductsListUI(props) {
               판매된 상품
             </WrordNav1>
           </WoreNavWrapper>
-          <ProductSearch placeholder="제품을 검색해 주세요."></ProductSearch>
+          <ProductSearch
+            placeholder="제품을 검색해 주세요."
+            type="text"
+            onChange={props.onChangeSearch}
+          ></ProductSearch>
           <Calender>2020.12.02 ~ 2020.12.02</Calender>
         </ProductNavWrapper>
 
@@ -135,7 +141,22 @@ export default function ProductsListUI(props) {
                 <ItemContentsWrapper>
                   <ItemBoxWrapper>
                     <ItemTitleWrapper>
-                      <ItemTitle>{el.name}</ItemTitle>
+                      <ItemTitle>
+                        {el.name
+                          .replaceAll(
+                            props.myKeyWord,
+                            `#$#${props.myKeyWord}#$#`
+                          )
+                          .split("#$#")
+                          .map((el) => (
+                            <MyWord
+                              key={uuidv4()}
+                              isMatched={props.myKeyWord === el}
+                            >
+                              {el}
+                            </MyWord>
+                          ))}
+                      </ItemTitle>
                       <ItemSubTitle>{el.remarks}</ItemSubTitle>
                       {el.tags.map((el, index) => (
                         <ItemTag key={index}>#{el}</ItemTag>
@@ -165,7 +186,9 @@ export default function ProductsListUI(props) {
                 </ItemContentsWrapper>
                 <ItemPriceWrapper>
                   <ItemPriceImage src={"/images/won.svg"}></ItemPriceImage>
-                  <ItemPrice>{el.price.toLocaleString("ko-KR")} 원</ItemPrice>
+                  <ItemPrice>
+                    {Number(el.price).toLocaleString("ko-KR")} 원
+                  </ItemPrice>
                 </ItemPriceWrapper>
               </ProductsItemWrapper>
             ))}

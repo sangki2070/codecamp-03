@@ -12,10 +12,15 @@ export default function LayoutMenuPage() {
     router.push(event.target.id);
   }
 
+  function onClickMarket() {
+    router.push("/products");
+  }
+
   return (
     <LayoutMenuUI
       onClickMenu={onClickMenu}
       onClickMypage={onClickMypage}
+      onClickMarket={onClickMarket}
     ></LayoutMenuUI>
   );
 }

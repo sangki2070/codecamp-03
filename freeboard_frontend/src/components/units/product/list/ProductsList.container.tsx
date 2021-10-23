@@ -6,12 +6,26 @@ import {
 } from "./ProductsListqueries";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import _ from "lodash";
 
 export default function ProductsListContainer() {
   const [isSoldOut, setIsSoldOut] = useState(false);
-  const { data, fetchMore } = useQuery(FETCH_USED_ITEMS, {
+
+  const [myKeyWord, setMyKeyWord] = useState("");
+
+  const getDebounce = _.debounce((data) => {
+    refetch({ search: data, page: 1 });
+    setMyKeyWord(data);
+  }, 500);
+
+  function onChangeSearch(event) {
+    getDebounce(event.target.value);
+  }
+
+  const { data, fetchMore, refetch } = useQuery(FETCH_USED_ITEMS, {
     variables: {
       isSoldout: isSoldOut,
+      search: myKeyWord,
     },
   });
   const router = useRouter();
@@ -82,6 +96,8 @@ export default function ProductsListContainer() {
       onClickSoldItems={onClickSoldItems}
       onClickNotSoldItems={onClickNotSoldItems}
       isSoldOut={isSoldOut}
+      onChangeSearch={onChangeSearch}
+      myKeyWord={myKeyWord}
       // basketItems={basketItems}
     />
   );

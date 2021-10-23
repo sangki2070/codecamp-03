@@ -86,6 +86,8 @@ export const MyMarketIcon = styled.img`
 
 export const MyMarketName = styled.div`
   cursor: pointer;
+  color: ${(props) => (props.isMarketPage === true ? "blue" : "")};
+  font-weight: ${(props) => (props.isMarketPage === true ? "bold" : "")};
 `;
 
 export const MyPointWrapper = styled.div`
@@ -101,10 +103,13 @@ export const MyPointIcon = styled.img`
 
 export const MyPointName = styled.div`
   cursor: pointer;
+  color: ${(props) => (props.isPointPage === true ? "blue" : "")};
+  font-weight: ${(props) => (props.isPointPage === true ? "bold" : "")};
 `;
 
 export const MyProfileWrapper = styled.div`
   display: flex;
+
   margin-top: 23px;
 `;
 
@@ -116,6 +121,8 @@ export const MyProfileIcon = styled.img`
 
 export const MyProfileName = styled.div`
   cursor: pointer;
+  color: ${(props) => (props.isProfilePage === true ? "blue" : "")};
+  font-weight: ${(props) => (props.isProfilePage === true ? "bold" : "")};
 `;
 
 export const BodyHeadWrapper = styled.div`

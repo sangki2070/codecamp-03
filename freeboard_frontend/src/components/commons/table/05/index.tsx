@@ -60,7 +60,7 @@ export default function Table05(props) {
       </TableWrapper>
       {props.data1?.fetchUseditemsISold.map((el, index) => (
         <MapWrapper key={el._id}>
-          <Index>{index}</Index>
+          <Index>{10 - index}</Index>
           <ProductsName>{el.name}</ProductsName>
           {el.buyer?.email ? <Status>판매완료</Status> : <Status></Status>}
           <ProductsPrice>{el.price}</ProductsPrice>

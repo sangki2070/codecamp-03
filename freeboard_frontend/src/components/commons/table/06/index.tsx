@@ -59,7 +59,7 @@ export default function Table06(props) {
       </TableWrapper>
       {props.data2?.fetchUseditemsIPicked.map((el, index) => (
         <MapWrapper key={el._id}>
-          <Index>{index}</Index>
+          <Index>{10 - index}</Index>
           <ProductsName>{el.name}</ProductsName>
           {el.buyer?.email ? <Status>판매완료</Status> : <Status></Status>}
           <Price>{el.price}</Price>

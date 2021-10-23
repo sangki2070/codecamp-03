@@ -302,3 +302,7 @@ export const ButtonArea = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
+export const MyWord = styled.span`
+  color: ${(props) => (props.isMatched ? "red" : "black")};
+`;

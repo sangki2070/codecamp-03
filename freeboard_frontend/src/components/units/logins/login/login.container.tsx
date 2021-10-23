@@ -44,7 +44,7 @@ export default function LoginContainer() {
 
       localStorage.setItem("refreshToken", "true");
       setAccessToken(result.data?.loginUserExample.accessToken);
-      router.push("/products/new");
+      router.push("/products/");
       // setAccessToken(result.data?.loginUser.accessToken);
       // localStorage.setItem("accessToken", result.data.loginUser.accessToken);
     } catch (error) {

@@ -7,23 +7,36 @@ export const MyPointArea = styled.div`
 
 export const AllPoint = styled.span`
   margin-right: 12px;
+  color: ${(props) => (props.isChange && !props.isChanged ? "blue" : "")};
+  font-weight: ${(props) => (props.isChange && !props.isChanged ? "bold" : "")};
+  font-size: ${(props) => (props.isChange && !props.isChanged ? "20px" : "")};
   cursor: pointer;
 `;
 
 export const ChargePoint = styled.span`
   margin-right: 12px;
   margin-left: 12px;
+  color: ${(props) => (!props.isChange && !props.isChanged ? "blue" : "")};
+  font-weight: ${(props) =>
+    !props.isChange && !props.isChanged ? "bold" : ""};
+  font-size: ${(props) => (!props.isChange && !props.isChanged ? "20px" : "")};
   cursor: pointer;
 `;
 
 export const BuyPoint = styled.span`
   margin-right: 12px;
   margin-left: 12px;
+  color: ${(props) => (!props.isChange && props.isChanged ? "blue" : "")};
+  font-weight: ${(props) => (!props.isChange && props.isChanged ? "bold" : "")};
+  font-size: ${(props) => (!props.isChange && props.isChanged ? "20px" : "")};
   cursor: pointer;
 `;
 
 export const SellPoint = styled.span`
   margin-left: 12px;
+  color: ${(props) => (props.isChange && props.isChanged ? "blue" : "")};
+  font-weight: ${(props) => (props.isChange && props.isChanged ? "bold" : "")};
+  font-size: ${(props) => (props.isChange && props.isChanged ? "20px" : "")};
   cursor: pointer;
 `;
 

@@ -6,12 +6,18 @@ export const MyMarketPageWrapper = styled.div`
 `;
 
 export const MyProducts = styled.span`
-  margin-right: 12px;
+  margin-right: 20px;
+  font-size: ${(props) => (props.isMarket === true ? "20px" : "")};
+  color: ${(props) => (props.isMarket === true ? "blue" : "")};
+  font-weight: ${(props) => (props.isMarket === true ? "bold" : "")};
   cursor: pointer;
 `;
 
 export const MyFavorite = styled.span`
-  margin-left: 12px;
+  margin-left: 20px;
+  font-size: ${(props) => (props.isMarket === false ? "20px" : "")};
+  color: ${(props) => (props.isMarket === false ? "blue" : "")};
+  font-weight: ${(props) => (props.isMarket === false ? "bold" : "")};
   cursor: pointer;
 `;
 
