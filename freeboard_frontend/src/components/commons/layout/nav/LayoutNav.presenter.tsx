@@ -1,40 +1,44 @@
-import { Wrapper, SliderItem, BodyVideo } from "./LayoutNav.styles";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import {
+  Wrapper,
+  TradingChartWrapper,
+  TradingChartMiddleWrapper,
+} from "./LayoutNav.styles";
+import dynamic from "next/dynamic";
 
-export default function LayoutNavUI() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 1500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-  };
+// import TradingViewWidget, { Themes } from "react-tradingview-widget";
 
+// @ts-ignore
+const TradingViewWidget = dynamic(() => import("react-tradingview-widget"), {
+  ssr: false,
+});
+
+export default function LayoutNavUI(props: any) {
   return (
     <Wrapper>
-      {/* <Slider {...settings}>
-        <div> */}
-      <BodyVideo
-        url={
-          "https://kr.tradingview.com/static/bundles/1b46d7c30e364bde36e56bf139724b23.mp4"
-        }
-        width={2000}
-        height={800}
-        muted={true}
-        playing={true}
-        loop={true}
-      ></BodyVideo>
-      {/* </div> */}
-      {/* <div>
-          <SliderItem src="/images/fint1.png" />
-        </div>
-        <div>
-          <SliderItem src="/images/fint2.png" />
-        </div> */}
-      {/* </Slider> */}
+      <TradingChartWrapper>
+        <TradingChartMiddleWrapper>
+          <TradingViewWidget
+            symbol="BTCUSD"
+            theme="DARK"
+            locale="kr"
+            allow_symbol_change={true}
+            show_popup_button={true}
+            container_id="tradingview_6ec8c"
+            autosize
+          />
+        </TradingChartMiddleWrapper>
+        <TradingChartMiddleWrapper>
+          <TradingViewWidget
+            symbol="NASDAQ:TSLA"
+            theme="DARK"
+            locale="kr"
+            allow_symbol_change={true}
+            show_popup_button={true}
+            container_id="tradingview_6ec8c"
+            autosize
+          />
+        </TradingChartMiddleWrapper>
+      </TradingChartWrapper>
     </Wrapper>
   );
 }

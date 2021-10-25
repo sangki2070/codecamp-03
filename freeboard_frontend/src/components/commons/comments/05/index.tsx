@@ -85,13 +85,13 @@ const FETCH_USED_ITEM_QUESTION_ANSWERS = gql`
   }
 `;
 
-export default function Comments05(props) {
+export default function Comments05(props: any) {
   const [updateUseditemQuestionAnswer] = useMutation(
     UPDATE_USEDITEM_QUESTION_ANSWER
   );
   const [reQuestionAnswer, setReQuestionAnswer] = useState("");
 
-  function onChangeReQuestionModify(event) {
+  function onChangeReQuestionModify(event: any) {
     setReQuestionAnswer(event.target.value);
   }
 

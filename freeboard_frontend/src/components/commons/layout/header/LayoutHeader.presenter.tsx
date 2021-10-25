@@ -9,22 +9,18 @@ import {
   Logo,
   HeaderWrapper,
   LogoName,
-  Login,
   LoginWrapper,
-  SignUp,
   Name,
-  MyAvatar,
-  MyBadge,
   HeaderPicture,
   HeaderAvatar,
 } from "./LayoutHeader.styles";
 
-export default function LayoutHeaderUI(props) {
+export default function LayoutHeaderUI(props: any) {
   return (
     <Wrapper>
       <HeaderWrapper>
         <Logo src={"/images/tvlogo1.jpeg"}></Logo>
-        <LogoName>TradingView</LogoName>
+        <LogoName>TradingZone</LogoName>
       </HeaderWrapper>
       <LoginWrapper>
         {props.data?.fetchUserLoggedIn.name && (

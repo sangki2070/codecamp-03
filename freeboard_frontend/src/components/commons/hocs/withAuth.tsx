@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../../../pages/_app";
 
-export const withAuth = (Component) => (props) => {
+export const withAuth = (Component: any) => (props: any) => {
   const router = useRouter();
 
   // const { accessToken } = useContext(GlobalContext);

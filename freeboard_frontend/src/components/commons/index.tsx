@@ -25,7 +25,7 @@ const SidebarWrapper = styled.div`
   /* align-items: center; */
 `;
 
-export default function Layout(props) {
+export default function Layout(props: any) {
   const HIDDEN_MYPAGE = [
     "/mypages/market",
     "/mypages/point",

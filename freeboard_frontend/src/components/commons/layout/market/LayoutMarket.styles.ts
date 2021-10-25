@@ -36,3 +36,11 @@ export const MarketSmallWrapper = styled.div`
   justify-content: space-between;
   padding-top: 20px;
 `;
+
+export const TradingChartWrapper = styled.div`
+  padding: 15px;
+  border: 1px solid #9e9e9e;
+  border-radius: 5px;
+  height: 50vh;
+  width: 1000px;
+`;

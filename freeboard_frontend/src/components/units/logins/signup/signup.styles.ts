@@ -76,6 +76,6 @@ export const SignupBtn = styled.button`
 `;
 
 export const SignupRightBack = styled.img`
-  width: 1200px;
-  height: 1000px;
+  width: 800px;
+  height: 800px;
 `;

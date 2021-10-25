@@ -6,7 +6,7 @@ const WriteInput = styled.input`
   margin-bottom: 40px;
 `;
 
-export default function Input01(props) {
+export default function Input01(props: any) {
   return (
     <WriteInput
       type={props.type}

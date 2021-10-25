@@ -5,6 +5,6 @@ const MyButton = styled.button`
   height: 52px;
 `;
 
-export default function Buttons01(props) {
+export default function Buttons01(props: any) {
   return <MyButton onClick={props.onClick}>{props.name}</MyButton>;
 }

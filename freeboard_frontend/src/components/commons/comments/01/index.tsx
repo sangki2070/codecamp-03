@@ -49,7 +49,7 @@ export const BottomBtn = styled.button`
   font-size: 16px;
 `;
 
-export default function Comments01(props) {
+export default function Comments01(props: any) {
   return (
     <WriteWrapper>
       <WriteArea

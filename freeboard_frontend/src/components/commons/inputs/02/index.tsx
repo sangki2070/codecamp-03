@@ -6,7 +6,7 @@ const WriteInput = styled.input`
   margin-bottom: 40px;
 `;
 
-export default function Input02(props) {
+export default function Input02(props: any) {
   console.log("3123123", props.fetchData?.fetchUseditem);
 
   return (

@@ -45,7 +45,7 @@ const MySlider = styled(Slider)`
   }
 `;
 
-export default function Carousel01(props) {
+export default function Carousel01(props: any) {
   const settings = {
     dots: true,
     infinite: true,
@@ -57,8 +57,8 @@ export default function Carousel01(props) {
     <>
       <MySlider {...settings}>
         {props.data?.fetchUseditem.images
-          ?.filter((el) => el !== "")
-          .map((el) => (
+          ?.filter((el: any) => el !== "")
+          .map((el: any) => (
             <div key={el}>
               <SliderItem src={`https://storage.googleapis.com/${el}`} />
             </div>

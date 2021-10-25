@@ -21,7 +21,7 @@ export default function LoginUI(props) {
       <LoginInnerWrapper>
         <LoginHeader>
           <LoginLogo src={"/images/tvlogo1.jpeg"} />
-          <LoginWord>TradingView</LoginWord>
+          <LoginWord>TradingZone</LoginWord>
         </LoginHeader>
         <LoginInput
           type="text"

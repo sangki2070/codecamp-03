@@ -71,7 +71,7 @@ const UPDATE_USEDITEM_QUESTION_ANSWER = gql`
   }
 `;
 
-export default function Comments04(props) {
+export default function Comments04(props: any) {
   // const [updateUseditemQuestionAnswer] = useMutation(UPDATE_USEDITEM_QUESTION_ANSWER)
 
   // async function onClickReQuestionUpdate(){

@@ -6,7 +6,7 @@ import {
   MarketSmallWrapper,
 } from "./LayoutMarket.styles";
 
-export default function LayoutMarketUI(props) {
+export default function LayoutMarketUI(props: any) {
   return (
     <Wrapper>
       <MarketWrapper>
@@ -68,3 +68,47 @@ export default function LayoutMarketUI(props) {
     </Wrapper>
   );
 }
+
+// <!-- TradingView Widget BEGIN -->
+// <div class="tradingview-widget-container">
+//   <div id="tradingview_82bec"></div>
+//   <div class="tradingview-widget-copyright">TradingView 제공 <a href="https://kr.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL 차트</span></a></div>
+//   <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+//   <script type="text/javascript">
+//   new TradingView.widget(
+//   {
+//   "width": 980,
+//   "height": 610,
+//   "symbol": "NASDAQ:AAPL",
+//   "interval": "D",
+//   "timezone": "Etc/UTC",
+//   "theme": "dark",
+//   "style": "1",
+//   "locale": "kr",
+//   "toolbar_bg": "#f1f3f6",
+//   "enable_publishing": false,
+//   "allow_symbol_change": true,
+//   "container_id": "tradingview_82bec"
+// }
+//   );
+//   </script>
+// </div>
+// <!-- TradingView Widget END -->
+
+// <!-- TradingView Widget BEGIN -->
+// <div class="tradingview-widget-container">
+//   <div class="tradingview-widget-container__widget"></div>
+//   <div class="tradingview-widget-copyright">TradingView 제공 <a href="https://kr.tradingview.com/markets/cryptocurrencies/prices-all/" rel="noopener" target="_blank"><span class="blue-text">크립토커런시 마켓</span></a></div>
+//   <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+//   {
+//   "width": 1000,
+//   "height": 490,
+//   "defaultColumn": "overview",
+//   "screener_type": "crypto_mkt",
+//   "displayCurrency": "USD",
+//   "colorTheme": "dark",
+//   "locale": "kr"
+// }
+//   </script>
+// </div>
+// <!-- TradingView Widget END -->

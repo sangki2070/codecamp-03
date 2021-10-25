@@ -50,7 +50,7 @@ export const BottomBtn = styled.button`
   border: none;
 `;
 
-export default function Comments02(props) {
+export default function Comments02(props: any) {
   return (
     <WriteWrapper>
       <WriteArea

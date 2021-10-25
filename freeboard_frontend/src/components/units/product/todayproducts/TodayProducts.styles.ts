@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 
 export const TodayProductsWrapper = styled.div`
   position: absolute;
-  top: 2050px;
-  left: 1550px;
+  top: 1500px;
+  left: 1650px;
 `;
 
 export const TodayWrapper = styled.div`

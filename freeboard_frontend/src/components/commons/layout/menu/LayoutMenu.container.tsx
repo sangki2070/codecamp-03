@@ -4,11 +4,11 @@ import LayoutMenuUI from "./LayoutMenu.present";
 export default function LayoutMenuPage() {
   const router = useRouter();
 
-  function onClickMenu(event) {
+  function onClickMenu(event: any) {
     router.push(event.target.id);
   }
 
-  function onClickMypage(event) {
+  function onClickMypage(event: any) {
     router.push(event.target.id);
   }
 

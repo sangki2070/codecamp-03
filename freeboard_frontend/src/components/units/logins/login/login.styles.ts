@@ -109,6 +109,6 @@ export const SignupWrapper = styled.div`
 export const SignupWord = styled.div``;
 
 export const LoginRightBack = styled.img`
-  width: 1000px;
-  height: 1000px;
+  width: 800px;
+  height: 800px;
 `;

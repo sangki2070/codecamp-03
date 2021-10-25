@@ -1,6 +1,6 @@
 import { Wrapper, MenuItem } from "./LayoutMenu.styles";
 
-export default function LayoutMenuUI(props) {
+export default function LayoutMenuUI(props: any) {
   return (
     <Wrapper>
       <MenuItem id="/" onClick={props.onClickMenu}>

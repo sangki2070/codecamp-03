@@ -51,7 +51,7 @@ export default function LayoutFooterUI() {
   const [clouds, setClouds] = useState(0);
   const [weatherIcon, setWeatherIcon] = useState(0);
 
-  let weatherImage = {
+  const weatherImage: any = {
     "01": faSun,
     "02": faCloudSun,
     "03": faCloud,
@@ -65,7 +65,7 @@ export default function LayoutFooterUI() {
 
   useEffect(() => {
     async function getWeather() {
-      const cityweather = await axios.get(
+      const cityweather: any = await axios.get(
         "http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=afe45ae13f1cfa7be8030331de88525c"
       );
       setWeather(cityweather.data.weather[0].main);
@@ -73,7 +73,7 @@ export default function LayoutFooterUI() {
       setHumidity(cityweather.data.main.humidity);
       setWind(cityweather.data.wind.speed);
       setCity(cityweather.data.name);
-      setClouds(cityweather.data.clouds.all + "%");
+      setClouds(cityweather.data.clouds.all);
       setWeatherIcon(cityweather.data.weather[0].icon.substr(0, 2));
       console.log(cityweather);
       console.log(weatherIcon);
@@ -96,7 +96,7 @@ export default function LayoutFooterUI() {
       </ButtonWrapper>
       <LogoWrapper>
         <Logo src={"/images/tvlogo1.jpeg"}></Logo>
-        <LogoName>TradingView</LogoName>
+        <LogoName>TradingZone</LogoName>
       </LogoWrapper>
 
       <WeatherWrapper>
@@ -134,7 +134,7 @@ export default function LayoutFooterUI() {
           <WeaterFooterItemWrapper>
             <div>{wind}</div>
             <div>{humidity}</div>
-            <div>{clouds}</div>
+            <div>{clouds} %</div>
           </WeaterFooterItemWrapper>
         </WeatherFooterWrapper>
       </WeatherWrapper>

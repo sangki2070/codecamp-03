@@ -22,7 +22,7 @@ export async function getAccessToken(
     const newAccessToken = result.restoreAccessToken.accessToken;
     setAccessToken(newAccessToken);
     return newAccessToken;
-  } catch (error) {
+  } catch (error: any) {
     console.log(error.message);
   }
 }
