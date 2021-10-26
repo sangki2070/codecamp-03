@@ -12,7 +12,7 @@ const TradingViewWidget = dynamic(() => import("react-tradingview-widget"), {
   ssr: false,
 });
 
-export default function LayoutNavUI(props: any) {
+export default function LayoutNavUI() {
   return (
     <Wrapper>
       <TradingChartWrapper>
