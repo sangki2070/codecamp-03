@@ -1,7 +1,6 @@
 import {
   CommentWrapper,
   CommentTitle,
-  CommentStar,
   CommentImage,
   CommentTitleWrapper,
   StarWrapper,
@@ -33,7 +32,7 @@ import {
 
 import BoardsCommentBox from "../modify/BoardsCommentModify.container";
 
-export default function BoardCommentBox(props) {
+export default function BoardCommentBox(props: any) {
   return (
     <>
       {props.isOpenDeleteModal && (
@@ -88,7 +87,7 @@ export default function BoardCommentBox(props) {
             hasMore={false || true}
             useWindow={false}
           >
-            {props.data?.fetchBoardComments.map((el) => {
+            {props.data?.fetchBoardComments.map((el: any) => {
               console.log(el, props.modify);
               return (
                 <CommentBoxWrapper key={el._id}>

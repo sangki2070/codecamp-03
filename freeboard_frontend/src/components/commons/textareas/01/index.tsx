@@ -7,7 +7,7 @@ const TextArea01 = styled.textarea`
   margin-bottom: 40px;
 `;
 
-export default function Textarea01(props) {
+export default function Textarea01(props: any) {
   return (
     <TextArea01
       {...props.register}

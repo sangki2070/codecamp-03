@@ -4,9 +4,14 @@ import {
   FETCH_USED_ITEMS,
   FETCH_USED_ITEMS_OF_THE_BEST,
 } from "./ProductsListqueries";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import _ from "lodash";
+
+import {
+  IQuery,
+  IQueryFetchUseditemsArgs,
+} from "../../../../commons/types/generated/types";
 
 export default function ProductsListContainer() {
   const [isSoldOut, setIsSoldOut] = useState(false);
@@ -18,11 +23,14 @@ export default function ProductsListContainer() {
     setMyKeyWord(data);
   }, 500);
 
-  function onChangeSearch(event) {
+  function onChangeSearch(event: any) {
     getDebounce(event.target.value);
   }
 
-  const { data, fetchMore, refetch } = useQuery(FETCH_USED_ITEMS, {
+  const { data, fetchMore, refetch } = useQuery<
+    Pick<IQuery, "fetchUseditems">,
+    IQueryFetchUseditemsArgs
+  >(FETCH_USED_ITEMS, {
     variables: {
       isSoldout: isSoldOut,
       search: myKeyWord,
@@ -32,13 +40,13 @@ export default function ProductsListContainer() {
 
   const { data: bestData } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
 
-  const onClickMovetoProducts = (el) => (event) => {
+  const onClickMovetoProducts = (el: any) => (event: any) => {
     router.push(`products/${el._id}`);
 
-    const baskets = JSON.parse(localStorage.getItem("baskets")) || [];
+    const baskets = JSON.parse(String(localStorage.getItem("baskets"))) || [];
 
     let isExists = false;
-    baskets.forEach((basketEl) => {
+    baskets.forEach((basketEl: any) => {
       if (el._id === basketEl._id) isExists = true;
     });
     if (isExists) {
@@ -75,7 +83,7 @@ export default function ProductsListContainer() {
 
     fetchMore({
       variables: { page: Math.ceil(data?.fetchUseditems.length / 10) + 1 },
-      updateQuery: (prev, { fetchMoreResult }) => {
+      updateQuery: (prev: any, { fetchMoreResult }: any) => {
         return {
           fetchUseditems: [
             ...prev.fetchUseditems,

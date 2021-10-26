@@ -92,3 +92,9 @@ export const ModifyBtn = styled.img`
   width: 18px;
   height: 18px;
 `;
+
+export const DeleteBtn = styled.img`
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+`;

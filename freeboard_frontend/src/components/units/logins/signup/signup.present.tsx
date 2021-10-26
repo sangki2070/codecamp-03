@@ -10,7 +10,7 @@ import {
   SignupRightBack,
 } from "./signup.styles";
 
-export default function SignupUI(props) {
+export default function SignupUI(props: any) {
   return (
     <SignupWrapper>
       <SignupInnerWrapper>

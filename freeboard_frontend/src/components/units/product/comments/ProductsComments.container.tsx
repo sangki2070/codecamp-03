@@ -8,12 +8,11 @@ import {
   UPDATE_USED_ITEM_QUESTION,
   CREATE_USED_ITEM_QUESTION_ANSWER,
   FETCH_USED_ITEM_QUESTION_ANSWERS,
-  UPDATE_USEDITEM_QUESTION_ANSWER,
+  DELETE_USEDITEM_QUESTION,
+  FETCH_USER_LOGGED_IN,
 } from "./ProductsComments.queries";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
-
-import { GlobalContext } from "../../../../../pages/_app";
+import { useState } from "react";
 
 export default function ProductsCommentsContainer() {
   const router = useRouter();
@@ -23,6 +22,7 @@ export default function ProductsCommentsContainer() {
   const [createUseditemQuestionAnswer] = useMutation(
     CREATE_USED_ITEM_QUESTION_ANSWER
   );
+  const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEM_QUESTION);
 
   const [isActive, setIsActive] = useState("");
   const [question, setQuestion] = useState("");
@@ -38,18 +38,39 @@ export default function ProductsCommentsContainer() {
     variables: { useditemQuestionId: isAnswer },
   });
 
-  function onChangeQuestionComments(event) {
+  const { data: loginData } = useQuery(FETCH_USER_LOGGED_IN);
+
+  function onChangeQuestionComments(event: any) {
     setQuestion(event.target.value);
   }
 
-  function onChangeQuestionModify(event) {
+  function onChangeQuestionModify(event: any) {
     setUpdateQuestion(event.target.value);
   }
 
-  function onChangeReQuestion(event) {
-    setReQuestion(event?.target.value);
+  function onChangeReQuestion(event: any) {
+    setReQuestion(event.target.value);
     console.log("aasdf");
   }
+
+  const onClickDelete = (el: any) => async () => {
+    try {
+      await deleteUseditemQuestion({
+        variables: {
+          useditemQuestionId: el._id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_USED_ITEM_QUESTIONS,
+            variables: { useditemId: router.query.ProductsDetailPage },
+          },
+        ],
+      });
+      alert("댓글을 삭제합니다.");
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
 
   async function onClickQuestion() {
     try {
@@ -72,13 +93,13 @@ export default function ProductsCommentsContainer() {
     }
   }
 
-  const onClickQuestionModify = (el) => (event) => {
+  const onClickQuestionModify = (el: any) => (event: any) => {
     setIsActive(el._id);
     console.log("2번", isActive);
     // setIsActive("");
   };
 
-  const onClickAnswer = (el) => (event) => {
+  const onClickAnswer = (el: any) => (event: any) => {
     setIsAnswer(el._id);
     console.log("ss");
     setIsReQuestion(true);
@@ -161,6 +182,8 @@ export default function ProductsCommentsContainer() {
       setReQuestionAnswer={setReQuestionAnswer}
       reQuestionAnswer={reQuestionAnswer}
       onClickReQuestionAnswer={onClickReQuestionAnswer}
+      onClickDelete={onClickDelete}
+      loginData={loginData}
     />
   );
 }

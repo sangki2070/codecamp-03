@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { Rate } from "antd";
+import { Rate, Modal } from "antd";
+// @ts-ignore
 import InfiniteScroll from "react-infinite-scroller";
-import { Modal } from "antd";
 
 export const RecommentsBtn = styled.img`
   width: 20px;
@@ -173,3 +173,5 @@ export const UnderLine = styled.div`
 `;
 
 export const CommentBoxWrapper = styled.div``;
+
+export const PasswordInput = styled.input``;

@@ -1,15 +1,15 @@
 import { useRef, useState } from "react";
 import Upload03UI from "./Upload03.present";
 
-export default function Upload03(props) {
-  const fileRef = useRef();
+export default function Upload03(props: any) {
+  const fileRef = useRef<HTMLInputElement>(null);
   const [fileUrl, setFileUrl] = useState("");
 
   function onClickUpload() {
     fileRef.current?.click();
   }
 
-  async function onChangeImage(event) {
+  async function onChangeImage(event: any) {
     const file = event?.target.files?.[0];
 
     if (!file?.size) {
@@ -30,7 +30,7 @@ export default function Upload03(props) {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {
-      setFileUrl(data.target?.result);
+      setFileUrl(String(data.target?.result));
       //   props.onChangeFiles(file, props.index);
       props.onChangeFile(file);
     };

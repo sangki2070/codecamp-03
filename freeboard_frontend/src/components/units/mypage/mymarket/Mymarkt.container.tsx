@@ -20,7 +20,6 @@ export default function MyMarketContainer() {
 
   function onClickFavorite() {
     setIsMarket(false);
-    console.log(123123123);
   }
 
   return (

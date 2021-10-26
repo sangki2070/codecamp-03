@@ -34,8 +34,8 @@ const MapAdWrapper = styled.div`
   display: flex;
 `;
 
-export default function MapArea(props) {
-  const { setMyLat, setMyLng, myLat, myLng, setLocation, location } =
+export default function MapArea(props: any) {
+  const { setMyLat, setMyLng, myLat, myLng, setLocation, location }: any =
     useContext(GlobalContext);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function MapArea(props) {
         const coord = new window.kakao.maps.LatLng(myLat, myLng);
         console.log("2번", coord);
 
-        const test = function (coords, callback) {
+        const test = function (coords: any, callback: any) {
           geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
         };
 
@@ -83,7 +83,7 @@ export default function MapArea(props) {
           map,
           "click",
           function (mouseEvent: IMouseEvent) {
-            test(mouseEvent.latLng, function (result, status) {
+            test(mouseEvent.latLng, function (result: any, status: any) {
               if (status === window.kakao.maps.services.Status.OK) {
                 setLocation(result[0].address.address_name);
               }

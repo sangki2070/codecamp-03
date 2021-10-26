@@ -5,7 +5,7 @@ export const MyMarketPageWrapper = styled.div`
   margin-left: 40px;
 `;
 
-export const MyProducts = styled.span`
+export const MyProducts = styled.span<{ isMarket: boolean }>`
   margin-right: 20px;
   font-size: ${(props) => (props.isMarket === true ? "20px" : "")};
   color: ${(props) => (props.isMarket === true ? "blue" : "")};
@@ -13,7 +13,7 @@ export const MyProducts = styled.span`
   cursor: pointer;
 `;
 
-export const MyFavorite = styled.span`
+export const MyFavorite = styled.span<{ isMarket: boolean }>`
   margin-left: 20px;
   font-size: ${(props) => (props.isMarket === false ? "20px" : "")};
   color: ${(props) => (props.isMarket === false ? "blue" : "")};

@@ -48,7 +48,7 @@ const Status = styled.span`
   font-weight: bold;
 `;
 
-export default function Table05(props) {
+export default function Table05(props: any) {
   return (
     <>
       <TableWrapper>
@@ -58,7 +58,7 @@ export default function Table05(props) {
         <ProductsPrice>판매가격</ProductsPrice>
         <Date>날짜</Date>
       </TableWrapper>
-      {props.data1?.fetchUseditemsISold.map((el, index) => (
+      {props.data1?.fetchUseditemsISold.map((el: any, index: any) => (
         <MapWrapper key={el._id}>
           <Index>{10 - index}</Index>
           <ProductsName>{el.name}</ProductsName>

@@ -4,7 +4,7 @@ import {
   UploadImage,
 } from "./Uploads01.styles";
 
-export default function Uploads01UI(props) {
+export default function Uploads01UI(props: any) {
   return (
     <>
       {props.fileUrl || props.defaultFileUrl ? (

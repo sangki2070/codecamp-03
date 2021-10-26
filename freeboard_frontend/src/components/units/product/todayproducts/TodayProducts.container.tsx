@@ -4,7 +4,7 @@ import TodayProductsUI from "./TodayProducts.present";
 export default function TodayProductsContainer() {
   const router = useRouter();
 
-  const onClickMovetoToday = (el) => () => {
+  const onClickMovetoToday = (el: any) => () => {
     router.push(`products/${el._id}`);
   };
 

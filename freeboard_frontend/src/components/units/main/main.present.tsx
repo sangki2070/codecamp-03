@@ -7,16 +7,16 @@ import {
   HeaderWrapper,
 } from "./main.styles";
 
-export default function MainUI(props) {
+export default function MainUI(props: any) {
   return (
     <Wrapper>
       <HeaderWrapper>
-        <Logo>TradingAI Fount</Logo>
+        <Logo>TradingZone</Logo>
       </HeaderWrapper>
       <BodyWrapper>
         <Title>모든 시장을 추적하세요</Title>
         <HomeButton onClick={props.onClickMovePage}>
-          TradingAI Fount Start!!
+          TradingZone Start
         </HomeButton>
       </BodyWrapper>
     </Wrapper>

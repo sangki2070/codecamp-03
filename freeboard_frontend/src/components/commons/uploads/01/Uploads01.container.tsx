@@ -1,11 +1,9 @@
-import { useMutation } from "@apollo/client";
 import Uploads01UI from "./Uploads01.present";
-import { UPLOAD_FILE } from "./Uploads01.queries";
-import { useRef } from "react";
-import { useState } from "react";
 
-export default function Uploads01(props) {
-  const fileRef = useRef();
+import { useRef, useState } from "react";
+
+export default function Uploads01(props: any) {
+  const fileRef = useRef<HTMLInputElement>(null);
   const [fileUrl, setFileUrl] = useState("");
 
   // const [uploadFile] = useMutation(UPLOAD_FILE); 1차 실습
@@ -14,7 +12,7 @@ export default function Uploads01(props) {
     fileRef.current?.click();
   }
 
-  async function onChangeFile(event) {
+  async function onChangeFile(event: any) {
     const file = event.target.files?.[0];
     if (!file?.size) {
       alert("파일이 없습니다.");
@@ -40,7 +38,7 @@ export default function Uploads01(props) {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {
-      setFileUrl(data.target?.result);
+      setFileUrl(String(data.target?.result));
       props.onChangeFiles(file, props.index);
     };
   }

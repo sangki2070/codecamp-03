@@ -211,7 +211,7 @@ export const RadionWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const FooterBtn1 = styled.button`
+export const FooterBtn1 = styled.button<{ check: boolean }>`
   /* background-color: #ffd600; */
   width: 174px;
   height: 53px;

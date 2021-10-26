@@ -46,7 +46,7 @@ const Date = styled.span`
   width: 20%;
 `;
 
-export default function Table06(props) {
+export default function Table06(props: any) {
   return (
     <>
       <TableWrapper>
@@ -57,7 +57,7 @@ export default function Table06(props) {
         <Seller>판매자</Seller>
         <Date>날짜</Date>
       </TableWrapper>
-      {props.data2?.fetchUseditemsIPicked.map((el, index) => (
+      {props.data2?.fetchUseditemsIPicked.map((el: any, index: any) => (
         <MapWrapper key={el._id}>
           <Index>{10 - index}</Index>
           <ProductsName>{el.name}</ProductsName>

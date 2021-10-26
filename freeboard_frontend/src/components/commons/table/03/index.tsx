@@ -43,7 +43,7 @@ const Seller = styled.span`
   width: 10%;
 `;
 
-export default function Table03(props) {
+export default function Table03(props: any) {
   return (
     <>
       <TableWrapper>
@@ -53,7 +53,7 @@ export default function Table03(props) {
         <Balance>거래 후 잔액</Balance>
         <Seller>판매자</Seller>
       </TableWrapper>
-      {props.data3?.fetchPointTransactionsOfBuying.map((el) => (
+      {props.data3?.fetchPointTransactionsOfBuying.map((el: any) => (
         <MapWrapper key={el._id}>
           <Date>{el.createdAt.slice(0, 10)}</Date>
           <ProductsName>{el.useditem.name}</ProductsName>

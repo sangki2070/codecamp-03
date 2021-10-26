@@ -1,10 +1,9 @@
-import styled from "@emotion/styled";
 import "react-quill/dist/quill.snow.css";
 
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-export default function ReactQuil01(props) {
+export default function ReactQuil01(props: any) {
   const modules = {
     toolbar: {
       container: [

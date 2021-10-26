@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 // @ts-ignore
 const TradingViewWidget = dynamic(() => import("react-tradingview-widget"), {
   ssr: false,
-});
+}) as unknown as any;
 
 export default function LayoutNavUI() {
   return (

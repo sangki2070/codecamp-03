@@ -1,11 +1,13 @@
 import BoardsCommentModifyUI from "./BoardsCommentModify.present";
-import { UPDATE_BOARD_COMMENT } from "./BoardsCommentModify.queries";
+import {
+  UPDATE_BOARD_COMMENT,
+  FETCH_BOARD_COMMENTS,
+} from "./BoardsCommentModify.queries";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { FETCH_BOARD_COMMENTS } from "./BoardsCommentModify.queries";
 
-export default function BoardsCommentBox(props) {
+export default function BoardsCommentBox(props: any) {
   const router = useRouter();
   const [updateBoardComment] = useMutation(UPDATE_BOARD_COMMENT);
 
@@ -20,11 +22,11 @@ export default function BoardsCommentBox(props) {
   const [password, setMypassword] = useState("");
   const [contents, setMycontents] = useState("");
 
-  function onChangePassword(event) {
+  function onChangePassword(event: any) {
     setMypassword(event.target.value);
   }
 
-  function onChangeContents(event) {
+  function onChangeContents(event: any) {
     setMycontents(event.target.value);
   }
 

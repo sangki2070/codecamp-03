@@ -48,7 +48,7 @@ const Balance = styled.span`
   width: 20%;
 `;
 
-export default function Table02(props) {
+export default function Table02(props: any) {
   return (
     <>
       <TableWrapper>
@@ -57,7 +57,7 @@ export default function Table02(props) {
         <ChargeContents1>충전내역</ChargeContents1>
         <Balance>충전 후 잔액</Balance>
       </TableWrapper>
-      {props.data2?.fetchPointTransactionsOfLoading.map((el) => (
+      {props.data2?.fetchPointTransactionsOfLoading.map((el: any) => (
         <MapWrapper key={el._id}>
           <Date>{el.createdAt.slice(0, 10)}</Date>
           <UID>{el.impUid}</UID>

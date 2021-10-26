@@ -2,7 +2,6 @@ import {
   UploadButton,
   UploadFileHidden,
   UploadImage,
-  PrevImage,
   AvatarImage,
   UploadTitle,
   UploadImageWrapper,
@@ -14,7 +13,7 @@ import {
 
 import { PictureOutlined } from "@ant-design/icons";
 
-export default function Upload03UI(props) {
+export default function Upload03UI(props: any) {
   return (
     <UploadMainWrapper>
       <UploadImageWrapper>

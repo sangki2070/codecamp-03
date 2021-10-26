@@ -35,15 +35,16 @@ import {
   MyWord,
   BoxImage1,
 } from "./BoardsList.styles";
+// @ts-ignore
 import { v4 as uuidv4 } from "uuid";
 
-export default function BoardsListUI(props) {
+export default function BoardsListUI(props: any) {
   return (
     <Wrapper>
       <ListTitle>베스트 게시글</ListTitle>
 
       <BoxWrapper>
-        {props.dataBestBoards?.fetchBoardsOfTheBest.map((el) => (
+        {props.dataBestBoards?.fetchBoardsOfTheBest.map((el: any) => (
           <BestBoardsBox
             key={el._id}
             id={el._id}
@@ -99,14 +100,14 @@ export default function BoardsListUI(props) {
           <TableWriter>작성자</TableWriter>
           <TableDate>날짜</TableDate>
         </TableHeader>
-        {props.data?.fetchBoards.map((el, index) => (
+        {props.data?.fetchBoards.map((el: any, index: any) => (
           <Row key={el._id} id={el._id} onClick={props.onClickMovetoBoard}>
             <Column onClick={props.onClickMovetoBoard}>{index}</Column>
             <Column onClick={props.onClickMovetoBoard}>
               {el.title
                 .replaceAll(props.myKeyword, `#$#${props.myKeyword}#$#`)
                 .split("#$#")
-                .map((el) => (
+                .map((el: any) => (
                   <MyWord key={uuidv4()} isMatched={props.myKeyword === el}>
                     {el}
                   </MyWord>

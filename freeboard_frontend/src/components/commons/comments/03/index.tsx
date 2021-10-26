@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { gql, useMutation } from "@apollo/client";
 
 export const WriteWrapper = styled.div`
   width: 1094px;

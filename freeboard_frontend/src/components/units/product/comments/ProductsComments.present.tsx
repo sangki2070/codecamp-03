@@ -13,6 +13,7 @@ import {
   ModifyBtn,
   RecommentsBtn,
   CommentsPicture,
+  DeleteBtn,
 } from "./ProductsComments.styles";
 
 import Comments01 from "../../../commons/comments/01";
@@ -20,7 +21,7 @@ import Comments02 from "../../../commons/comments/02";
 import Comments03 from "../../../commons/comments/03";
 import Profile01 from "../../../commons/profiles/01";
 
-export default function ProductsCommentsUI(props) {
+export default function ProductsCommentsUI(props: any) {
   return (
     <CommentsWrapper>
       <CommentsTitleWrapper>
@@ -33,7 +34,7 @@ export default function ProductsCommentsUI(props) {
         onClickQuestion={props.onClickQuestion}
       ></Comments01>
 
-      {props.data?.fetchUseditemQuestions.map((el) => (
+      {props.data?.fetchUseditemQuestions.map((el: any) => (
         <CommentsDisplayWrapper key={el._id}>
           {props.isActive !== el._id && (
             <CommentsTopWrapper>
@@ -51,14 +52,22 @@ export default function ProductsCommentsUI(props) {
                 <CommentsContents>{el.contents}</CommentsContents>
                 <CommentDate>date : {el.createdAt.slice(0, 10)}</CommentDate>
               </ProfileArea>
-              <ModifyBtn
-                src="/images/commentbtn.png"
-                onClick={props.onClickQuestionModify(el)}
-              ></ModifyBtn>
+              {el.user.email === props.loginData?.fetchUserLoggedIn.email && (
+                <ModifyBtn
+                  src="/images/commentbtn.png"
+                  onClick={props.onClickQuestionModify(el)}
+                ></ModifyBtn>
+              )}
               <RecommentsBtn
                 src="/images/recomments.svg"
                 onClick={props.onClickAnswer(el)}
               ></RecommentsBtn>
+              {el.user.email === props.loginData?.fetchUserLoggedIn.email && (
+                <DeleteBtn
+                  src="/images/deletebtn1.svg"
+                  onClick={props.onClickDelete(el)}
+                ></DeleteBtn>
+              )}
             </CommentsTopWrapper>
           )}
 
@@ -79,6 +88,7 @@ export default function ProductsCommentsUI(props) {
               reQuestionAnswer={props.reQuestionAnswer}
               setReQuestionAnswer={props.setReQuestionAnswer}
               isAnswer={props.isAnswer}
+              loginData={props.loginData}
             ></Profile01>
           )}
 

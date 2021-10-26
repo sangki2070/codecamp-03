@@ -49,9 +49,11 @@ import {
 } from "./ProductsList.styles";
 
 import TodayProductsContainer from "../todayproducts/TodayProducts.container";
+
+// @ts-ignore
 import { v4 as uuidv4 } from "uuid";
 
-export default function ProductsListUI(props) {
+export default function ProductsListUI(props: any) {
   return (
     <MainWrapper>
       <ProductsListWrapper>
@@ -60,7 +62,7 @@ export default function ProductsListUI(props) {
         </TitleWrapper>
 
         <BestProductsArea>
-          {props.bestData?.fetchUseditemsOfTheBest.map((el) => (
+          {props.bestData?.fetchUseditemsOfTheBest.map((el: any) => (
             <BestProductWrapper
               key={el._id}
               // id={el._id}
@@ -124,7 +126,7 @@ export default function ProductsListUI(props) {
             hasMore={false || true}
             useWindow={false}
           >
-            {props.data?.fetchUseditems.map((el) => (
+            {props.data?.fetchUseditems.map((el: any) => (
               <ProductsItemWrapper
                 key={el._id}
                 onClick={props.onClickMovetoProducts(el)}
@@ -148,7 +150,7 @@ export default function ProductsListUI(props) {
                             `#$#${props.myKeyWord}#$#`
                           )
                           .split("#$#")
-                          .map((el) => (
+                          .map((el: any) => (
                             <MyWord
                               key={uuidv4()}
                               isMatched={props.myKeyWord === el}
@@ -158,7 +160,7 @@ export default function ProductsListUI(props) {
                           ))}
                       </ItemTitle>
                       <ItemSubTitle>{el.remarks}</ItemSubTitle>
-                      {el.tags.map((el, index) => (
+                      {el.tags.map((el: any, index: any) => (
                         <ItemTag key={index}>#{el}</ItemTag>
                       ))}
                     </ItemTitleWrapper>

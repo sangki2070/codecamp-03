@@ -18,25 +18,25 @@ export default function MyProfileContainer() {
 
   const [file, setFile] = useState(null);
 
-  function onChangePassword(event) {
+  function onChangePassword(event: any) {
     setPassword(event.target.value);
     if (event.target.value !== "") {
       setPasswordError("");
     }
   }
 
-  function onChangeRePassword(event) {
+  function onChangeRePassword(event: any) {
     setRePassword(event.target.value);
     if (event.target.value !== "") {
       setPasswordError("");
     }
   }
 
-  function onChangeName(event) {
+  function onChangeName(event: any) {
     setReName(event.target.value);
   }
 
-  function onChangeFile(file) {
+  function onChangeFile(file: any) {
     setFile(file);
   }
 

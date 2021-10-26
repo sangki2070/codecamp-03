@@ -15,11 +15,11 @@ import {
 import Input01 from "../../../commons/inputs/01";
 import Input02 from "../../../commons/inputs/02";
 import ReactQuil01 from "../../../commons/webeditor/reactQuil";
-import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
+
 import Uploads02 from "../../../commons/uploads/02/Uploads02.container";
 import MapArea from "../../../commons/map/01";
 
-export default function ProductsWriteUI(props) {
+export default function ProductsWriteUI(props: any) {
   return (
     <ProductWriteWrapper>
       <form

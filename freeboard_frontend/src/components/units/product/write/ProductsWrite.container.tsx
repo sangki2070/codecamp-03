@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
 
-export default function ProductsWriteContainer(props) {
+export default function ProductsWriteContainer(props: any) {
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
   const [updateUseditem] = useMutation(UPDATE_USED_ITEM);
   const [uploadFile] = useMutation(UPLOAD_FILE);
@@ -32,9 +32,9 @@ export default function ProductsWriteContainer(props) {
     resolver: yupResolver(schema),
   });
 
-  const { myLat, myLng, location } = useContext(GlobalContext);
+  const { myLat, myLng, location }: any = useContext(GlobalContext);
 
-  async function onClickSubmit(data) {
+  async function onClickSubmit(data: any) {
     try {
       const uploadFiles = files
         // .filter((el) => el)
@@ -68,16 +68,16 @@ export default function ProductsWriteContainer(props) {
     }
   }
 
-  function onChangeMyEditor(value) {
+  function onChangeMyEditor(value: any) {
     setValue("myContents", value === "<p><br></P" ? "" : value);
     trigger("myContents");
   }
 
-  function onChangeAddressDetail(event) {
+  function onChangeAddressDetail(event: any) {
     setAddressDetail(event.target.value);
   }
 
-  function onChangeFiles(file, index) {
+  function onChangeFiles(file: any, index: any) {
     // setValue("myImage", file);
     const newFiles = [...files];
     newFiles[index] = file;
@@ -85,8 +85,8 @@ export default function ProductsWriteContainer(props) {
     // trigger("myImage");
   }
 
-  async function onClickUpdate(data) {
-    const myUpdateUseditemInput = {};
+  async function onClickUpdate(data: any) {
+    const myUpdateUseditemInput: any = {};
     if (data.myName) myUpdateUseditemInput.name = data.myName;
     if (data.myRemarks) myUpdateUseditemInput.remarks = data.myRemarks;
     if (data.myContents) myUpdateUseditemInput.contents = data.myContents;

@@ -7,8 +7,6 @@ const WriteInput = styled.input`
 `;
 
 export default function Input02(props: any) {
-  console.log("3123123", props.fetchData?.fetchUseditem);
-
   return (
     <WriteInput
       type={props.type}

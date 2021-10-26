@@ -17,11 +17,11 @@ import {
 
 import { useState, useEffect } from "react";
 
-export default function TodayProductsUI(props) {
+export default function TodayProductsUI(props: any) {
   const [basketItems, setBasketItems] = useState([]);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("baskets")) || [];
+    const items = JSON.parse(String(localStorage.getItem("baskets"))) || [];
     setBasketItems(items);
 
     console.log(basketItems);
@@ -32,7 +32,7 @@ export default function TodayProductsUI(props) {
       <TodayWrapper>
         <TodayTitle>오늘의 상품</TodayTitle>
         {basketItems
-          ?.map((el) => (
+          ?.map((el: any) => (
             <TodayProductsArea
               key={el._id}
               onClick={props.onClickMovetoToday(el)}

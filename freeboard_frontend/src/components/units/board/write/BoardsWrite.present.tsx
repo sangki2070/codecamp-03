@@ -17,8 +17,8 @@ import {
   AddressButton,
   SearchWrapper,
   YoutubeForm,
-  AttachmentBtn,
-  Upload,
+  // AttachmentBtn,
+  // Upload,
   AttachmentWrapper,
   RadioForm,
   RadioButton,
@@ -33,7 +33,7 @@ import {
 
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 
-export default function BoardWriteUI(props) {
+export default function BoardWriteUI(props: any) {
   return (
     <WrapperForm>
       <FormTitle>{props.isEdit ? "게시물 등록" : "게시물 수정"}</FormTitle>
@@ -74,7 +74,6 @@ export default function BoardWriteUI(props) {
       <BodyContent>
         <Label>내용</Label>
         <WriteForm3
-          type="text area"
           placeholder="내용을 입력해주세요."
           onChange={props.onChangeContents}
           defaultValue={props.data?.fetchBoard.contents}
@@ -161,12 +160,7 @@ export default function BoardWriteUI(props) {
       <RadioForm>
         <Label>메인 설정</Label>
         <RadionWrapper>
-          <RadioButton
-            type="radio"
-            checked="checked"
-            name="setting"
-          ></RadioButton>{" "}
-          유튜브
+          <RadioButton type="radio" name="setting"></RadioButton> 유튜브
           <RadioButton type="radio" name="setting"></RadioButton> 사진
         </RadionWrapper>
       </RadioForm>

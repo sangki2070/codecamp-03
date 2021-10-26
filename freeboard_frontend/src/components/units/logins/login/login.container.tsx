@@ -8,18 +8,18 @@ import { GlobalContext } from "../../../../../pages/_app";
 
 export default function LoginContainer() {
   const [loginUserExample] = useMutation(LOGIN_USER_EXAMPLE);
-  const { setAccessToken } = useContext(GlobalContext);
+  const { setAccessToken }: any = useContext(GlobalContext);
   const [myEmail, setMyEmail] = useState("");
   const [myPassword, setMyPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const router = useRouter();
 
-  function onChangeMyEmail(event) {
+  function onChangeMyEmail(event: any) {
     setMyEmail(event.target.value);
   }
 
-  function onchangeMyPassword(event) {
+  function onchangeMyPassword(event: any) {
     setMyPassword(event.target.value);
   }
 

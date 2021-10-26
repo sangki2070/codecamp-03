@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { gql, useMutation } from "@apollo/client";
 
 export const WriteWrapper = styled.div`
   width: 1094px;
@@ -52,43 +51,7 @@ export const BottomBtn = styled.button`
   border: none;
 `;
 
-const UPDATE_USEDITEM_QUESTION_ANSWER = gql`
-  mutation updateUseditemQuestionAnswer(
-    $updateUseditemQuestionAnswerInput: UpdateUseditemQuestionAnswerInput!
-    $useditemQuestionAnswerId: ID!
-  ) {
-    updateUseditemQuestionAnswer(
-      updateUseditemQuestionAnswerInput: $updateUseditemQuestionAnswerInput
-      useditemQuestionAnswerId: $useditemQuestionAnswerId
-    ) {
-      _id
-      contents
-      user {
-        _id
-        name
-      }
-    }
-  }
-`;
-
 export default function Comments04(props: any) {
-  // const [updateUseditemQuestionAnswer] = useMutation(UPDATE_USEDITEM_QUESTION_ANSWER)
-
-  // async function onClickReQuestionUpdate(){
-  //     try {
-  //       await updateUseditemQuestionAnswer({
-  //         variables:{
-  //           updateUseditemQuestionAnswerInput:{
-  //             contents:
-  //           },
-  //           useditemQuestionAnswerId:
-  //         }
-  //       })
-  //     } catch (error) {
-
-  //     }
-  //   }
-
   return (
     <>
       <WriteWrapper>

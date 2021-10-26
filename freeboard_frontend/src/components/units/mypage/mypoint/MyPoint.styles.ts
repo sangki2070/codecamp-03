@@ -5,7 +5,7 @@ export const MyPointArea = styled.div`
   margin-left: 40px;
 `;
 
-export const AllPoint = styled.span`
+export const AllPoint = styled.span<{ isChange: boolean; isChanged: boolean }>`
   margin-right: 12px;
   color: ${(props) => (props.isChange && !props.isChanged ? "blue" : "")};
   font-weight: ${(props) => (props.isChange && !props.isChanged ? "bold" : "")};
@@ -13,7 +13,10 @@ export const AllPoint = styled.span`
   cursor: pointer;
 `;
 
-export const ChargePoint = styled.span`
+export const ChargePoint = styled.span<{
+  isChange: boolean;
+  isChanged: boolean;
+}>`
   margin-right: 12px;
   margin-left: 12px;
   color: ${(props) => (!props.isChange && !props.isChanged ? "blue" : "")};
@@ -23,7 +26,7 @@ export const ChargePoint = styled.span`
   cursor: pointer;
 `;
 
-export const BuyPoint = styled.span`
+export const BuyPoint = styled.span<{ isChange: boolean; isChanged: boolean }>`
   margin-right: 12px;
   margin-left: 12px;
   color: ${(props) => (!props.isChange && props.isChanged ? "blue" : "")};
@@ -32,7 +35,7 @@ export const BuyPoint = styled.span`
   cursor: pointer;
 `;
 
-export const SellPoint = styled.span`
+export const SellPoint = styled.span<{ isChange: boolean; isChanged: boolean }>`
   margin-left: 12px;
   color: ${(props) => (props.isChange && props.isChanged ? "blue" : "")};
   font-weight: ${(props) => (props.isChange && props.isChanged ? "bold" : "")};

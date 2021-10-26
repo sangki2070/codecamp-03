@@ -1,5 +1,5 @@
 import BoardWriteUI from "./BoardsWrite.present";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
@@ -9,7 +9,7 @@ import {
   UPLOAD_FILE,
 } from "./BoardsWrite.queries";
 
-export default function BoardsContainer(props) {
+export default function BoardsContainer(props: any) {
   const router = useRouter();
 
   const [name, setName] = useState("");
@@ -44,7 +44,7 @@ export default function BoardsContainer(props) {
   const [myAddress, setMyAddress] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleComplete = (data) => {
+  const handleComplete = (data: any) => {
     setMyZipcode(data.zonecode);
     setMyAddress(data.address);
 
@@ -56,7 +56,7 @@ export default function BoardsContainer(props) {
     setIsOpen((prev) => !prev);
   }
 
-  function onChangeName(event) {
+  function onChangeName(event: any) {
     setName(event.target.value);
     if (
       event.target.value !== "" &&
@@ -71,7 +71,7 @@ export default function BoardsContainer(props) {
     }
   }
 
-  function onChangePassword(event) {
+  function onChangePassword(event: any) {
     setPassword(event.target.value);
     if (
       name !== "" &&
@@ -86,7 +86,7 @@ export default function BoardsContainer(props) {
     }
   }
 
-  function onChangeTitle(event) {
+  function onChangeTitle(event: any) {
     setTitle(event.target.value);
     if (
       name !== "" &&
@@ -101,7 +101,7 @@ export default function BoardsContainer(props) {
     }
   }
 
-  function onChangeContents(event) {
+  function onChangeContents(event: any) {
     setContents(event.target.value);
     if (
       name !== "" &&
@@ -116,23 +116,23 @@ export default function BoardsContainer(props) {
     }
   }
 
-  function onChangeYoutuUrl(event) {
+  function onChangeYoutuUrl(event: any) {
     setYoutubeUrl(event.target.value);
   }
 
-  function onChangeZipcode(event) {
-    setZipcode(event.target.value);
-  }
+  // function onChangeZipcode(event: any) {
+  //   setZipcode(event.target.value);
+  // }
 
-  function onChangeAddress(event) {
-    setAddress(event.target.value);
-  }
+  // function onChangeAddress(event: any) {
+  //   setAddress(event.target.value);
+  // }
 
-  function onChangeAddressDetail(event) {
+  function onChangeAddressDetail(event: any) {
     setAddressDetail(event.target.value);
   }
   async function onClickModifyBtn() {
-    const myUpdateboardInput = {};
+    const myUpdateboardInput: any = {};
     if (title) myUpdateboardInput.title = title;
     if (contents) myUpdateboardInput.contents = contents;
     if (youtubeUrl) myUpdateboardInput.youtubeUrl = youtubeUrl;
@@ -172,7 +172,7 @@ export default function BoardsContainer(props) {
       });
 
       router.push(`/boards/${router.query.BoardsDetailPage}`);
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   }
@@ -235,7 +235,7 @@ export default function BoardsContainer(props) {
     }
   }
 
-  function onChangeFiles(file, index) {
+  function onChangeFiles(file: any, index: any) {
     const newFiles = [...files];
     newFiles[index] = file;
     setFiles(newFiles);
@@ -262,11 +262,9 @@ export default function BoardsContainer(props) {
       isOpen={isOpen}
       handleComplete={handleComplete}
       onToggleZipcode={onToggleZipcode}
-      onChangeZipcode={onChangeZipcode}
-      onChangeAddress={onChangeAddress}
+      // onChangeZipcode={onChangeZipcode}
+      // onChangeAddress={onChangeAddress}
       onChangeAddressDetail={onChangeAddressDetail}
-      // fileUrls={fileUrls}
-      // onChangeFileUrls={onChangeFileUrls}
       onChangeFiles={onChangeFiles}
     />
   );

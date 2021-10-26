@@ -255,7 +255,7 @@ export const LeftMove = styled.span`
   cursor: pointer;
 `;
 
-export const Pnumber = styled.span`
+export const Pnumber = styled.span<{ isActive: boolean }>`
   margin-right: 20px;
   cursor: pointer;
   color: ${(props) => (props.isActive ? "red" : "black")};
@@ -269,6 +269,6 @@ export const RightMove = styled.span`
   cursor: pointer;
 `;
 
-export const MyWord = styled.span`
+export const MyWord = styled.span<{ isMatched: boolean }>`
   color: ${(props) => (props.isMatched ? "red" : "black")};
 `;

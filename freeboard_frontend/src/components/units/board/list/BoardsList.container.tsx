@@ -9,6 +9,11 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import _ from "lodash";
 
+import {
+  IQuery,
+  IQueryFetchBoardsArgs,
+} from "../../../../commons/types/generated/types";
+
 export default function BoardListContainer() {
   const router = useRouter();
   const [startPage, setStartpage] = useState(1);
@@ -22,17 +27,20 @@ export default function BoardListContainer() {
     setMyKeyword(data);
   }, 500);
 
-  function onChangeSearch(event) {
+  function onChangeSearch(event: any) {
     getDebounce(event.target.value);
   }
 
-  const { data, refetch } = useQuery(FETCH_BOARDS, {
+  const { data, refetch } = useQuery<
+    Pick<IQuery, "fetchBoards">,
+    IQueryFetchBoardsArgs
+  >(FETCH_BOARDS, {
     variables: { page: startPage },
   });
 
   const { data: dataBestBoards } = useQuery(FETCH_BOARDS_OF_THEBEST);
 
-  function onchangeBestBoards(event) {
+  function onchangeBestBoards(event: any) {
     // const newBestBoards = [...dataBestBoards.fetchBoardsOfTheBest];
 
     setBestBoards(event.target.value);
@@ -42,7 +50,7 @@ export default function BoardListContainer() {
   const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_COUNT);
   const lastPage = Math.ceil(dataBoardsCount?.fetchBoardsCount / 10);
 
-  function onClickPage(event) {
+  function onClickPage(event: any) {
     refetch({ page: Number(event.target.id), search: myKeyword });
     setCurrentPage(Number(event.target.id));
   }
@@ -63,7 +71,7 @@ export default function BoardListContainer() {
     router.push(`/boards/new/`);
   }
 
-  function onClickMovetoBoard(event) {
+  function onClickMovetoBoard(event: any) {
     router.push(`boards/${event.currentTarget.id}`);
   }
 

@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+
+// @ts-ignore
 import InfiniteScroll from "react-infinite-scroller";
 
 export const MainWrapper = styled.div`
@@ -127,14 +129,14 @@ export const ProductNavWrapper = styled.div`
   padding-bottom: 40px;
 `;
 
-export const WrordNav = styled.div`
+export const WrordNav = styled.div<{ isSoldOut: boolean }>`
   font-size: 18px;
   color: ${(props) => (props.isSoldOut === false ? "blue" : "")};
   font-weight: ${(props) => (props.isSoldOut === false ? "bold" : "")};
   cursor: pointer;
 `;
 
-export const WrordNav1 = styled.div`
+export const WrordNav1 = styled.div<{ isSoldOut: boolean }>`
   font-size: 18px;
   color: ${(props) => (props.isSoldOut === true ? "blue" : "")};
   font-weight: ${(props) => (props.isSoldOut === true ? "bold" : "")};
@@ -303,6 +305,6 @@ export const ButtonArea = styled.div`
   justify-content: flex-end;
 `;
 
-export const MyWord = styled.span`
+export const MyWord = styled.span<{ isMatched: boolean }>`
   color: ${(props) => (props.isMatched ? "red" : "black")};
 `;

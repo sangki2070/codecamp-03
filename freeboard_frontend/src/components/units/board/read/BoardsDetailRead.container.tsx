@@ -1,16 +1,15 @@
 import BoardsDetailUI from "./BoardsDetailRead.present";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import {
   DISLIKE_BOARD,
   FETCH_BOARD,
   LIKE_BOARD,
+  DELETE_BOARD,
 } from "./BoardsDetailRead.queries";
 // import {FETCH_COMMENTS} from "./BoardsDetailRead.queries"
-import { useMutation } from "@apollo/client";
-import { DELETE_BOARD } from "./BoardsDetailRead.queries";
 
-export default function BoardsDetialContainerPage(props) {
+export default function BoardsDetialContainerPage(props: any) {
   const [deleteBoard] = useMutation(DELETE_BOARD);
   const [likeBoard] = useMutation(LIKE_BOARD);
   const [dislikeBoard] = useMutation(DISLIKE_BOARD);
@@ -23,14 +22,14 @@ export default function BoardsDetialContainerPage(props) {
     },
   });
 
-  async function onClickDelete(event) {
+  async function onClickDelete(event: any) {
     await deleteBoard({
       variables: { boardId: event.target.id },
     });
     router.push("/boards");
   }
 
-  async function onClickLike(event) {
+  async function onClickLike(event: any) {
     await likeBoard({
       variables: { boardId: event.target.id },
       refetchQueries: [
@@ -43,7 +42,7 @@ export default function BoardsDetialContainerPage(props) {
     alert("좋아요를 클릭합니다.");
   }
 
-  async function onClickDisLike(event) {
+  async function onClickDisLike(event: any) {
     await dislikeBoard({
       variables: { boardId: event.target.id },
       refetchQueries: [

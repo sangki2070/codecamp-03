@@ -65,7 +65,7 @@ export const Balance = styled.span`
   width: 25%;
 `;
 
-export default function Table01(props) {
+export default function Table01(props: any) {
   return (
     <>
       <TableWrapper>
@@ -74,7 +74,7 @@ export default function Table01(props) {
         <Transaction3>거래 및 충전 내역</Transaction3>
         <Balance>잔액</Balance>
       </TableWrapper>
-      {props.data1?.fetchPointTransactions.map((el) => (
+      {props.data1?.fetchPointTransactions.map((el: any) => (
         <MapWrapper key={el._id}>
           <Date>{el.createdAt.slice(0, 10)}</Date>
           {el.amount < 0 ? (

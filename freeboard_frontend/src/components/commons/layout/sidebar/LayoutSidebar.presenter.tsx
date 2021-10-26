@@ -26,7 +26,7 @@ import {
 
 import PaymentPage1 from "../../payment";
 
-export default function LayoutSidebarUI(props) {
+export default function LayoutSidebarUI(props: any) {
   return (
     <SidebarWrapper>
       <SidebarBody>

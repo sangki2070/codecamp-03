@@ -29,7 +29,7 @@ export default function BoardCommentPage() {
     if (!data) return;
     fetchMore({
       variables: { page: Math.ceil(data?.fetchBoardComments.length / 10) + 1 },
-      updateQuery: (prev, { fetchMoreResult }) => {
+      updateQuery: (prev: any, { fetchMoreResult }) => {
         return {
           fetchBoardComments: [
             ...prev.fetchBoardComments,
@@ -58,19 +58,19 @@ export default function BoardCommentPage() {
   //   setValue(value);
   // };
 
-  function onChangeWriter(event) {
+  function onChangeWriter(event: any) {
     setMywriter(event.target.value);
   }
 
-  function onChangePassword(event) {
+  function onChangePassword(event: any) {
     setMypassword(String(event.target.value));
   }
 
-  function onChangeContents(event) {
+  function onChangeContents(event: any) {
     setMycontents(event.target.value);
   }
 
-  function onClickModifyBtn(event) {
+  function onClickModifyBtn(event: any) {
     setModify(event.target.id);
     console.log(event.target.id);
   }
@@ -95,7 +95,7 @@ export default function BoardCommentPage() {
     });
   }
 
-  async function onClickCommentDelete(event) {
+  async function onClickCommentDelete(event: any) {
     try {
       await deleteBoardComment({
         variables: {
@@ -110,21 +110,21 @@ export default function BoardCommentPage() {
         ],
       });
       onToggleDelete();
-    } catch (error) {
+    } catch (error: any) {
       alert(error.message);
     }
   }
 
-  function onChangeStar(value) {
+  function onChangeStar(value: any) {
     setMyStar(value);
   }
 
-  function onClickOpenDeleteModal(event) {
+  function onClickOpenDeleteModal(event: any) {
     setIsOpenDeleteModal((prev) => !prev);
     setDeleteId(event.target.id);
   }
 
-  function onChangeDeletePassword(event) {
+  function onChangeDeletePassword(event: any) {
     setMypassword(event.target.value);
   }
 

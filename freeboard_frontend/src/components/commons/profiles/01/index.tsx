@@ -2,6 +2,31 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import Comments04 from "../../comments/04";
 import Comments05 from "../../comments/05";
+import { gql, useMutation } from "@apollo/client";
+
+const DELET_USEDITEM_QUESTION_ANSWER = gql`
+  mutation deleteUseditemQuestionAnswer($useditemQuestionAnswerId: ID!) {
+    deleteUseditemQuestionAnswer(
+      useditemQuestionAnswerId: $useditemQuestionAnswerId
+    )
+  }
+`;
+
+const FETCH_USED_ITEM_QUESTION_ANSWERS = gql`
+  query fetchUseditemQuestionAnswers($useditemQuestionId: ID!) {
+    fetchUseditemQuestionAnswers(useditemQuestionId: $useditemQuestionId) {
+      _id
+      contents
+      user {
+        _id
+        name
+        picture
+        email
+      }
+      createdAt
+    }
+  }
+`;
 
 const CommentsAvatar = styled.img`
   width: 40px;
@@ -59,22 +84,57 @@ const RecommentsModifyBtn = styled.img`
   height: 18px;
 `;
 
-export default function Profile01(props) {
-  const [ModifyBtn, setModifyBtn] = useState("");
+const DeleteBtn = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+`;
 
-  const onClickModifyBtn = (el) => (event) => {
+const Arrow = styled.img`
+  width: 15px;
+  height: 15px;
+  margin-top: 17px;
+  margin-right: 10px;
+`;
+
+export default function Profile01(props: any) {
+  const [ModifyBtn, setModifyBtn] = useState("");
+  const [deleteUseditemQuestionAnswer] = useMutation(
+    DELET_USEDITEM_QUESTION_ANSWER
+  );
+
+  const onClickModifyBtn = (el: any) => (event: any) => {
     setModifyBtn(el._id);
     console.log("werss");
   };
 
-  const onClickReQuestionAnswer = (el) => (event) => {
+  const onClickReQuestionAnswer = (el: any) => (event: any) => {
     props.setReQuestionAnswer(true);
+  };
+
+  const onClickRequestionDelete = (el: any) => async () => {
+    try {
+      await deleteUseditemQuestionAnswer({
+        variables: {
+          useditemQuestionAnswerId: el._id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_USED_ITEM_QUESTION_ANSWERS,
+            variables: { useditemQuestionId: props.isAnswer },
+          },
+        ],
+      });
+      console.log("3333", el._id);
+      alert("댓글을 삭제합니다.");
+    } catch (error) {}
   };
 
   return (
     <>
-      {props.reData?.fetchUseditemQuestionAnswers.map((el) => (
+      {props.reData?.fetchUseditemQuestionAnswers.map((el: any) => (
         <ProfileMainWrapper key={el._id}>
+          <Arrow src="/images/arrow1.svg" />
           {ModifyBtn !== el._id && (
             <>
               {el.user.picture ? (
@@ -91,14 +151,22 @@ export default function Profile01(props) {
                 <CommentsContents>{el.contents}</CommentsContents>
                 <CommentDate>date : {el.createdAt.slice(0, 10)}</CommentDate>
               </ProfileArea>
-              <RecommentsModifyBtn
-                src="/images/commentbtn.png"
-                onClick={onClickModifyBtn(el)}
-              ></RecommentsModifyBtn>
+              {el.user.email === props.loginData?.fetchUserLoggedIn.email && (
+                <RecommentsModifyBtn
+                  src="/images/commentbtn.png"
+                  onClick={onClickModifyBtn(el)}
+                ></RecommentsModifyBtn>
+              )}
               <RecommentsBtn
                 src="/images/recomments.svg"
                 onClick={onClickReQuestionAnswer(el)}
               ></RecommentsBtn>
+              {el.user.email === props.loginData?.fetchUserLoggedIn.email && (
+                <DeleteBtn
+                  src="/images/deletebtn1.svg"
+                  onClick={onClickRequestionDelete(el)}
+                ></DeleteBtn>
+              )}
             </>
           )}
           {ModifyBtn === el._id && (

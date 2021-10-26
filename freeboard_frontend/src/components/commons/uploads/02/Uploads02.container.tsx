@@ -1,15 +1,15 @@
 import { useRef, useState } from "react";
 import Uploads02UI from "./Uploads02.present";
 
-export default function Uploads02(props) {
-  const fileRef = useRef();
+export default function Uploads02(props: any) {
+  const fileRef = useRef<HTMLInputElement>(null);
   const [fileUrl, setFileUrl] = useState();
 
   function onClickUpload() {
     fileRef.current?.click();
   }
 
-  async function onChangeFile(event) {
+  async function onChangeFile(event: any) {
     const file = event.target.files?.[0];
     if (!file?.size) {
       alert("파일이 없습니다.");
@@ -27,7 +27,7 @@ export default function Uploads02(props) {
     }
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
-    fileReader.onload = (data) => {
+    fileReader.onload = (data: any) => {
       setFileUrl(data.target?.result);
       props.onChangeFiles(file, props.index);
     };

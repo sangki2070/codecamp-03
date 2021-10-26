@@ -12,7 +12,7 @@ import Table02 from "../../../commons/table/02";
 import Table03 from "../../../commons/table/03";
 import Table04 from "../../../commons/table/04";
 
-export default function MyPointUI(props) {
+export default function MyPointUI(props: any) {
   return (
     <MyPointArea>
       <AllPoint

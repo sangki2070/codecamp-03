@@ -10,7 +10,7 @@ import {
   CommentSumbmit,
 } from "./BoardsCommentModify.styles";
 
-export default function BoardsCommentModifyUI(props) {
+export default function BoardsCommentModifyUI(props: any) {
   return (
     <CommentModifyBox>
       <StarWrapper>

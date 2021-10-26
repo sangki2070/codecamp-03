@@ -10,7 +10,6 @@ import {
   RightTitle,
   Clip,
   Location,
-  WordWrapper,
   LinkWrapper,
   UnderLine,
   BodyWrapper,
@@ -36,7 +35,7 @@ import {
 import BoardCommentPage from "../comment/BoardsComment.container";
 import { Tooltip } from "antd";
 
-export default function BoardsDetailUI(props) {
+export default function BoardsDetailUI(props: any) {
   return (
     <Wrapper>
       <BoardsWrapper>
@@ -73,8 +72,8 @@ export default function BoardsDetailUI(props) {
               ></BodyImage>;
             })} */}
             {props.data?.fetchBoard.images
-              ?.filter((el) => el !== "")
-              .map((el) => (
+              ?.filter((el: any) => el !== "")
+              .map((el: any) => (
                 <BodyImage
                   src={`https://storage.googleapis.com/${el}`}
                   key={el}

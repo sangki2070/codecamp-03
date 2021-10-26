@@ -6,7 +6,7 @@ import {
   InnerWrapper,
   IconWrapper,
 } from "./BoardsCurrencyRate.styles";
-export default function CurrencyRateUI(props) {
+export default function CurrencyRateUI(props: any) {
   return (
     <Wrapper>
       <InnerWrapper>

@@ -40,13 +40,13 @@ declare const window: typeof globalThis & {
   IMP: any;
 };
 
-export default function PaymentPage1(props) {
+export default function PaymentPage1(props: any) {
   const [chargePrice, setChargePrice] = useState("");
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
 
-  function onChangeChargeAmount(event) {
+  function onChangeChargeAmount(event: any) {
     setChargePrice(event.target.value);
   }
 
@@ -67,7 +67,7 @@ export default function PaymentPage1(props) {
         m_redirect_url: "http://localhost:3000/mypages",
         // 예: https://www.my-service.com/payments/complete
       },
-      function (rsp) {
+      function (rsp: any) {
         // callback
         if (rsp.success) {
           // mutation() => createPointTransactionOfLoading({

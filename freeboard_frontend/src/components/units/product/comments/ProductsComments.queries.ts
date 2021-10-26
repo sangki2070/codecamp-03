@@ -9,6 +9,7 @@ export const FETCH_USED_ITEM_QUESTIONS = gql`
         _id
         name
         picture
+        email
       }
       createdAt
     }
@@ -74,8 +75,30 @@ export const FETCH_USED_ITEM_QUESTION_ANSWERS = gql`
         _id
         name
         picture
+        email
       }
       createdAt
+    }
+  }
+`;
+
+export const DELETE_USEDITEM_QUESTION = gql`
+  mutation deleteUseditemQuestion($useditemQuestionId: ID!) {
+    deleteUseditemQuestion(useditemQuestionId: $useditemQuestionId)
+  }
+`;
+
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
+      email
+      name
+      userPoint {
+        _id
+        amount
+      }
+      picture
     }
   }
 `;

@@ -5,7 +5,7 @@ import {
   UploadButton,
 } from "./Uploads02.styles";
 
-export default function Uploads02UI(props) {
+export default function Uploads02UI(props: any) {
   return (
     <UploadsWrapper>
       {props.fileUrl || props.defaultFileUrl ? (

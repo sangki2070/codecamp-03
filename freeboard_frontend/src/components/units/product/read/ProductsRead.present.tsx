@@ -16,12 +16,10 @@ import {
   BodyHeaderRight,
   BodyHeart,
   BodyHeartCount,
-  BodyImage,
   BodyImageWrapper,
   BodyWriteArea,
   BodyWriteTag,
   BodyWriteWrapper,
-  BodyMapArea,
   ButtonWrapper,
   MainWrapper,
   BodyWriteMiddleTag,
@@ -34,11 +32,12 @@ import Carousel01 from "../../../commons/carousel/01";
 import ProductsCommentsContainer from "../comments/ProductsComments.container";
 import MapArea02 from "../../../commons/map/02";
 
+// @ts-ignore
 import Dompurify from "dompurify";
 
 import { Tooltip } from "antd";
 
-export default function ProductsReadUI(props) {
+export default function ProductsReadUI(props: any) {
   return (
     <MainWrapper>
       <ProductsReadWrapper>
@@ -103,7 +102,7 @@ export default function ProductsReadUI(props) {
         )}
 
         <BodyWriteWrapper>
-          {props.data?.fetchUseditem.tags.map((el, index) => (
+          {props.data?.fetchUseditem.tags.map((el: any, index: any) => (
             <BodyWriteMiddleTag key={index}>
               <BodyWriteTag>#{el}</BodyWriteTag>
             </BodyWriteMiddleTag>

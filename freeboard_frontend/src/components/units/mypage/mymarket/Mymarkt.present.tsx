@@ -12,7 +12,7 @@ import {
 import Table05 from "../../../commons/table/05";
 import Table06 from "../../../commons/table/06";
 
-export default function MyMarketUI(props) {
+export default function MyMarketUI(props: any) {
   return (
     <MyMarketPageWrapper>
       <TopWrapper>

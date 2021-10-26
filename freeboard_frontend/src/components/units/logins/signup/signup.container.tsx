@@ -17,28 +17,28 @@ export default function SignupContainer() {
 
   const [createUser] = useMutation(CREATE_USER);
 
-  function onChangeEmail(event) {
+  function onChangeEmail(event: any) {
     setEmail(event.target.value);
     if (event.target.value !== "") {
       setEmailError("");
     }
   }
 
-  function onChangeName(event) {
+  function onChangeName(event: any) {
     setName(event.target.value);
     if (event.target.value !== "") {
       setNameError("");
     }
   }
 
-  function onChangePassword(event) {
+  function onChangePassword(event: any) {
     setPassword(event.target.value);
     if (event.target.value !== "") {
       setPasswordError("");
     }
   }
 
-  function onchangePasswordCheck(event) {
+  function onchangePasswordCheck(event: any) {
     setPasswordCheck(event.target.value);
     if (event.target.value !== "") {
       setPasswordCheckError("");

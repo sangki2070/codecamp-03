@@ -21,7 +21,7 @@ import {
 
 import Upload03 from "../../../commons/uploads/03/Upload03.container";
 
-export default function MyProfileUI(props) {
+export default function MyProfileUI(props: any) {
   return (
     <MyProfileArea>
       <ProfileTitle>비밀번호 변경</ProfileTitle>

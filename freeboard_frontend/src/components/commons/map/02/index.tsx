@@ -4,7 +4,7 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function MapArea02(props) {
+export default function MapArea02(props: any) {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
