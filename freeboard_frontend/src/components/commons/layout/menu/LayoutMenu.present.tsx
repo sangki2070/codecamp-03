@@ -10,7 +10,7 @@ export default function LayoutMenuUI(props: any) {
       <MenuItem onClick={props.onClickMarket}>NFT 마켓</MenuItem>
       <> | </>
       <MenuItem id="/boards/currency" onClick={props.onClickMenu}>
-        환율정보 게시판
+        환율정보
       </MenuItem>
       <> | </>
       <MenuItem id="/boards" onClick={props.onClickMenu}>
