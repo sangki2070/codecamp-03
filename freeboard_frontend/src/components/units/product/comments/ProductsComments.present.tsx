@@ -76,6 +76,7 @@ export default function ProductsCommentsUI(props: any) {
               onChangeReQuestion={props.onChangeReQuestion}
               onClickReQuestion={props.onClickReQuestion}
               isReQuestion={props.isReQuestion}
+              reData={props.reData}
             ></Comments03>
           )}
 
