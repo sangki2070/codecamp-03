@@ -51,6 +51,10 @@ export const BottomBtn = styled.button`
   font-weight: 500;
   font-size: 12px;
   border: none;
+  cursor: pointer;
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 const UPDATE_USEDITEM_QUESTION_ANSWER = gql`

@@ -37,9 +37,9 @@ export default function LayoutMarketPage() {
     }
     getResponse();
 
-    // setInterval(() => {
-    //   getResponse();
-    // }, 60000);
+    setInterval(() => {
+      getResponse();
+    }, 60000);
   }, []);
 
   return (

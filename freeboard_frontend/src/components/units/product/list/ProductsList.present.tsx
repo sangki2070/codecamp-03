@@ -187,8 +187,8 @@ export default function ProductsListUI(props: any) {
                   </ItemBoxWrapper>
                 </ItemContentsWrapper>
                 <ItemPriceWrapper>
-                  <ItemPriceImage src={"/images/won.svg"}></ItemPriceImage>
                   <ItemPrice>
+                    <ItemPriceImage src={"/images/won.svg"}></ItemPriceImage>
                     {Number(el.price).toLocaleString("ko-KR")} 원
                   </ItemPrice>
                 </ItemPriceWrapper>

@@ -48,6 +48,10 @@ export const BottomBtn = styled.button`
   font-weight: 500;
   font-size: 16px;
   border: none;
+  cursor: pointer;
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 export default function Comments02(props: any) {

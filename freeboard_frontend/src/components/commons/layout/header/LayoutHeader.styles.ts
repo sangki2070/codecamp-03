@@ -39,6 +39,7 @@ export const Logo = styled.img`
   cursor: pointer;
   width: 80px;
   height: 100px;
+  cursor: pointer;
   /* padding-bottom: 120px; */
 `;
 
@@ -49,6 +50,7 @@ export const HeaderWrapper = styled.div`
   /* justify-content: flex-start; */
   align-items: center;
   font-size: 18px;
+  cursor: pointer;
 `;
 
 export const LogoName = styled.div`

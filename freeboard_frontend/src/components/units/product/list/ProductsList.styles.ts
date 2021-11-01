@@ -245,11 +245,7 @@ export const ItemLikeCount = styled.div`
 `;
 
 export const ItemPriceWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 160px;
+  padding-right: 20px;
 `;
 
 export const ItemPriceImage = styled.img`
@@ -259,9 +255,12 @@ export const ItemPriceImage = styled.img`
 `;
 
 export const ItemPrice = styled.div`
-  width: 137px;
+  width: 350px;
   height: 36px;
   font-size: 24px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 export const ItemSeller = styled.div`

@@ -47,6 +47,10 @@ export const BottomBtn = styled.button`
   color: white;
   font-weight: 500;
   font-size: 16px;
+  cursor: pointer;
+  :hover {
+    opacity: 0.7;
+  }
 `;
 
 export default function Comments01(props: any) {

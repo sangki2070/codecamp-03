@@ -1,10 +1,13 @@
 import { useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 
 import LayoutHeaderUI from "./LayoutHeader.presenter";
 import { FETCH_USER_LOGGED_IN } from "./LayoutHeader.queries";
 
 export default function LayoutHeader() {
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
+
+  const router = useRouter();
 
   // useEffect(() => {
   //   if (userInfo.email) return;
@@ -21,5 +24,15 @@ export default function LayoutHeader() {
     location.reload();
   }
 
-  return <LayoutHeaderUI data={data} onClickLogOut={onClickLogOut} />;
+  function onCliekLoGo() {
+    router.push("/products/");
+  }
+
+  return (
+    <LayoutHeaderUI
+      data={data}
+      onClickLogOut={onClickLogOut}
+      onCliekLoGo={onCliekLoGo}
+    />
+  );
 }

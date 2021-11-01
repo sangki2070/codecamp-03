@@ -18,7 +18,7 @@ import {
 export default function LayoutHeaderUI(props: any) {
   return (
     <Wrapper>
-      <HeaderWrapper>
+      <HeaderWrapper onClick={props.onCliekLoGo}>
         <Logo src={"/images/tvlogo1.jpeg"}></Logo>
         <LogoName>TradingZone</LogoName>
       </HeaderWrapper>
