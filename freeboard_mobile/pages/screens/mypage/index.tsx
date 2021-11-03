@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MyPageContainer from '../../../src/conponents/mypage/MyPage.container';
+import MyPageContainer from '../../../src/conponents/mypages/mypage/MyPage.container';
 
 const MyPage = () => {
   return <MyPageContainer />;
