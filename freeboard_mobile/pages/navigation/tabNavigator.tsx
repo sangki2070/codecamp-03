@@ -6,6 +6,7 @@ import {Image} from 'react-native';
 import MainNavigator from './main';
 import SearchNavigator from './search';
 import MyPageNavigator from './mypage';
+import FavoriteNavigator from './favorite';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -62,7 +63,7 @@ const TabNavigator = () => {
       <Tab.Group screenOptions={{headerShown: false}}>
         <Tab.Screen name="검색" component={SearchNavigator} />
         <Tab.Screen name="홈" component={MainNavigator} />
-        <Tab.Screen name="마이 찜" component={MyPageNavigator} />
+        <Tab.Screen name="마이 찜" component={FavoriteNavigator} />
         <Tab.Screen name="마이페이지" component={MyPageNavigator} />
       </Tab.Group>
     </Tab.Navigator>
