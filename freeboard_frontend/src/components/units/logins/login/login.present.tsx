@@ -30,7 +30,7 @@ export default function LoginUI(props: any) {
         ></LoginInput>
         <ErrorMessage>{props.emailError}</ErrorMessage>
         <LoginInput
-          type="text"
+          type="password"
           placeholder="비밀번호를 입력해 주세요."
           onChange={props.onchangeMyPassword}
         ></LoginInput>

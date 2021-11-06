@@ -28,11 +28,21 @@ export default function LayoutHeader() {
     router.push("/products/");
   }
 
+  function onClickLogin() {
+    router.push("/loginauth/");
+  }
+
+  function onClickSignup() {
+    router.push("/signup/");
+  }
+
   return (
     <LayoutHeaderUI
       data={data}
       onClickLogOut={onClickLogOut}
       onCliekLoGo={onCliekLoGo}
+      onClickLogin={onClickLogin}
+      onClickSignup={onClickSignup}
     />
   );
 }

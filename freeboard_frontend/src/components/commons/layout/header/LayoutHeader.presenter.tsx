@@ -51,11 +51,13 @@ export default function LayoutHeaderUI(props: any) {
               cursor: "pointer",
               marginLeft: "180px",
             }}
+            onClick={props.onClickLogin}
           />
         )}
         {!props.data?.fetchUserLoggedIn.name && (
           <SolutionOutlined
             style={{ fontSize: "80px", color: "white", cursor: "pointer" }}
+            onClick={props.onClickSignup}
           />
         )}
       </LoginWrapper>
