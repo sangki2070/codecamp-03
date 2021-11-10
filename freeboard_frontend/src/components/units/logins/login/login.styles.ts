@@ -106,7 +106,12 @@ export const SignupWrapper = styled.div`
   color: rgb(255, 255, 255);
 `;
 
-export const SignupWord = styled.div``;
+export const SignupWord = styled.div`
+  cursor: pointer;
+  :hover {
+    opacity: 0.7;
+  }
+`;
 
 export const LoginRightBack = styled.img`
   width: 800px;

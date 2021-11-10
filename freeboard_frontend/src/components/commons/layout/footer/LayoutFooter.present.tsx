@@ -62,7 +62,7 @@ export default function LayoutFooterUI() {
   useEffect(() => {
     async function getWeather() {
       const cityweather: any = await axios.get(
-        "http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=afe45ae13f1cfa7be8030331de88525c"
+        "https://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=afe45ae13f1cfa7be8030331de88525c"
       );
       setWeather(cityweather.data.weather[0].main);
       setTemp(Math.floor(cityweather.data.main.temp));

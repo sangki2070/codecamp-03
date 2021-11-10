@@ -42,11 +42,11 @@ export default function LoginUI(props: any) {
         <LoginBtn onClick={props.onClickLogin}>로그인하기</LoginBtn>
         <UnderLine></UnderLine>
         <SignupWrapper>
-          <SignupWord>이메일 찾기</SignupWord>
+          <SignupWord onClick={props.onClickSignup}>이메일 찾기</SignupWord>
           <div>|</div>
-          <SignupWord>비밀번호 찾기</SignupWord>
+          <SignupWord onClick={props.onClickSignup}>비밀번호 찾기</SignupWord>
           <div>|</div>
-          <SignupWord>회원가입</SignupWord>
+          <SignupWord onClick={props.onClickSignup}>회원가입</SignupWord>
         </SignupWrapper>
       </LoginInnerWrapper>
       <LoginRightBack src={"/images/a1.png"} />

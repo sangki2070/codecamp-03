@@ -16,7 +16,7 @@ export default function CurrencyRateContainer() {
     async function getRate() {
       const rates = await axios.get(
         // "https://api.exchangeratesapi.io/latest?base=EUR"
-        "http://api.currencylayer.com/live?access_key=1eacfe8be2c26da8b61ed3cc23773ebe& symbols = KRW"
+        "https://api.currencylayer.com/live?access_key=1eacfe8be2c26da8b61ed3cc23773ebe& symbols = KRW"
       );
       setKrw(rates.data.quotes.USDKRW.toFixed(2));
       setJpy(rates.data.quotes.USDJPY.toFixed(2));

@@ -52,6 +52,10 @@ export default function LoginContainer() {
     }
   }
 
+  function onClickSignup() {
+    router.push("/signup/");
+  }
+
   return (
     <LoginUI
       onChangeMyEmail={onChangeMyEmail}
@@ -59,6 +63,7 @@ export default function LoginContainer() {
       onClickLogin={onClickLogin}
       emailError={emailError}
       passwordError={passwordError}
+      onClickSignup={onClickSignup}
     />
   );
 }
