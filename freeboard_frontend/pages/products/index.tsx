@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { gql, request } from "graphql-request";
+import { request } from "graphql-request";
+import { gql } from "@apollo/client";
 
 import { withAuth } from "../../src/components/commons/hocs/withAuth";
 
