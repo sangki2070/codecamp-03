@@ -3,6 +3,7 @@ import SignupUI from "./signup.present";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "./signup.queries";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function SignupContainer() {
   const [email, setEmail] = useState("");
@@ -16,6 +17,8 @@ export default function SignupContainer() {
   const [passwrodCheckError, setPasswordCheckError] = useState("");
 
   const [createUser] = useMutation(CREATE_USER);
+
+  const router = useRouter();
 
   function onChangeEmail(event: any) {
     setEmail(event.target.value);
@@ -101,6 +104,7 @@ export default function SignupContainer() {
       });
       console.log(result.data.createUser._id);
       alert("회원가입이 완료되었습니다.");
+      router.push("/loginauth/");
     } catch (error) {
       // console.log(error);
       alert(error);

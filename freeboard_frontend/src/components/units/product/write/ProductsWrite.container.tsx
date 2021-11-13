@@ -69,7 +69,7 @@ export default function ProductsWriteContainer(props: any) {
   }
 
   function onChangeMyEditor(value: any) {
-    setValue("myContents", value === "<p><br></P" ? "" : value);
+    setValue("myContents", value === "<p><br></p>" ? "" : value);
     trigger("myContents");
   }
 
