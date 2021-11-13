@@ -26,6 +26,7 @@ export const FETCH_BOARD = gql`
       writer
       title
       images
+      contents
     }
   }
 `;
