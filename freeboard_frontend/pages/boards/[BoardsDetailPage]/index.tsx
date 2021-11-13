@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { request } from "graphql-request";
-import { gql } from "@apollo/client";
+import { request, gql } from "graphql-request";
 
 import BoardsDetialContainerPage from "../../../src/components/units/board/read/BoardsDetailRead.container";
 
