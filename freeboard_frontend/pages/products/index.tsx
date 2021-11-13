@@ -25,6 +25,7 @@ const ProductWritePage = (props: any) => {
 const FETCH_USEDITEM = gql`
   query fetchUsedItem($useditemId: ID!) {
     fetchUsedItem(useditemId: $useditemId) {
+      _id
       name
       remarks
       images
