@@ -3,7 +3,7 @@ import { request, gql } from "graphql-request";
 
 import BoardsDetialContainerPage from "../../../src/components/units/board/read/BoardsDetailRead.container";
 
-export default function BoardsDetailPage1(props: any) {
+export default function BoardsDetailPage(props: any) {
   return (
     <>
       <Head>
