@@ -107,7 +107,6 @@ function MyApp({ Component, pageProps }) {
           )}
           {isHiddenSignup && <SignupPage />}
           {isHiddenLogin && <LoginPage />}
-          <div>ggggggg</div>
         </ApolloProvider>
       </GlobalContext.Provider>
     </>
