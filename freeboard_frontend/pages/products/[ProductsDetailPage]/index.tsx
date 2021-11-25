@@ -39,7 +39,7 @@ export const getServerSideProps = async (context: any) => {
     "https://backend03.codebootcamp.co.kr/graphql12",
     FETCH_USEDITEM,
     {
-      useditemId: context.query.useditemId,
+      useditemId: context.query.ProductsDetailPage,
     }
   );
   console.log("123");

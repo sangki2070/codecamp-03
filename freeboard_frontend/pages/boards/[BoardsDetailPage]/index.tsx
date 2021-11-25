@@ -35,7 +35,7 @@ export const getServerSideProps = async (context: any) => {
   const result = await request(
     "https://backend03.codebootcamp.co.kr/graphql12",
     FETCH_BOARD,
-    { boardId: context.query.boardId }
+    { boardId: context.query.BoardsDetailPage }
   );
   return {
     props: {
