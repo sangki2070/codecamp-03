@@ -2,7 +2,7 @@ import Head from "next/head";
 import { gql, request } from "graphql-request";
 
 import { withAuth } from "../../../src/components/commons/hocs/withAuth";
-import ProductsReadContainer from "../../../src/components/units/product/read/ProductsRead.container";
+// import ProductsReadContainer from "../../../src/components/units/product/read/ProductsRead.container";
 
 const ProductsReadPage = (props: any) => {
   return (
@@ -15,7 +15,8 @@ const ProductsReadPage = (props: any) => {
           content={`https://storage.googleapis.com/${props.fetchUseditem.images[0]}`}
         />
       </Head>
-      <ProductsReadContainer />
+      <div>asdfasdf</div>
+      {/* <ProductsReadContainer /> */}
     </>
   );
 };
