@@ -7,4 +7,4 @@ RUN yarn install
 COPY . /freeboard_frontend/
 RUN yarn build:ssr
 
-CMD yarn dev 
+CMD yarn start 
