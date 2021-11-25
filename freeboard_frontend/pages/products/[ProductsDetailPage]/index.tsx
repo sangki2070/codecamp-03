@@ -20,7 +20,7 @@ const ProductsReadPage = (props: any) => {
     </>
   );
 };
-export default withAuth(ProductsReadPage);
+export default ProductsReadPage;
 
 const FETCH_USEDITEM = gql`
   query fetchUseditem($useditemId: ID!) {
