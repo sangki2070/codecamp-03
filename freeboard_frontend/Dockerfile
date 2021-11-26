@@ -6,5 +6,6 @@ RUN yarn install
 
 COPY . /freeboard_frontend/
 RUN yarn build:ssr
+RUN mv ./.next/static ./public/ssr/_next/static
 
-CMD yarn start 
+CMD yarn start
