@@ -79,7 +79,9 @@ export default function ProductsListUI(props: any) {
                 ></BestProductImage>
               )}
 
-              <BestProductTitle>{el.name}</BestProductTitle>
+              <BestProductTitle>
+                {el.name.length > 9 ? `${el.name.substr(0, 10)}...` : el.name}
+              </BestProductTitle>
               <BestProductInfoWrapper>
                 <BestProductBoddyWrapper>
                   <BestProductDate>{el.remarks}</BestProductDate>
