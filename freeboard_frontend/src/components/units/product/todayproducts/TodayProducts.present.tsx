@@ -45,10 +45,14 @@ export default function TodayProductsUI(props: any) {
                 <TodayImage src={"/images/noimage3.svg"}></TodayImage>
               </TodayImageWrapper>
               <TodayWordWrapper>
-                <TodayProductsName>{el.name}</TodayProductsName>
-                <TodayProductsRemarks>2019 LTE 32GB</TodayProductsRemarks>
-                <TodayProductsPrice>{el.price} 원</TodayProductsPrice>
-                <TodayProductsTag>#삼성전자 #갤럭시탭 #갓성비</TodayProductsTag>
+                <TodayProductsName>
+                  {el.name.length > 9 ? `${el.name.substr(0, 10)}...` : el.name}
+                </TodayProductsName>
+                <TodayProductsRemarks>{el.remarks}</TodayProductsRemarks>
+                <TodayProductsPrice>
+                  {Number(el.price).toLocaleString("ko-KR")} 원
+                </TodayProductsPrice>
+                <TodayProductsTag>{el.tags}</TodayProductsTag>
               </TodayWordWrapper>
             </TodayProductsArea>
           ))
