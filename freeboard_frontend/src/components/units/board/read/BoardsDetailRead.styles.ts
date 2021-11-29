@@ -135,7 +135,7 @@ export const BodyTitle = styled.div`
 `;
 
 export const BodyImage = styled.img`
-  width: 996px;
+  width: 600px;
   height: 480px;
   padding-top: 40px;
 `;

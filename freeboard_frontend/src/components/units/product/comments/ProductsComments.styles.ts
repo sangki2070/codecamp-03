@@ -20,10 +20,9 @@ export const CommentsTitleWrapper = styled.div`
   align-items: center;
 `;
 
-export const TitleImage = styled.div`
+export const TitleImage = styled.img`
   width: 20px;
   height: 20px;
-  background-color: gray;
 `;
 
 export const Title = styled.div`

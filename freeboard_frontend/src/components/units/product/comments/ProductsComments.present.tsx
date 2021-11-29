@@ -25,7 +25,7 @@ export default function ProductsCommentsUI(props: any) {
   return (
     <CommentsWrapper>
       <CommentsTitleWrapper>
-        <TitleImage></TitleImage>
+        <TitleImage src="/images/comment.png"></TitleImage>
         <Title>문의하기</Title>
       </CommentsTitleWrapper>
 

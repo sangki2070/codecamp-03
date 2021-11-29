@@ -121,7 +121,7 @@ export default function BoardsDetailUI(props: any) {
           onClick={props.onClickModify}
         ></ModyfiyBtn>
         <DeleteBtn
-          src="/images/DeleteBtn.png"
+          src="/images/deletebtn.png"
           id={props.data?.fetchBoard._id}
           onClick={props.onClickDelete}
         ></DeleteBtn>
