@@ -53,7 +53,7 @@ export default function LayoutMarketUI(props: any) {
       </MarketWrapper>
       <MarketWrapper>
         <MarketSmallWrapper>
-          <MarketItem>도지코인</MarketItem>
+          <MarketItem>도지</MarketItem>
           <Marketprice>{props.doge.toLocaleString("ko-KR")} 원</Marketprice>
         </MarketSmallWrapper>
         <MarketSmallWrapper>
