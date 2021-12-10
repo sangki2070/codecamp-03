@@ -82,6 +82,18 @@ TradingView([https://www.tradingview.com/](https://www.tradingview.com/))사이�
   <img width="1000" src="https://user-images.githubusercontent.com/89248004/143455039-66c9551b-f398-4baf-a9ff-edbf66df9701.png">
 </p>
 
+- 아임포트 api를 이용해 결제 구현
+
+<p align="center">
+  <img width="1000" src="https://user-images.githubusercontent.com/89248004/145541172-40b4f90d-70e3-4b69-9a9a-c0b00c4c0e3f.png">
+</p>
+
+<p align="center">
+  <img width="1000" src="https://user-images.githubusercontent.com/89248004/145541353-237f128e-cf4f-439b-aa74-f76875430827.png">
+</p>
+
+
+
 ## 💡 깨달은 점
 
 - container, presenter 폴더구조에 대해서 배웠다.
